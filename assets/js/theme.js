@@ -2302,6 +2302,74 @@ $(function () {
   // Page header elements scrolling effects:
   // =======================================
 
+  const highlight = document.getElementById("highlight-style");
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray(".text-highlight").forEach((highlight) => {
+    ScrollTrigger.create({
+      trigger: highlight,
+      start: "-100px center",
+      onEnter: () => highlight.classList.add("active"),
+    });
+  });
+
+  ScrollTrigger.create({
+    trigger: "section.two",
+    start: "top 50%",
+    end: "bottom 0%",
+
+    onEnter: () => {
+      gsap.to("body", { duration: 1.0, backgroundColor: "#1843DB" });
+    },
+
+    onLeaveBack: () => {
+      gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
+    },
+  });
+
+  ScrollTrigger.create({
+    trigger: "section.three",
+    start: "top 50%",
+    end: "bottom 0%",
+
+    onEnter: () => {
+      gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
+    },
+
+    onLeaveBack: () => {
+      gsap.to("body", { duration: 1.0, backgroundColor: "#1843DB" });
+    },
+  });
+
+  ScrollTrigger.create({
+    trigger: "section.four",
+    start: "top 50%",
+    end: "bottom 0%",
+
+    onEnter: () => {
+      gsap.to("body", { duration: 1.0, backgroundColor: "#2E2C2F" });
+    },
+
+    onLeaveBack: () => {
+      gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
+    },
+  });
+
+  ScrollTrigger.create({
+    trigger: "section.five",
+    start: "top 50%",
+    end: "bottom 0%",
+
+    onEnter: () => {
+      gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
+    },
+
+    onLeaveBack: () => {
+      gsap.to("body", { duration: 1.0, backgroundColor: "#2E2C2F" });
+    },
+  });
+
   gsap.to(".hscroll", {
     xPercent: 4,
     ease: "none",
@@ -2696,6 +2764,29 @@ $(function () {
         clearProps: "all",
       },
       "+=0.3"
+    );
+  });
+
+  // fade in-out
+  $(".anim-fadeinout").each(function () {
+    let tl_fadeOutUp = gsap.timeline({
+      scrollTrigger: {
+        trigger: this,
+        start: "bottom top",
+        markers: false,
+      },
+    });
+
+    tl_fadeOutUp.from(
+      this,
+      {
+        duration: 2.5,
+        autoAlpha: 0,
+        y: 100,
+        ease: Expo.easeOut,
+        clearProps: "all",
+      },
+      "-=0.3"
     );
   });
 
@@ -3295,7 +3386,6 @@ $(function () {
     .on("touchend", function () {
       $(this).trigger("hover");
     });
-
   var scrollPositionX = 0;
   var scrollPositionY = 0;
 
@@ -3385,4 +3475,42 @@ $(function () {
       },
     }
   );
+
+  // gsap.utils.toArray(".snapping-item").forEach((panel, i) => {
+  //   console.log(panel);
+  //   ScrollTrigger.create({
+  //     trigger: panel,
+  //     start: "top top",
+  //     scrub: true,
+  //     pin: true,
+  //     pinSpacing: false,
+  //   });
+  // });
+
+  // ScrollTrigger.create({
+  //   snap: {
+  //     snapTo: 1 / 4,
+  //     duration: 0.5,
+  //   },
+  // });
+
+  const sections = gsap.utils.toArray(".snapping-item");
+  console.log(sections.length);
+  ScrollTrigger.create({
+    trigger: ".first",
+    start: "top top",
+    endTrigger: ".last",
+    end: "bottom bottom",
+
+    //snap: 1 / (sections.length - 1)
+
+    snap: {
+      snapTo: 1 / (sections.length - 1),
+      duration: { min: 0.25, max: 0.75 }, // the snap animation should be at least 0.25 seconds, but no more than 0.75 seconds (determined by velocity)
+      ease: "power1.inOut", // the ease of the snap animation ("power3" by default)
+    },
+  });
+  setTimeout(() => {
+    ScrollTrigger.refresh(); //HN: SOmething's being added dynamically to the page after it loads, which is messing up the position for the scroll trigger, and at this point the code is too complex for me to go looking for what that element is, so instead I just refresh the scrollTrigger 2 seconds after the page loads, making sure it takes the new values into account
+  }, 4000);
 })(jQuery);
