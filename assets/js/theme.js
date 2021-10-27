@@ -3437,12 +3437,12 @@ $(function () {
 
   if (thisAnimWrap.hasClass("to-right")) {
     var fromValue = 0;
-    var toValue = -(scrollWidth - windowWidth + 2000);
+    var toValue = -(scrollWidth - windowWidth - 2000);
     // 1600 Total Padding left & right of all items
   }
 
   if (thisAnimWrap.hasClass("to-left")) {
-    var fromValue = -(scrollWidth - windowWidth + 1600);
+    var fromValue = -(scrollWidth - windowWidth - 2000);
     // 1600 Total Padding left & right of all items
     var toValue = 0;
   }
@@ -3451,7 +3451,7 @@ $(function () {
   var thisPinWrap = thisSection.querySelector(".pin-wrap");
   var thisAnimWrap = thisPinWrap.querySelector(".animation-wrap");
 
-  var getToValue = () => -(thisAnimWrap.scrollWidth - window.innerWidth);
+  var getToValue = () => -(thisAnimWrap.scrollWidth - window.innerWidth - 900);
 
   gsap.fromTo(
     thisAnimWrap,
@@ -3495,23 +3495,31 @@ $(function () {
   // });
 
   const sections = gsap.utils.toArray(".snapping-item");
-  console.log(sections.length);
   ScrollTrigger.create({
     trigger: ".first",
-    start: "top top",
-    endTrigger: ".last",
-    end: "bottom bottom",
+    start: "top 50%",
+    end: "+=1500",
 
     //snap: 1 / (sections.length - 1)
 
     snap: {
-      snapTo: 1 / (sections.length - 1),
-      duration: { min: 0.10, max: 0.75 }, // the snap animation should be at least 0.10 seconds, but no more than 0.75 seconds (determined by velocity)
-      delay: 0,
+      snapTo: 0.5,
+      duration: { min: 0.25, max: 0.75 }, // the snap animation should be at least 0.25 seconds, but no more than 0.75 seconds (determined by velocity)
+      delay: 0, // wait 0.125 seconds from the last scroll event before doing the snapping
       ease: "power1.inOut", // the ease of the snap animation ("power3" by default)
     },
   });
   setTimeout(() => {
     ScrollTrigger.refresh(); //HN: SOmething's being added dynamically to the page after it loads, which is messing up the position for the scroll trigger, and at this point the code is too complex for me to go looking for what that element is, so instead I just refresh the scrollTrigger 2 seconds after the page loads, making sure it takes the new values into account
   }, 4000);
+
+  const videos = document.querySelectorAll(".video-container");
+  videos.forEach((video) => {
+    video.addEventListener("mouseover", () => {
+      video.querySelector("video").play();
+    });
+    video.addEventListener("mouseout", () => {
+      video.querySelector("video").pause();
+    });
+  });
 })(jQuery);
