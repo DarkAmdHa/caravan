@@ -3555,7 +3555,7 @@ $(function () {
           }
         }
         //Media Query Check using JavaScript
-        var x = window.matchMedia("(max-width: 700px)");
+        var x = window.matchMedia("screen and (max-width:700px)");
         myFunction(x); // Call listener function at run time
         x.addEventListener("resize", myFunction); // Attach listener function on state changes
 
