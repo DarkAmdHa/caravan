@@ -3557,7 +3557,6 @@ $(function () {
         //Media Query Check using JavaScript
         var x = window.matchMedia("screen and (max-width:700px)");
         myFunction(x); // Call listener function at run time
-        x.addEventListener("resize", myFunction); // Attach listener function on state changes
 
         //Basically done by: calculating left offset(distance between element and the left of the viewport) of the letter C, substracting
         //that by the left offset of it's parent element(in order to get the left offset from the letter C to it's parent's left border)
