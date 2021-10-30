@@ -380,7 +380,7 @@ $(function () {
         damping: 0.05,
         renderByPixel: true,
         continuousScrolling: true,
-        alwaysShowTracks: true,
+        alwaysShowTracks: false /*MORE OF UPWORK FREELANCER"S DOINGS*/,
       });
 
       // 3rd party library setup
@@ -1887,14 +1887,14 @@ $(function () {
               swiper.update();
             },
 
-            transitionStart: function () {
-              // Play video
-              $(".swiper-slide-active")
-                .find("video")
-                .each(function () {
-                  $(this).get(0).play();
-                });
-            },
+            // transitionStart: function () {
+            //   // Play video
+            //   $(".swiper-slide-active")
+            //     .find("video")
+            //     .each(function () {
+            //       $(this).get(0).play();
+            //     });
+            // },
 
             transitionEnd: function () {
               // Pause video
@@ -3386,140 +3386,195 @@ $(function () {
     .on("touchend", function () {
       $(this).trigger("hover");
     });
-  var scrollPositionX = 0;
-  var scrollPositionY = 0;
 
-  var bodyScroll = document.getElementById("scroll-container");
+  /************************************************CUSTOM JS*********************************** */
 
-  let bodyScrollBar = Scrollbar.init(bodyScroll, {
-    damping: 0.1,
-    // renderByPixels: !('ontouchstart' in document),
-    delegateTo: document,
-  });
+  if (!isMobile) {
+    console.log("YOW");
+    //Smooth Scroll and horizontal section only if on Mobile
+    var scrollPositionX = 0;
+    var scrollPositionY = 0;
 
-  bodyScrollBar.addListener(({ offset }) => {
-    scrollPositionX = offset.x;
-    scrollPositionY = offset.y;
-  });
+    var bodyScroll = document.getElementById("scroll-container");
+    //Initiating scroller element
+    let bodyScrollBar = Scrollbar.init(bodyScroll);
 
-  bodyScrollBar.setPosition(0, 0);
-  bodyScrollBar.track.xAxis.element.remove();
+    bodyScrollBar.addListener(({ offset }) => {
+      scrollPositionX = offset.x;
+      scrollPositionY = offset.y;
+    });
 
-  ScrollTrigger.scrollerProxy(document.getElementById("scroll-container"), {
-    scrollTop(value) {
-      if (arguments.length) {
-        bodyScrollBar.scrollTop = value;
-      }
-      return bodyScrollBar.scrollTop;
-    },
-  });
+    bodyScrollBar.setPosition(0, 0);
+    bodyScrollBar.track.xAxis.element.remove();
 
-  bodyScrollBar.addListener(ScrollTrigger.update);
-
-  var thisSection = $(".horizontal");
-  var thisSectionWidth = thisSection.width();
-  var thisSectionHeight = thisSection.height();
-
-  var thisPinWrap = thisSection.find(".pin-wrap");
-  var thisPinWrapWidth = thisPinWrap.width();
-  var thisPinWrapHeight = thisPinWrap.height();
-
-  var thisAnimWrap = thisPinWrap.find(".animation-wrap");
-  var thisAnimWrapWidth = thisAnimWrap.width();
-  var thisAnimWrapHeight = thisAnimWrap.height();
-
-  var theseItems = thisAnimWrap.find(".item");
-  var theseItemsWidth = theseItems.width();
-
-  var scrollWidth = theseItemsWidth * theseItems.length;
-  console.log(scrollWidth);
-  var windowWidth = $(window).innerWidth();
-
-  if (thisAnimWrap.hasClass("to-right")) {
-    var fromValue = 0;
-    var toValue = -(scrollWidth - windowWidth - 2000);
-    // 1600 Total Padding left & right of all items
-  }
-
-  if (thisAnimWrap.hasClass("to-left")) {
-    var fromValue = -(scrollWidth - windowWidth - 2000);
-    // 1600 Total Padding left & right of all items
-    var toValue = 0;
-  }
-
-  var thisSection = document.querySelector(".horizontal");
-  var thisPinWrap = thisSection.querySelector(".pin-wrap");
-  var thisAnimWrap = thisPinWrap.querySelector(".animation-wrap");
-
-  var getToValue = () => -(thisAnimWrap.scrollWidth - window.innerWidth - 900);
-
-  gsap.fromTo(
-    thisAnimWrap,
-    {
-      x: () => (thisAnimWrap.classList.contains("to-right") ? 0 : getToValue()),
-    },
-    {
-      x: () => (thisAnimWrap.classList.contains("to-right") ? getToValue() : 0),
-      ease: "none",
-      scrollTrigger: {
-        trigger: thisSection,
-        scroller: document.getElementById("scroll-container"), // neccessary setting for smooth-scrollbar on body
-        pinType: "transform", // neccessary setting for smooth-scrollbar on body
-        start: "top top",
-        end: () => "+=" + thisAnimWrap.scrollWidth,
-        pin: thisPinWrap,
-        invalidateOnRefresh: true,
-        anticipatePin: 1,
-        scrub: true,
-        //markers: true,
+    ScrollTrigger.scrollerProxy(document.getElementById("scroll-container"), {
+      scrollTop(value) {
+        if (arguments.length) {
+          bodyScrollBar.scrollTop = value;
+        }
+        return bodyScrollBar.scrollTop;
       },
+    });
+
+    bodyScrollBar.addListener(ScrollTrigger.update);
+
+    var windowWidth = $(window).innerWidth();
+
+    var thisSection = document.querySelector(".horizontal");
+    var thisPinWrap = thisSection.querySelector(".pin-wrap");
+    var thisAnimWrap = thisPinWrap.querySelector(".animation-wrap");
+    //Calculating where to or from start the horizontal scrolling
+    var getToValue = () =>
+      -(thisAnimWrap.scrollWidth - window.innerWidth + window.innerWidth / 3);
+
+    let scrollTween = gsap.fromTo(
+      thisAnimWrap,
+      {
+        //If has 'to-right' in class name, it will start here(x=0) and get to the value calculated above(getToValue())
+        x: () =>
+          thisAnimWrap.classList.contains("to-right") ? 0 : getToValue(),
+      },
+      {
+        x: () =>
+          thisAnimWrap.classList.contains("to-right") ? getToValue() : 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: thisSection,
+          scroller: document.getElementById("scroll-container"), // neccessary setting for smooth-scrollbar on body
+          pinType: "transform", // What's actually happening is the element is pinned while the contents of the Animwrap div are being translated to the left or right, giving the illusion of scrolling
+          start: "top top",
+          end: () => "+=" + thisAnimWrap.scrollWidth, //Ends here
+          pin: thisPinWrap, //Section to be pinned
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
+          scrub: true,
+        },
+      }
+    );
+
+    //Video Play on hover
+    const videos = document.querySelectorAll(".video-container"); //Video container selected
+    videos.forEach((video) => {
+      video.addEventListener("mouseover", () => {
+        //When hovered
+        video.querySelector("video").play(); //Play Video
+      });
+      video.addEventListener("mouseout", () => {
+        //When mouse not on the video anymore
+        video.querySelector("video").pause(); //Stop playing
+      });
+    });
+
+    // zoom in for the horizontal section when first appeared
+    $(".anim-zoomin-horiz").each(function () {
+      // Add wrap <div>.
+      $(this).wrap('<div class="anim-zoomin-wrap"></div>');
+
+      // Add overflow hidden.
+      $(".anim-zoomin-wrap").css({ overflow: "hidden" });
+
+      var $this = $(this);
+      var $asiWrap = $this.parents(".anim-zoomin-wrap");
+
+      let tl_ZoomIn_horiz = gsap.timeline({
+        scrollTrigger: {
+          trigger: $asiWrap,
+          start: () => {
+            let coord = $asiWrap[0].getBoundingClientRect();
+            return coord.y + coord.left + windowWidth / 2; //Where to start the animation of "Zoomin + appearnig"
+          },
+          markers: false,
+          onEnter: () => animZoomInRefresh(),
+        },
+      });
+      tl_ZoomIn_horiz.from($this, {
+        duration: 1.5,
+        autoAlpha: 0,
+        scale: 1.2,
+        ease: Power2.easeOut,
+        clearProps: "all",
+      });
+
+      // Refresh start/end positions on enter.
+      function animZoomInRefresh() {
+        ScrollTrigger.refresh();
+      }
+    });
+    //"Snapping" of WHAT WE DO
+    let scrollTween2;
+
+    function goToSection(direction) {
+      var $scrollbar = Scrollbar.init(
+        document.getElementById("scroll-container")
+      ); //Iniitializing smooth scroll in order to get current position of the scroller
+      if (direction === "fromTop") {
+        var topY = $scrollbar.offset.y + innerHeight; //Calculating where to scroll to(current position of scroller + 100vw)
+      } else {
+        var topY = $scrollbar.offset.y - innerHeight; //Calculating where to scroll to(current position of scroller - 100vw)
+      }
+      scrollTween2 = gsap.to($scrollbar, {
+        scrollTo: { y: topY, autoKill: false },
+        duration: 1, //Duration of the animation(preferably keep it at least at 1s)
+        onComplete: () => {
+          return (scrollTween2 = null);
+        },
+        overwrite: true,
+      });
     }
-  );
 
-  // gsap.utils.toArray(".snapping-item").forEach((panel, i) => {
-  //   console.log(panel);
-  //   ScrollTrigger.create({
-  //     trigger: panel,
-  //     start: "top top",
-  //     scrub: true,
-  //     pin: true,
-  //     pinSpacing: false,
-  //   });
-  // });
-
-  // ScrollTrigger.create({
-  //   snap: {
-  //     snapTo: 1 / 4,
-  //     duration: 0.5,
-  //   },
-  // });
-
-  const sections = gsap.utils.toArray(".snapping-item");
-  ScrollTrigger.create({
-    trigger: ".first",
-    start: "top 50%",
-    end: "+=1500",
-
-    //snap: 1 / (sections.length - 1)
-
-    snap: {
-      snapTo: 0.5,
-      duration: { min: 0.25, max: 0.75 }, // the snap animation should be at least 0.25 seconds, but no more than 0.75 seconds (determined by velocity)
-      delay: 0, // wait 0.125 seconds from the last scroll event before doing the snapping
-      ease: "power1.inOut", // the ease of the snap animation ("power3" by default)
-    },
-  });
-  setTimeout(() => {
-    ScrollTrigger.refresh(); //HN: SOmething's being added dynamically to the page after it loads, which is messing up the position for the scroll trigger, and at this point the code is too complex for me to go looking for what that element is, so instead I just refresh the scrollTrigger 2 seconds after the page loads, making sure it takes the new values into account
-  }, 4000);
-
-  const videos = document.querySelectorAll(".video-container");
-  videos.forEach((video) => {
-    video.addEventListener("mouseover", () => {
-      video.querySelector("video").play();
+    ScrollTrigger.create({
+      trigger: $(".snapping-item"),
+      start: "top bottom",
+      end: "bottom top",
+      onEnter: (self) =>
+        self.isActive && !scrollTween2 && goToSection("fromTop"),
+      onEnterBack: (self) =>
+        self.isActive && !scrollTween2 && goToSection("fromBottom"),
     });
-    video.addEventListener("mouseout", () => {
-      video.querySelector("video").pause();
-    });
-  });
+  } else {
+    //If not on Mobile(this includes IPADs):
+    document.querySelector(".regular-portfolio-container").style.display =
+      "block"; //Show default elements of the template
+    document.querySelector(".horizontal-container").innerHTML = ""; //Hide horizontal section
+  }
+
+  //Making sure "A Creative sticks under Caravan"
+
+  const relocateCaravanSubheading = () => {
+    document.querySelector(".caravan-subheading").style.margin = "0";
+    document.querySelector(".caravan-heading").style.margin = "0";
+
+    let extra = 10; //defalt
+    function myFunction(x) {
+      if (x.matches) {
+        // If media query matches
+        extra = 0;
+      } else {
+        extra = 10;
+      }
+    }
+    //Media Query Check using JavaScript
+    var x = window.matchMedia("(max-width: 700px)");
+    myFunction(x); // Call listener function at run time
+    x.addEventListener("resize", myFunction); // Attach listener function on state changes
+
+    //Basically done by: calculating left offset(distance between element and the left of the viewport) of the letter C, substracting
+    //that by the left offset of it's parent element(in order to get the left offset from the letter C to it's parent's left border)
+    //This is done because we know that the left border of the letter C parent element and the subheading ("A ... ") are at the same level
+    //Adding that to the third of the width of the letter C, and using all of this as a margin left for the subheading
+    document.querySelector(".caravan-subheading").style.marginLeft = `${
+      document.querySelector(".caravan-heading-c").getBoundingClientRect().x -
+      document
+        .querySelector(".caravan-heading-c")
+        .parentElement.getBoundingClientRect().x +
+      document.querySelector(".caravan-heading-c").getBoundingClientRect()
+        .width /
+        3 +
+      extra //paramaeter due to varying sizes
+    }px`;
+  };
+
+  relocateCaravanSubheading(); //Call to the function on runtime
+
+  window.addEventListener("resize", relocateCaravanSubheading); //Recaluclated on every resize
 })(jQuery);
