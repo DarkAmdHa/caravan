@@ -3539,42 +3539,46 @@ $(function () {
   }
 
   //Making sure "A Creative sticks under Caravan"
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const relocateCaravanSubheading = () => {
+        document.querySelector(".caravan-subheading").style.margin = "0";
+        document.querySelector(".caravan-heading").style.margin = "0";
 
-  const relocateCaravanSubheading = () => {
-    document.querySelector(".caravan-subheading").style.margin = "0";
-    document.querySelector(".caravan-heading").style.margin = "0";
+        let extra = 10; //defalt
+        function myFunction(x) {
+          if (x.matches) {
+            // If media query matches
+            extra = 0;
+          } else {
+            extra = 10;
+          }
+        }
+        //Media Query Check using JavaScript
+        var x = window.matchMedia("(max-width: 700px)");
+        myFunction(x); // Call listener function at run time
+        x.addEventListener("resize", myFunction); // Attach listener function on state changes
 
-    let extra = 10; //defalt
-    function myFunction(x) {
-      if (x.matches) {
-        // If media query matches
-        extra = 0;
-      } else {
-        extra = 10;
-      }
-    }
-    //Media Query Check using JavaScript
-    var x = window.matchMedia("(max-width: 700px)");
-    myFunction(x); // Call listener function at run time
-    x.addEventListener("resize", myFunction); // Attach listener function on state changes
+        //Basically done by: calculating left offset(distance between element and the left of the viewport) of the letter C, substracting
+        //that by the left offset of it's parent element(in order to get the left offset from the letter C to it's parent's left border)
+        //This is done because we know that the left border of the letter C parent element and the subheading ("A ... ") are at the same level
+        //Adding that to the third of the width of the letter C, and using all of this as a margin left for the subheading
+        document.querySelector(".caravan-subheading").style.marginLeft = `${
+          document.querySelector(".caravan-heading-c").getBoundingClientRect()
+            .x -
+          document
+            .querySelector(".caravan-heading-c")
+            .parentElement.getBoundingClientRect().x +
+          document.querySelector(".caravan-heading-c").getBoundingClientRect()
+            .width /
+            3 +
+          extra //paramaeter due to varying sizes
+        }px`;
+      };
 
-    //Basically done by: calculating left offset(distance between element and the left of the viewport) of the letter C, substracting
-    //that by the left offset of it's parent element(in order to get the left offset from the letter C to it's parent's left border)
-    //This is done because we know that the left border of the letter C parent element and the subheading ("A ... ") are at the same level
-    //Adding that to the third of the width of the letter C, and using all of this as a margin left for the subheading
-    document.querySelector(".caravan-subheading").style.marginLeft = `${
-      document.querySelector(".caravan-heading-c").getBoundingClientRect().x -
-      document
-        .querySelector(".caravan-heading-c")
-        .parentElement.getBoundingClientRect().x +
-      document.querySelector(".caravan-heading-c").getBoundingClientRect()
-        .width /
-        3 +
-      extra //paramaeter due to varying sizes
-    }px`;
-  };
+      relocateCaravanSubheading(); //Call to the function on runtime
 
-  relocateCaravanSubheading(); //Call to the function on runtime
-
-  window.addEventListener("resize", relocateCaravanSubheading); //Recaluclated on every resize
+      window.addEventListener("resize", relocateCaravanSubheading); //Recaluclated on every resize
+    }, 500);
+  });
 })(jQuery);
