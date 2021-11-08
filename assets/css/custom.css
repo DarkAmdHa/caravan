@@ -9590,6 +9590,9 @@ body:not(.tt-boxed) .tt-footer-inner,
   left: 50%;
   transform: translate(-50%, -30%);
 }
+.ph-caption.ph-stroke.row.justify-content-center{
+	overflow-y:hidden !important;
+}
 @media (min-width: 1025px) {
   #page-header.ph-full .page-header-inner {
     padding: 0 !important;
