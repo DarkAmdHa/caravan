@@ -9574,6 +9574,25 @@ body:not(.tt-boxed) .tt-footer-inner,
   }
 }
 
+/*==========================================HEADER CSS=====================================================*/
+#page-header {
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+  height: 100vh;
+}
+
+#page-header .page-header-inner {
+  padding: 0 !important;
+  margin: 0 !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+}
+
+/*==========================================HORIZONTAL SECTION CSS==========================================*/
+
 .horizontal {
   overflow: hidden;
 }
@@ -9633,67 +9652,6 @@ body:not(.tt-boxed) .tt-footer-inner,
   }
 }
 
-/* .horizontal .item:first-child .video-container {
-  top: 45px;
-}
-
-.horizontal .item:nth-child(2) .video-container {
-  top: 270px;
-  width: 385px;
-  left: 55px;
-}
-
-.horizontal .item:nth-child(3) .video-container {
-  width: 451px;
-  top: 60px;
-  left: 455px;
-}
-
-.horizontal .item:nth-child(4) .video-container {
-  width: 400px;
-  top: 330px;
-  left: 461px;
-}
-.horizontal .item:nth-child(5) .video-container {
-  width: 690px;
-  top: 100px;
-  left: 925px;
-}
-
-.horizontal .item:nth-child(6) .video-container {
-  width: 400px;
-  top: 55px;
-  left: 1632px;
-}
-
-.horizontal .item:nth-child(7) .video-container {
-  width: 475px;
-  top: 292px;
-  left: 1632px;
-}
-
-.horizontal .item:nth-child(8) .video-container {
-  width: 432px;
-  top: 11px;
-  left: 2125px;
-}
-
-.horizontal .item:nth-child(9) .video-container {
-  width: 489px;
-  top: 274px;
-  left: 2124px;
-}
-
-.horizontal .item:nth-child(10) .video-container {
-  width: 714px;
-  top: 48px;
-  left: 2630px;
-}
-*/
-
-/* #portfolio-grid {
-  display: none;
-} */
 .snapping-item {
   height: 100vh;
   display: flex;
