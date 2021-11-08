@@ -3570,8 +3570,7 @@ $(function () {
             .parentElement.getBoundingClientRect().x +
           document.querySelector(".caravan-heading-c").getBoundingClientRect()
             .width /
-            3 +
-          extra //paramaeter due to varying sizes
+            5 //paramaeter due to varying sizes
         }px`;
       };
 
