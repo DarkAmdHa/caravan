@@ -3481,9 +3481,9 @@ $(function () {
         document.getElementById("scroll-container")
       );
       if (direction === "fromTop") {
-        var topY = $scrollbar.offset.y + innerHeight; //Calculating where to scroll to(current position of scroller + 100vh)
+        var topY = $scrollbar.offset.y + innerHeight * 0.5; //Calculating where to scroll to(current position of scroller + 100vh)
       } else {
-        var topY = $scrollbar.offset.y - innerHeight; //Calculating where to scroll to(current position of scroller - 100vh)
+        var topY = $scrollbar.offset.y - innerHeight * 0.5; //Calculating where to scroll to(current position of scroller - 100vh)
       }
       scrollTween2 = gsap.to($scrollbar, {
         scrollTo: { y: topY, autoKill: true },
@@ -3497,8 +3497,8 @@ $(function () {
     document.querySelectorAll(".snapping-item").forEach((item) => {
       ScrollTrigger.create({
         trigger: item,
-        start: "top bottom",
-        end: "bottom top",
+        start: "top 50%",
+        end: "bottom 50%",
         onEnter: (self) => {
           return self.isActive && !scrollTween2 && goToSection("fromTop");
         },
