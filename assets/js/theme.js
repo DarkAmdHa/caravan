@@ -2314,61 +2314,33 @@ $(function () {
     });
   });
 
-  ScrollTrigger.create({
-    trigger: "section.two",
-    start: "top 50%",
-    end: "bottom 0%",
+  // ScrollTrigger.create({
+  //   trigger: "section.four",
+  //   start: "top 50%",
+  //   end: "bottom 0%",
 
-    onEnter: () => {
-      gsap.to("body", { duration: 1.0, backgroundColor: "#1843DB" });
-    },
+  //   onEnter: () => {
+  //     gsap.to("body", { duration: 1.0, backgroundColor: "#2E2C2F" });
+  //   },
 
-    onLeaveBack: () => {
-      gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
-    },
-  });
+  //   onLeaveBack: () => {
+  //     gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
+  //   },
+  // });
 
-  ScrollTrigger.create({
-    trigger: "section.three",
-    start: "top 50%",
-    end: "bottom 0%",
+  // ScrollTrigger.create({
+  //   trigger: "section.five",
+  //   start: "top 50%",
+  //   end: "bottom 0%",
 
-    onEnter: () => {
-      gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
-    },
+  //   onEnter: () => {
+  //     gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
+  //   },
 
-    onLeaveBack: () => {
-      gsap.to("body", { duration: 1.0, backgroundColor: "#1843DB" });
-    },
-  });
-
-  ScrollTrigger.create({
-    trigger: "section.four",
-    start: "top 50%",
-    end: "bottom 0%",
-
-    onEnter: () => {
-      gsap.to("body", { duration: 1.0, backgroundColor: "#2E2C2F" });
-    },
-
-    onLeaveBack: () => {
-      gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
-    },
-  });
-
-  ScrollTrigger.create({
-    trigger: "section.five",
-    start: "top 50%",
-    end: "bottom 0%",
-
-    onEnter: () => {
-      gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
-    },
-
-    onLeaveBack: () => {
-      gsap.to("body", { duration: 1.0, backgroundColor: "#2E2C2F" });
-    },
-  });
+  //   onLeaveBack: () => {
+  //     gsap.to("body", { duration: 1.0, backgroundColor: "#2E2C2F" });
+  //   },
+  // });
 
   gsap.to(".hscroll", {
     xPercent: 4,
@@ -3481,7 +3453,7 @@ $(function () {
           trigger: $asiWrap,
           start: () => {
             let coord = $asiWrap[0].getBoundingClientRect();
-            return coord.y + coord.left + windowWidth / 2; //Where to start the animation of "Zoomin + appearnig"
+            return coord.y + coord.left + windowWidth / 4; //Where to start the animation of "Zoomin + appearnig"
           },
           markers: false,
           onEnter: () => animZoomInRefresh(),
@@ -3504,16 +3476,17 @@ $(function () {
     let scrollTween2;
 
     function goToSection(direction) {
+      //Iniitializing smooth scroll in order to get current position of the scroller
       var $scrollbar = Scrollbar.init(
         document.getElementById("scroll-container")
-      ); //Iniitializing smooth scroll in order to get current position of the scroller
+      );
       if (direction === "fromTop") {
-        var topY = $scrollbar.offset.y + innerHeight; //Calculating where to scroll to(current position of scroller + 100vw)
+        var topY = $scrollbar.offset.y + innerHeight; //Calculating where to scroll to(current position of scroller + 100vh)
       } else {
-        var topY = $scrollbar.offset.y - innerHeight; //Calculating where to scroll to(current position of scroller - 100vw)
+        var topY = $scrollbar.offset.y - innerHeight; //Calculating where to scroll to(current position of scroller - 100vh)
       }
       scrollTween2 = gsap.to($scrollbar, {
-        scrollTo: { y: topY, autoKill: false },
+        scrollTo: { y: topY, autoKill: true },
         duration: 1, //Duration of the animation(preferably keep it at least at 1s)
         onComplete: () => {
           return (scrollTween2 = null);
@@ -3521,15 +3494,52 @@ $(function () {
         overwrite: true,
       });
     }
+    document.querySelectorAll(".snapping-item").forEach((item) => {
+      ScrollTrigger.create({
+        trigger: item,
+        start: "top bottom",
+        end: "bottom top",
+        onEnter: (self) => {
+          return self.isActive && !scrollTween2 && goToSection("fromTop");
+        },
+        onEnterBack: (self) =>
+          self.isActive && !scrollTween2 && goToSection("fromBottom"),
+      });
+    });
 
     ScrollTrigger.create({
-      trigger: $(".snapping-item"),
-      start: "top bottom",
-      end: "bottom top",
-      onEnter: (self) =>
-        self.isActive && !scrollTween2 && goToSection("fromTop"),
-      onEnterBack: (self) =>
-        self.isActive && !scrollTween2 && goToSection("fromBottom"),
+      trigger: ".two",
+      start: "top center",
+      end: "bottom center",
+
+      onEnter: () => {
+        gsap.to("body", { duration: 1.0, backgroundColor: "#1843DB" });
+      },
+      onLeave: () => {
+        gsap.to("body", { duration: 1.0, backgroundColor: "#EDEDED" });
+      },
+
+      onEnterBack: () => {
+        gsap.to("body", { duration: 1.0, backgroundColor: "#1843DB" });
+      },
+
+      onLeaveBack: () => {
+        gsap.to("body", { duration: 1.0, backgroundColor: "#EDEDED" });
+      },
+    });
+
+    ScrollTrigger.create({
+      trigger: ".three",
+      start: "top center",
+      end: "bottom center",
+
+      onEnter: () => {
+        gsap.to("body", { duration: 1.0, backgroundColor: "#2E2C2F" });
+      },
+
+      onLeaveBack: () => {
+        gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
+      },
     });
   } else {
     //If not on Mobile(this includes IPADs):
