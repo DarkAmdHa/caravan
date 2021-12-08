@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <!--
 	Website:   CRVN. CARAVAN
 	Author:    CRVN.
@@ -9,23 +8,50 @@
 
 <html lang="en">
 	<head>
-
+		<link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet">
+		<link href="https://unpkg.com/@videojs/themes@1/dist/city/index.css" rel="stylesheet">
 		<!-- Title -->
 		<title>CRVN. - CARAVAN - Creative Content Agency</title>
 
 		<!-- Meta -->
 		<meta charset="utf-8">
-		<meta name="description" content="We are a creative content agency based in London, Vienna and Tirana.">
+		<meta property="og:title" content="CRVN. - CARAVAN - A Creative Content Agency and Production Studio " />
+		<meta name="og:description" content="We are a creative content agency and production Studio based in London, Vienna and Tirana.">
+		<meta property="og:image" content="http://crvn.eu/images/og image.jpg">
 		<meta name="author" content="CRVN.">
+		<meta property="og:url" content="https://www.crvn.eu/" />
+		<meta property="og:type" content="website" />
+		
+
+		
+		
 
 		<!-- Mobile Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!-- Favicon (http://www.favicon-generator.org/) -->
-		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
 
 		<!-- Google Analytics - Global site tag (gtag.js) -->
+		<meta name="facebook-domain-verification" content="kolbaw5jb0258aezm41g90andh8byg" />
+
+		<script>
+			!function(f,b,e,v,n,t,s)
+			{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+			n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+			if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+			n.queue=[];t=b.createElement(e);t.async=!0;
+			t.src=v;s=b.getElementsByTagName(e)[0];
+			s.parentNode.insertBefore(t,s)}(window, document,'script',
+			'https://connect.facebook.net/en_US/fbevents.js');
+			fbq('init', '1249542592214890');
+			fbq('track', 'PageView');
+		  </script>
+		  <noscript><img height="1" width="1" style="display:none"
+			src="https://www.facebook.com/tr?id=1249542592214890&ev=PageView&noscript=1"
+		  /></noscript>
+
 		<!-- Paste your Google Anaytics code here. -->
 
 		<!-- Google fonts (https://www.google.com/fonts) -->
@@ -48,7 +74,6 @@
 		<link rel="stylesheet" type='text/css' href="assets/css/custom.css">
 
 	</head>
-
 	
 	<!-- ===========
 	///// Body /////
@@ -58,8 +83,6 @@
 	* Use class "tt-transition" to enable page transitions.
 	* Use class "tt-magic-cursor" to enable magic cursor.
 	-->
-
-	
 	<body id="body" class="tt-transition tt-boxed tt-smooth-scroll tt-magic-cursor">
 
 
@@ -67,6 +90,7 @@
 		*********** Begin body inner ************* 
 		************************************** -->
 		<main id="body-inner">
+			<nav>
 
 			<!-- Begin page transition (do not remove!!!) 
 			=========================== -->
@@ -84,7 +108,11 @@
 			<!-- Begin magic cursor 
 			======================== -->
 			<div id="magic-cursor">
-				<div id="ball"></div>
+				<div id="ball">
+						<i class="fas fa-arrow-left mouse-arrow"></i>
+						<span class='mouse-custom-text'>Go Back</span>
+
+				</div>
 			</div>
 			<!-- End magic cursor -->
 
@@ -92,8 +120,7 @@
 			<div class="bg-noise"></div>
 			<!-- End noise background --> 
 
-
-			<!-- *****************************************
+<!-- *****************************************
 			*********** Begin scroll container *********** 
 			****************************************** -->
 			<div id="scroll-container">
@@ -103,10 +130,12 @@
 				========================
 				* Use class "tt-header-fixed" to set header to fixed position.
 				-->
+				
 				<header id="tt-header" class="tt-header-fixed">
 					<div class="tt-header-inner  "> <!-- add/remove class "tt-wrap" to enable/disable element boxed layout (class "tt-boxed" is required in <body> tag!). Note: additionally you can use prepared helper class "max-width-*" to add custom width to "tt-wrap". Example: "max-width-1500" (class "tt-wrap" is still required!). More info about helper classes can be found in the file "helper.css". -->
 
 						<div class="tt-header-col ">
+							
 
 							<!-- Begin logo 
 							================ -->
@@ -126,6 +155,7 @@
 							<!-- Begin overlay menu toggle button -->
 							<div id="tt-ol-menu-toggle-btn-wrap">
 								<div class="tt-ol-menu-toggle-btn-text">
+									
 									
 									<span ; class="text-menu" style="font-family: Source Code Pro;" data-hover="Open">Menu</span>
 									<span class="text-close">Close</span>
@@ -148,55 +178,82 @@
 
 											<!-- Begin menu list -->
 											<ul class="tt-ol-menu-list">
-
-												<!-- <li><a href="">Single Link</a></li> -->
-
 												<!-- Begin submenu (submenu master)
 												==================================== -->
 												<li class="tt-ol-submenu-wrap active">
 													<div class="tt-ol-submenu-trigger">
-														<a href="#">Home</a>
+														<div class="tt-ol-menu-toggle-btn-text">
+														<div>
+															<a href="#work" class="tt-ol-menu-toggle-btn-text listitem" style="font-family: Source Code Pro; font-size: 30px;  color: #ececec;" ><span>Home</span></a>
+														</div>
+													</div> 
+												</li>
+												<!-- End submenu (sub-master) -->
+												<!-- Begin submenu (submenu master)
+												==================================== -->
+
+												<li class="tt-ol-submenu-wrap active">
+													<div class="tt-ol-submenu-trigger">
+														<div class="tt-ol-menu-toggle-btn-text">
+														<div>
+															<a href="#work" class="tt-ol-menu-toggle-btn-text listitem" style="font-family: Source Code Pro; font-size: 30px;  color: #ececec;" ><span>Work</span></a>
+														</div>
 													</div> 
 												</li>
 												<!-- End submenu (sub-master) -->
 
 												<!-- Begin submenu (submenu master)
 												==================================== -->
-												<li class="tt-ol-submenu-wrap">
+
+												<li class="tt-ol-submenu-wrap active">
 													<div class="tt-ol-submenu-trigger">
-														<a href="#">Portfolio</a>
-														
-													</div> <!-- /.tt-ol-submenu-trigger -->
-												
+														<div class="tt-ol-menu-toggle-btn-text">
+														<div>
+															<a href="#clients" class="tt-ol-menu-toggle-btn-text listitem" style="font-family: Source Code Pro; font-size: 30px; color: #ececec;" ><span>Clients</span></a>
+														</div>
+													</div> 
 												</li>
 												<!-- End submenu (sub-master) -->
 
 												<!-- Begin submenu (submenu master)
 												==================================== -->
-												<li class="tt-ol-submenu-wrap">
+
+												<li class="tt-ol-submenu-wrap active">
 													<div class="tt-ol-submenu-trigger">
-														<a href="#">About</a>
-														<div class="tt-ol-submenu-caret-wrap">
-															
-														</div> <!-- /.tt-ol-submenu-caret-wrap -->
-													</div> <!-- /.tt-ol-submenu-trigger -->
-													
+														<div class="tt-ol-menu-toggle-btn-text">
+														<div>
+															<a href="#about" class="tt-ol-menu-toggle-btn-text listitem" style="font-family: Source Code Pro; font-size: 30px; color: #ececec;" ><span>About</span></a>
+														</div>
+													</div> 
 												</li>
 												<!-- End submenu (sub-master) -->
 
 												<!-- Begin submenu (submenu master)
 												==================================== -->
-												<li class="tt-ol-submenu-wrap">
+												<li class="tt-ol-submenu-wrap active">
 													<div class="tt-ol-submenu-trigger">
-														<a href="#">Blog</a>
-														
-													
-														
-													</div> <!-- /.tt-ol-submenu -->
+														<div class="tt-ol-menu-toggle-btn-text">
+														<div>
+															<a href="#services" class="tt-ol-menu-toggle-btn-text listitem" style="font-family: Source Code Pro; font-size: 30px; color: #ececec;" ><span>Services</span></a>
+														</div>
+													</div> 
 												</li>
 												<!-- End submenu (sub-master) -->
 
-												<li><a href="contact.html">Contact</a></li>
+												<!-- Begin submenu (submenu master)
+												==================================== -->
+												<li class="tt-ol-submenu-wrap active">
+													<div class="tt-ol-submenu-trigger">
+														<div class="tt-ol-menu-toggle-btn-text">
+														<div>
+															<a href="#contact" class="tt-ol-menu-toggle-btn-text listitem" style="font-family: Source Code Pro; font-size: 30px; color: #ececec; " ><span>Contact</span></a>
+														</div>
+													</div> 
+												</li>
+												<!-- End submenu (sub-master) -->
+
+
+
 
 											</ul>
 											<!-- End menu list -->
@@ -214,6 +271,9 @@
 
 						</div> <!-- /.header-col -->
 					</div> <!-- /.header-inner -->
+					<!-- Facebook Pixel Code -->
+
+  <!-- End Facebook Pixel Code -->
 				</header>
 				<!-- End header -->
 			
@@ -225,7 +285,7 @@
 				<div id="content-wrap">
 
 					
-
+					
 				
 					<!-- ========================
 					///// Begin page header /////
@@ -253,7 +313,7 @@
 							<div class="ph-caption ph-stroke row justify-content-center">
 								<h1 style="font-size:15vw"class="ph-caption-title   ph-appear caravan-heading"><span class='caravan-heading-c'>C</span>ARAVAN</h1>
 
-									<h1 style="font-size:4vw;  "class="tt-heading-title  ph-appear max-width-1000 row justify-content-center caravan-subheading"<br> A CREATIVE CONTENT &<br>PRODUCTION AGENCY BASED IN<br> 
+									<h1 style="font-size:4vw;  "class="tt-heading-title  ph-appear max-width-1000 row justify-content-center caravan-subheading"<br>   A CREATIVE CONTENT &<br>PRODUCTION STUDIO BASED IN<br> 
 										<div class="flex">
 											<p class id="word"></p><p class=" blink">|</p>
 										</div>
@@ -279,76 +339,159 @@
 					</div>
 					<!-- End page header -->
 
+
 					<!-- *************************************
 					*********** Begin page content *********** 
 					************************************** -->
 					<div id="page-content">
-
-							<!-- =======================
-						///// Begin tt-section /////
-						============================ 
-						* You can use padding classes if needed. For example "padding-top-xlg-150", "padding-bottom-xlg-150", "no-padding-top", "no-padding-bottom", etc. Note that each situation may be different and each section may need different classes according to your needs. More info about helper classes can be found in the file "helper.css".
-						-->
-						<div class="tt-section padding-top-xlg-150 no-padding-bottom">
-					
-							<div class="container21">
-								<div class="hscroll ">
-											CARAVANCARAVANCARAVANCARAVAN
-											<div class="hscroll ">
-														CARAVANCARAVANCARAVANCARAVAN
-				<div class="hscroll   ">
-							CARAVANCARAVANCARAVANCARAVAN
-				<div class="hscroll  ">
-							CARAVANCARAVANCARAVANCARAVAN
-				<div class="hscroll  ">
-							CARAVANCARAVANCARAVANCARAVAN
-				<div class="hscroll  ">
-							CARAVANCARAVANCARAVANCARAVAN
-				<div class="hscroll  ">
-					
-										</div>
-										</div>
-										</div>
-										</div>
-										</div>
-										</div>
-										</div>
-										</div>
-										
-								
-							
 						
-						<!-- End tt-section -->
 
-
-
-
+						
 
 						<!-- =======================
 						///// Begin tt-section /////
 						============================ 
 						* You can use padding classes if needed. For example "padding-top-xlg-150", "padding-bottom-xlg-150", "no-padding-top", "no-padding-bottom", etc. Note that each situation may be different and each section may need different classes according to your needs. More info about helper classes can be found in the file "helper.css".
 						-->
+						<div class="tt-section 100vh padding-top-xlg-150 padding-bottom-xlg-150">
+							<div class="tt-section-inner">
+
+								<!-- Begin scrolling text
+								========================== 
+								Change data-scroll-speed="*" to adjust scrolling speed.
+								Use class "scr-text-reverse" to reverse scrolling direction. 
+								Use class "scr-text-stroke" to enable text stroke style (no effect on smaller screens!). 
+								-->
+								<div class="tt-scrolling-text scr-text-stroke " data-scroll-speed="35">
+									<div class="tt-scrolling-text-inner " data-text="CARAVANCARAVANCARAVANCARAVANCARAVANCARAVAN">
+										
+									</div> <!-- /.tt-scrolling-text-inner -->
+								</div>
+								<!-- End scrolling text -->
+
+								<!-- Begin scrolling text
+								========================== 
+								Change data-scroll-speed="*" to adjust scrolling speed.
+								Use class "scr-text-reverse" to reverse scrolling direction. 
+								Use class "scr-text-stroke" to enable text stroke style (no effect on smaller screens!). 
+								-->
+								<div class="tt-scrolling-text scr-text-stroke scr-text-reverse " data-scroll-speed="35">
+									<div class="tt-scrolling-text-inner " data-text="CARAVANCARAVANCARAVANCARAVANCARAVANCARAVAN">
+									
+									</div> <!-- /.tt-scrolling-text-inner -->
+								</div>
+								<div class="tt-scrolling-text scr-text-stroke " data-scroll-speed="35">
+									<div class="tt-scrolling-text-inner " data-text="CARAVANCARAVANCARAVANCARAVANCARAVANCARAVAN">
+										
+									</div> <!-- /.tt-scrolling-text-inner -->
+								</div>
+								<!-- End scrolling text -->
+
+								<section class="five"></section>
+
+								<!-- Begin scrolling text
+								========================== 
+								Change data-scroll-speed="*" to adjust scrolling speed.
+								Use class "scr-text-reverse" to reverse scrolling direction. 
+								Use class "scr-text-stroke" to enable text stroke style (no effect on smaller screens!). 
+								-->
+								<div class="tt-scrolling-text scr-text-stroke scr-text-reverse " data-scroll-speed="35">
+									<div class="tt-scrolling-text-inner " data-text="CARAVANCARAVANCARAVANCARAVANCARAVANCARAVAN">
+									
+									</div> <!-- /.tt-scrolling-text-inner -->
+								</div>
+								<div class="tt-scrolling-text scr-text-stroke " data-scroll-speed="35">
+									<div class="tt-scrolling-text-inner " data-text="CARAVANCARAVANCARAVANCARAVANCARAVANCARAVAN">
+										
+									</div> <!-- /.tt-scrolling-text-inner -->
+								</div>
+								<!-- End scrolling text -->
+
+								<!-- Begin scrolling text
+								========================== 
+								Change data-scroll-speed="*" to adjust scrolling speed.
+								Use class "scr-text-reverse" to reverse scrolling direction. 
+								Use class "scr-text-stroke" to enable text stroke style (no effect on smaller screens!). 
+								-->
+								<div class="tt-scrolling-text scr-text-stroke scr-text-reverse " data-scroll-speed="35">
+									<div class="tt-scrolling-text-inner " data-text="CARAVANCARAVANCARAVANCARAVANCARAVANCARAVAN">
+									
+									</div> <!-- /.tt-scrolling-text-inner -->
+								</div>
+								<div class="tt-scrolling-text scr-text-stroke " data-scroll-speed="35">
+									<div class="tt-scrolling-text-inner " data-text="CARAVANCARAVANCARAVANCARAVANCARAVANCARAVAN">
+										
+									</div> <!-- /.tt-scrolling-text-inner -->
+								</div>
+								<!-- End scrolling text -->
+
+								<!-- Begin scrolling text
+								========================== 
+								Change data-scroll-speed="*" to adjust scrolling speed.
+								Use class "scr-text-reverse" to reverse scrolling direction. 
+								Use class "scr-text-stroke" to enable text stroke style (no effect on smaller screens!). 
+								-->
+								<div class="tt-scrolling-text scr-text-stroke scr-text-reverse " data-scroll-speed="35">
+									<div class="tt-scrolling-text-inner " data-text="CARAVANCARAVANCARAVANCARAVANCARAVANCARAVAN">
+									
+									</div> <!-- /.tt-scrolling-text-inner -->
+								</div>
+								<div class="tt-scrolling-text scr-text-stroke " data-scroll-speed="35">
+									<div class="tt-scrolling-text-inner " data-text="CARAVANCARAVANCARAVANCARAVANCARAVANCARAVAN">
+										
+									</div> <!-- /.tt-scrolling-text-inner -->
+								</div>
+								<!-- End scrolling text -->
+
+								<!-- Begin scrolling text
+								========================== 
+								Change data-scroll-speed="*" to adjust scrolling speed.
+								Use class "scr-text-reverse" to reverse scrolling direction. 
+								Use class "scr-text-stroke" to enable text stroke style (no effect on smaller screens!). 
+								-->
+								<div class="tt-scrolling-text scr-text-stroke scr-text-reverse " data-scroll-speed="35">
+									<div class="tt-scrolling-text-inner " data-text="CARAVANCARAVANCARAVANCARAVANCARAVANCARAVAN">
+									
+									</div> <!-- /.tt-scrolling-text-inner -->
+								</div>
+								<!-- End scrolling text -->
+
+							</div> <!-- /.tt-section-inner -->
+						</div>
+						<!-- End tt-section -->
+
+
+
+
+						
+
+
+
+						<!-- =======================
+						///// Begin tt-section /////
+						============================
+						* You can use padding classes if needed. For example "padding-top-xlg-150", "padding-bottom-xlg-150", "no-padding-top", "no-padding-bottom", etc. Note that each situation may be different and each section may need different classes according to your needs. More info about helper classes can be found in the file "helper.css".
+						-->
 						<div class="tt-section padding-top-xlg-180 no-padding-bottom regular-portfolio-container" style='display: none;'>
 							<div class="tt-section-inner">
 
-								<!-- Begin tt-Heading 
-								====================== 
+								<!-- Begin tt-Heading
+								======================
 								* Use class "tt-heading-xsm", "tt-heading-sm", "tt-heading-lg", "tt-heading-xlg" or "tt-heading-xxlg" to set caption size (no class = default size).
 								* Use class "tt-heading-stroke" to enable stroke style.
 								* Use class "tt-heading-center" to align tt-Heading to center.
 								* Use prepared helper class "max-width-*" to add custom width if needed. Example: "max-width-800". More info about helper classes can be found in the file "helper.css".
 								-->
 								<div class="tt-heading tt-heading-lg tt-heading-center margin-bottom-10-p anim-fadeinup">
-									
+
 									<h1 class="tt-heading">Works</h1>
-			
+
 								</div>
 								<!-- End tt-Heading -->
 								<div id="portfolio-grid" class="pgi-cap-inside pgi-cap-hover pgi-hover pgi-cap-center ">
 
 									<!-- Begin tt-Grid
-									=================== 
+									===================
 									* Use class "ttgr-layout-2", "ttgr-layout-3", "ttgr-layout-4" to set grid layout (columns). No class = one column.
 									* Use class "ttgr-layout-1-2", "ttgr-layout-2-1", "ttgr-layout-2-3", "ttgr-layout-3-2", "ttgr-layout-3-4" or "ttgr-layout-4-3" to set grid mixed layout (columns).
 									* Use class "ttgr-layout-creative-1" or "ttgr-layout-creative-2" to set grid creative mixed layout (no effect with classes "ttgr-portrait", "ttgr-portrait-half", "ttgr-not-cropped" and "ttgr-shifted").
@@ -359,7 +502,7 @@
 									-->
 									<div class=" ttgr-layout-4 tt-grid ttgr-layout-creative-2  ttgr-not-cropped ttgr-gap-1">
 
-										<!-- Begin tt-Grid items wrap 
+										<!-- Begin tt-Grid items wrap
 										============================== -->
 										<div class="tt-grid-items-wrap isotope-items-wrap lightgallery">
 
@@ -368,7 +511,7 @@
 											<div class="tt-grid-item isotope-item ">
 												<div class="ttgr-item-inner lightgallery ">
 
-													<!-- Begin portfolio grid item 
+													<!-- Begin portfolio grid item
 													===============================
 													* Use class "pgi-image-is-light" if needed, it makes the caption visible better if you use light image (only effect if "pgi-cap-inside" is enabled on "portfolio-grid"! Also no effect on small screens!).
 													-->
@@ -389,7 +532,7 @@
 
 														<div class="pgi-caption">
 															<div class="pgi-caption-inner">
-															
+
 																<div class="pgi-categories-wrap">
 																	<h2 class="pgi-category"><mark>Tommee Tippee</mark></h2>
 																	<!-- <div class="pgi-category">Varia</div> -->
@@ -403,14 +546,14 @@
 											</div>
 											<!-- End tt-Grid item -->
 
-										
+
 
 											<!-- Begin tt-Grid item
 											======================== -->
 											<div class="tt-grid-item isotope-item creative">
 												<div class="ttgr-item-inner ph-appear ">
 
-													<!-- Begin portfolio grid item 
+													<!-- Begin portfolio grid item
 													===============================
 													* Use class "pgi-image-is-light" if needed, it makes the caption visible better if you use light image (only effect if "pgi-cap-inside" is enabled on "portfolio-grid"!).
 													-->
@@ -431,7 +574,7 @@
 
 														<div class="pgi-caption">
 															<div class="pgi-caption-inner">
-																
+
 																<div class="pgi-categories-wrap">
 																	<h2 class="pgi-category"><mark>Fairphone</mark></h2>
 																	<!-- <div class="pgi-category">Varia</div> -->
@@ -450,7 +593,7 @@
 											<div class="tt-grid-item isotope-item people">
 												<div class="ttgr-item-inner">
 
-													<!-- Begin portfolio grid item 
+													<!-- Begin portfolio grid item
 													===============================
 													* Use class "pgi-image-is-light" if needed, it makes the caption visible better if you use light image (only effect if "pgi-cap-inside" is enabled on "portfolio-grid"!).
 													-->
@@ -471,7 +614,7 @@
 
 														<div class="pgi-caption">
 															<div class="pgi-caption-inner">
-																
+
 																<div class="pgi-categories-wrap">
 																	<h2 class="pgi-category"><mark>Hold Still</mark></h2>
 																	<!-- <div class="pgi-category">Varia</div> -->
@@ -490,7 +633,7 @@
 											<div class="tt-grid-item isotope-item people">
 												<div class="ttgr-item-inner">
 
-													<!-- Begin portfolio grid item 
+													<!-- Begin portfolio grid item
 													===============================
 													* Use class "pgi-image-is-light" if needed, it makes the caption visible better if you use light image (only effect if "pgi-cap-inside" is enabled on "portfolio-grid"!).
 													-->
@@ -511,7 +654,7 @@
 
 														<div class="pgi-caption">
 															<div class="pgi-caption-inner">
-																
+
 																<div class="pgi-categories-wrap">
 																	<h2 class="pgi-category"><mark>Philidelphia</mark></h2>
 																	<!-- <div class="pgi-category">Varia</div> -->
@@ -530,7 +673,7 @@
 											<div class="tt-grid-item isotope-item people">
 												<div class="ttgr-item-inner">
 
-													<!-- Begin portfolio grid item 
+													<!-- Begin portfolio grid item
 													===============================
 													* Use class "pgi-image-is-light" if needed, it makes the caption visible better if you use light image (only effect if "pgi-cap-inside" is enabled on "portfolio-grid"!).
 													-->
@@ -551,7 +694,7 @@
 
 														<div class="pgi-caption">
 															<div class="pgi-caption-inner">
-																
+
 																<div class="pgi-categories-wrap">
 																	<h2 class="pgi-category"><mark>Intersport</mark></h2>
 																	<!-- <div class="pgi-category">Varia</div> -->
@@ -570,7 +713,7 @@
 											<div class="tt-grid-item isotope-item people">
 												<div class="ttgr-item-inner">
 
-													<!-- Begin portfolio grid item 
+													<!-- Begin portfolio grid item
 													===============================
 													* Use class "pgi-image-is-light" if needed, it makes the caption visible better if you use light image (only effect if "pgi-cap-inside" is enabled on "portfolio-grid"!).
 													-->
@@ -591,7 +734,7 @@
 
 														<div class="pgi-caption">
 															<div class="pgi-caption-inner">
-																
+
 																<div class="pgi-categories-wrap">
 																	<h2 class="pgi-category"><mark>KLM</mark></h2>
 																	<!-- <div class="pgi-category">Varia</div> -->
@@ -610,7 +753,7 @@
 											<div class="tt-grid-item isotope-item people">
 												<div class="ttgr-item-inner">
 
-													<!-- Begin portfolio grid item 
+													<!-- Begin portfolio grid item
 													===============================
 													* Use class "pgi-image-is-light" if needed, it makes the caption visible better if you use light image (only effect if "pgi-cap-inside" is enabled on "portfolio-grid"!).
 													-->
@@ -631,7 +774,7 @@
 
 														<div class="pgi-caption">
 															<div class="pgi-caption-inner">
-																
+
 																<div class="pgi-categories-wrap">
 																	<h2 class="pgi-category"><mark>Linkedin</mark></h2>
 																	<!-- <div class="pgi-category">Varia</div> -->
@@ -650,7 +793,7 @@
 											<div class="tt-grid-item isotope-item people">
 												<div class="ttgr-item-inner">
 
-													<!-- Begin portfolio grid item 
+													<!-- Begin portfolio grid item
 													===============================
 													* Use class "pgi-image-is-light" if needed, it makes the caption visible better if you use light image (only effect if "pgi-cap-inside" is enabled on "portfolio-grid"!).
 													-->
@@ -671,7 +814,7 @@
 
 														<div class="pgi-caption">
 															<div class="pgi-caption-inner">
-																
+
 																<div class="pgi-categories-wrap">
 																	<h2 class="pgi-category"><mark>Unsmoke IQOS</mark></h2>
 																	<!-- <div class="pgi-category">Varia</div> -->
@@ -691,7 +834,7 @@
 											<div class="tt-grid-item isotope-item nature">
 												<div class="ttgr-item-inner">
 
-													<!-- Begin portfolio grid item 
+													<!-- Begin portfolio grid item
 													===============================
 													* Use class "pgi-image-is-light" if needed, it makes the caption visible better if you use light image (only effect if "pgi-cap-inside" is enabled on "portfolio-grid"!).
 													-->
@@ -712,7 +855,7 @@
 
 														<div class="pgi-caption">
 															<div class="pgi-caption-inner">
-																
+
 																<div class="pgi-categories-wrap">
 																	<h2 class="pgi-category"><mark>Got Gold</mark></H2>
 																	<!-- <div class="pgi-category">Varia</div> -->
@@ -731,7 +874,7 @@
 											<div class="tt-grid-item isotope-item people">
 												<div class="ttgr-item-inner">
 
-													<!-- Begin portfolio grid item 
+													<!-- Begin portfolio grid item
 													===============================
 													* Use class "pgi-image-is-light" if needed, it makes the caption visible better if you use light image (only effect if "pgi-cap-inside" is enabled on "portfolio-grid"!).
 													-->
@@ -752,7 +895,7 @@
 
 														<div class="pgi-caption">
 															<div class="pgi-caption-inner">
-																
+
 																<div class="pgi-categories-wrap">
 																	<h2 class="pgi-category"><mark>Pro Touch</mark></h2>
 																	<!-- <div class="pgi-category">Varia</div> -->
@@ -771,7 +914,7 @@
 											<div class="tt-grid-item isotope-item people">
 												<div class="ttgr-item-inner">
 
-													<!-- Begin portfolio grid item 
+													<!-- Begin portfolio grid item
 													===============================
 													* Use class "pgi-image-is-light" if needed, it makes the caption visible better if you use light image (only effect if "pgi-cap-inside" is enabled on "portfolio-grid"!).
 													-->
@@ -792,7 +935,7 @@
 
 														<div class="pgi-caption">
 															<div class="pgi-caption-inner">
-																
+
 																<div class="pgi-categories-wrap">
 																	<h2 class="pgi-category"><mark>Marriott</mark></h2>
 																	<!-- <div class="pgi-category">Varia</div> -->
@@ -815,12 +958,12 @@
 								</div>
 
 								<!-- Begin portfolio grid (works combined with tt-Ggrid!)
-								========================== 
+								==========================
 								* Use class "pgi-hover" to enable portfolio grid item hover effect (behavior depends on "ttgr-gap-*" classes below!).
 								* Use class "pgi-cap-hover" to enable portfolio grid item caption hover effect (effect only with class "pgi-cap-inside"! Also no effect on mobile devices!).
 								* Use class "pgi-cap-center" to position portfolio grid item caption to center.
 								* Use class "pgi-cap-inside" to position portfolio grid item caption to inside.
-								--> 
+								-->
 								<!-- End portfolio grid -->
 
 							</div> <!-- /.tt-section-inner -->
@@ -829,175 +972,437 @@
 						<div class="tt-section padding-top-xlg-180 no-padding-bottom horizontal-container">
 							<div class="tt-section-inner">
 
-								
+
 								<div class="horizontal tt-content-carousel cc-shifted cc-hide-pagination cc-hide-navigation" data-simulate-touch="false" data-speed="900">
 
 									<!-- Begin swiper container -->
 									<div class="swiper-container pin-wrap" id="pinThis-0">
-		
+
 										<!-- Begin swiper wrapper (required) -->
 										<div class="swiper-wrapper animation-wrap to-right" id="animateThis-1">
-		
+
 											<!-- VERTICAL WORKS -->
 											<div class="work-vertical-heading">
-									
+
 												<h1 class="tt-heading anim-fadeinup">Works</h1>
-						
+
 											</div>
-		
-											<!-- Begin swiper slide 
+
+											<!-- Begin swiper slide
 											======================== -->
-											<div class="swiper-slide">
-												<div class="tt-content-carousel-item">
-													<div class="item">
-														<a href="assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4">
-															<div class="video-container">
-																<div class="label"><h2><mark>Tommee Tippee</mark></h2></div>
-																<div class="anim-zoomin">
-																	<figure>
-																		<video loop muted paused preload="metadata" poster="assets/vids/Tommee Tippee Smelly Nappies 1.jpg">
-																			<source src="assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4" type="video/mp4">
-																			<source src="assets/vids/Bonjour! A short film by Marriott Hotels.webmhd.webm" type="video/webm">
-																		</video>
-																	</figure>
+											<div class="swiper-slide ">
+												<div class="tt-content-carousel-item ">
+													<div class="item ">
+														<div class="item1 lightgallery horiz-item">
+															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
+															<video-js class='video-js vjs-theme-city lg-video-object lg-html5' id='currentVideo' controls loop>
+																<script>
+																		var lg = document.querySelector('.lg-outer');
+																		var videoJS = videojs('currentVideo');
+
+																		setTimeout(()=>{
+																			videoJS.play();
+																			lg.addEventListener('click', (e)=>{
+																				if($(e.target).parents('.vjs-control-bar').length<1){
+																					videoJS.pause();
+																					lg.querySelector('.lg-close').click();
+																					videoJS.dispose();
+																				}
+																			});
+																		},750);
+
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseenter', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '0';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '0';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(-10px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(-10px,-50%)';
+																		})
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseleave', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '1';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '1';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(0px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(0px,-50%)';
+																		})
+																	
+																</script>
+																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
+																<p class='vjs-no-js'>
+																	To view this video please enable JavaScript, and consider upgrading to a
+																	web browser that
+																	<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+																  </p>
+															</video-js>">
+																<div class="video-container ">
+																	<div class="anim-zoomin-horiz">
+																		<div class="label"><h2><mark>Tommee Tippee</mark></h2></div>
+																		<figure>
+																			<video loop muted paused   preload="metadata" poster="assets/vids/Tommee Tippee Smelly Nappies 1.jpg">
+																				<source src="assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4" type="video/mp4">
+																			</video>
+																		</figure>
+																	</div>
+	
 																</div>
-																
-															</div>
-														</a>
+															</a>
+														</div>
+														<div class="item2 lightgallery horiz-item">
+															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
+															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+																<script>
+																		var lg = document.querySelector('.lg-outer');
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').pause();
+																		},10)
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').play();
+																			lg.addEventListener('click', ()=>{
+																				lg.querySelector('.lg-close').click();
+																			});
+																		},1500);
+																		
+																	
+																</script>
+																/*Change link to whatever video you'd like to have played in light gallery here*/
+																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
+															</video>">
+																<div class="video-container padding-left-sm-15-p">
+																	<div class="anim-zoomin-horiz">
+																		<div class="label"><h2><mark>Tommee Tippee</mark></h2></div>
+	
+																		<figure>
+																			<video loop muted paused preload="metadata" poster="assets/vids/Tommee Tippee Smelly Nappies 1.jpg">
+																				<source src="assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4" type="video/mp4">
+																			</video>
+																		</figure>
+																	</div>
+	
+																</div>
+															</a>
+														</div>
 														
-												</div>
+													</div>
+
+
 												</div> <!-- /.tt-content-carousel-item -->
 											</div>
 											<!-- End swiper slide -->
-		
-											<!-- Begin swiper slide 
+
+											<!-- Begin swiper slide
 											======================== -->
 											<div class="swiper-slide">
 												<div class="tt-content-carousel-item">
 														<div class="item">
-															<a href="single-project-2.html">
+															<div class="item1 lightgallery horiz-item">
+															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
+															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+																<script>
+																		var lg = document.querySelector('.lg-outer');
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').pause();
+																		},10)
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').play();
+																			lg.addEventListener('click', ()=>{
+																				lg.querySelector('.lg-close').click();
+																			});
+																		},1500);
+																		
+																	
+																</script>
+																/*Change link to whatever video you'd like to have played in light gallery here*/
+																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
+															</video>">
 																<div class="video-container">
-																	<div class="label"><h2><mark>Fairphone</mark></h2></div>
-																	<div class="anim-zoomin">
+																	<div class="anim-zoomin-horiz">
+																		<div class="label"><h2><mark>Fairphone</mark></h2></div>
 																		<figure>
 																			<video loop muted preload="metadata" poster="assets/vids/Fairphone .jpg">
-																				<source src="assets/vids/Fairphone .mp4.mp4" type="video/mp4">
 																				<source src="assets/vids/Bonjour! A short film by Marriott Hotels.webmhd.webm" type="video/webm">
 																			</video>
 																		</figure>
 																	</div>
 																</div>
 															</a>
-															
+														</div>
 													</div>
 												</div> <!-- /.tt-content-carousel-item -->
 											</div>
 											<!-- End swiper slide -->
-		
-											<!-- Begin swiper slide 
+
+											<!-- Begin swiper slide
 											======================== -->
 											<div class="swiper-slide">
 												<div class="tt-content-carousel-item">
 													<div class="item">
-														<a href="assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4">
+														<div class="item1 lightgallery horiz-item">
+														<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
+														<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+															<script>
+																	var lg = document.querySelector('.lg-outer');
+																	setTimeout(()=>{
+																		lg.querySelector('#currentVideo').pause();
+																	},10)
+																	setTimeout(()=>{
+																		lg.querySelector('#currentVideo').play();
+																		lg.addEventListener('click', ()=>{
+																			lg.querySelector('.lg-close').click();
+																		});
+																	},1500);
+																	
+																
+															</script>
+															/*Change link to whatever video you'd like to have played in light gallery here*/
+															<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
+														</video>">
 															<div class="video-container">
-																<div class="label"><h2><mark>Hold Still</mark></h2></div>
-																<div class="anim-zoomin-horiz">
+																<div class="anim-zoomin-horiz ">
+																	<div class="label"><h2><mark>Hold Still</mark></h2></div>
 																	<figure>
 																		<video loop muted preload="metadata" poster="assets/vids/HOLD STILL commercial - ©2018.jpg">
-																			<source src="assets/vids/HOLD STILL commercial - ©2018.mp4.mp4" type="video/mp4">
 																			<source src="assets/vids/Bonjour! A short film by Marriott Hotels.webmhd.webm" type="video/webm">
 																		</video>
 																	</figure>
 																</div>
 															</div>
 														</a>
-														
-												</div>
-												</div> <!-- /.tt-content-carousel-item -->
-											</div> 
-											<!-- End swiper slide -->
-		
-											<!-- Begin swiper slide 
-											======================== -->
-											<div class="swiper-slide">
-												<div class="tt-content-carousel-item">
-													<div class="item">
-														<a href="assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4">
-															<div class="video-container">
-																<div class="label"><h2><mark>Philidelphia</mark></h2></div>
-																<div class="anim-zoomin-horiz">
-																	<figure>
-																		<video loop muted preload="metadata" poster="assets/vids/Philadelphia (2).jpg">
-																			<source src="assets/vids/Philadelphia (2).mp4.mp4" type="video/mp4">
-																			<source src="assets/vids/Bonjour! A short film by Marriott Hotels.webmhd.webm" type="video/webm">
-																		</video>
-																	</figure>
-																</div>
-															</div>
-														</a>
-														
+														</div>
 												</div>
 												</div> <!-- /.tt-content-carousel-item -->
 											</div>
 											<!-- End swiper slide -->
-		
-											<!-- Begin swiper slide 
+
+											<!-- Begin swiper slide
 											======================== -->
 											<div class="swiper-slide">
 												<div class="tt-content-carousel-item">
 													<div class="item">
-														<a href="assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4">
-															<div class="video-container">
-																<div class="label"><h2><mark>Intersport</mark></h2></div>
-																<div class="anim-zoomin-horiz">
-																	<figure>
-																		<video loop muted preload="metadata" poster="assets/vids/Intersport - Directors Cut (1).jpg">
-																			<source src="assets/vids/Intersport - Directors Cut (1).mp4.mp4.mp4" type="video/mp4">
-																			<source src="assets/vids/Bonjour! A short film by Marriott Hotels.webmhd.webm" type="video/webm">
-																		</video>
-																	</figure>
+														<div class="item1 lightgallery horiz-item">
+															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
+															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+																<script>
+																		var lg = document.querySelector('.lg-outer');
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').pause();
+																		},10)
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').play();
+																			lg.addEventListener('click', ()=>{
+																				lg.querySelector('.lg-close').click();
+																			});
+																		},1500);
+																		
+																	
+																</script>
+																/*Change link to whatever video you'd like to have played in light gallery here*/
+																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
+															</video>">
+																<div class="video-container">
+																	<div class="anim-zoomin-horiz ">
+																	<div class="label"><h2><mark>Philidelphia</mark></h2></div>
+																		<figure>
+																			<video loop muted preload="metadata" poster="assets/vids/Philadelphia (2).jpg">
+																				<source src="assets/vids/Philadelphia (2).mp4.mp4" type="video/mp4">
+																				<source src="assets/vids/Bonjour! A short film by Marriott Hotels.webmhd.webm" type="video/webm">
+																			</video>
+																		</figure>
+																	</div>
 																</div>
-															</div>
-														</a>
-														
+															</a>
+														</div>
+														<div class="item2 lightgallery horiz-item">
+															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
+															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+																<script>
+																		var lg = document.querySelector('.lg-outer');
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').pause();
+																		},10)
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').play();
+																			lg.addEventListener('click', ()=>{
+																				lg.querySelector('.lg-close').click();
+																			});
+																		},1500);
+																		
+																	
+																</script>
+																/*Change link to whatever video you'd like to have played in light gallery here*/
+																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
+															</video>">
+																<div class="video-container padding-right-sm-15-p">
+																	<div class="anim-zoomin-horiz ">
+																		<div class="label"><h2><mark>Philidelphia</mark></h2></div>
+																		<figure>
+																			<video loop muted preload="metadata" poster="assets/vids/Philadelphia (2).jpg">
+																				<source src="assets/vids/Philadelphia (2).mp4.mp4" type="video/mp4">
+																				<source src="assets/vids/Bonjour! A short film by Marriott Hotels.webmhd.webm" type="video/webm">
+																			</video>
+																		</figure>
+																	</div>
+																</div>
+															</a>
+														</div>
+												</div>
+
+												</div> <!-- /.tt-content-carousel-item -->
+
+											</div>
+											<!-- End swiper slide -->
+
+											<!-- Begin swiper slide
+											======================== -->
+											<div class="swiper-slide">
+												<div class="tt-content-carousel-item">
+													<div class="item">
+														<div class="item1 lightgallery horiz-item">
+															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
+															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+																<script>
+																		var lg = document.querySelector('.lg-outer');
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').pause();
+																		},10)
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').play();
+																			lg.addEventListener('click', ()=>{
+																				lg.querySelector('.lg-close').click();
+																			});
+																		},1500);
+																		
+																	
+																</script>
+																/*Change link to whatever video you'd like to have played in light gallery here*/
+																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
+															</video>">
+																<div class="video-container">
+																	<div class="anim-zoomin-horiz">
+																		<div class="label"><h2><mark>Intersport</mark></h2></div>
+																		<figure>
+																			<video loop muted preload="metadata" poster="assets/vids/Intersport - Directors Cut (1).jpg">
+																				<source src="assets/vids/Intersport - Directors Cut (1).mp4.mp4.mp4" type="video/mp4">
+																				<source src="assets/vids/Bonjour! A short film by Marriott Hotels.webmhd.webm" type="video/webm">
+																			</video>
+																		</figure>
+																	</div>
+																</div>
+															</a>
+														</div>
+
 												</div>
 												</div> <!-- /.tt-content-carousel-item -->
 											</div>
 											<!-- End swiper slide -->
-		
-											<!-- Begin swiper slide 
+
+											<!-- Begin swiper slide
 											======================== -->
 											<div class="swiper-slide">
 												<div class="tt-content-carousel-item">
-													<div class="item">
-														<a href="assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4">
-															<div class="video-container">
-																<div class="label"><h2><mark>KLM</mark></h2></div>
-																<div class="anim-zoomin-horiz">
-																	<figure>
-																		<video loop muted preload="metadata" poster="assets/vids/KLM.jpg">
-																			<source src="assets/vids/KLM.mp4.mp4.mp4" type="video/mp4">
-																			<source src="assets/vids/Bonjour! A short film by Marriott Hotels.webmhd.webm" type="video/webm">
-																		</video>
-																	</figure>
+													<div class="item ">
+														<div class="item1 lightgallery horiz-item">
+															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
+															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+																<script>
+																		var lg = document.querySelector('.lg-outer');
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').pause();
+																		},10)
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').play();
+																			lg.addEventListener('click', ()=>{
+																				lg.querySelector('.lg-close').click();
+																			});
+																		},1500);
+																		
+																	
+																</script>
+																/*Change link to whatever video you'd like to have played in light gallery here*/
+																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
+															</video>">
+																<div class="video-container padding-left-sm-15-p">
+																	<div class="anim-zoomin-horiz">
+																		<div class="label padding-right-sm-15-p"><h2><mark>KLM</mark></h2></div>
+																		<figure>
+																			<video loop muted preload="metadata" poster="assets/vids/KLM.jpg">
+																				<source src="assets/vids/KLM.mp4.mp4.mp4" type="video/mp4">
+																				<source src="assets/vids/Bonjour! A short film by Marriott Hotels.webmhd.webm" type="video/webm">
+																			</video>
+																		</figure>
+																	</div>
 																</div>
-															</div>
-														</a>
-														
-												</div>
+															</a>
+														</div>
+														<div class="item2 lightgallery horiz-item">
+															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
+															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+																<script>
+																		var lg = document.querySelector('.lg-outer');
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').pause();
+																		},10)
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').play();
+																			lg.addEventListener('click', ()=>{
+																				lg.querySelector('.lg-close').click();
+																			});
+																		},1500);
+																		
+																	
+																</script>
+																/*Change link to whatever video you'd like to have played in light gallery here*/
+																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
+															</video>">
+																<div class="video-container">
+																	<div class="anim-zoomin-horiz">
+																	<div class="label"><h2><mark>KLM</mark></h2></div>
+
+																		<figure>
+																			<video loop muted preload="metadata" poster="assets/vids/KLM.jpg">
+																				<source src="assets/vids/KLM.mp4.mp4.mp4" type="video/mp4">
+																				<source src="assets/vids/Bonjour! A short film by Marriott Hotels.webmhd.webm" type="video/webm">
+																			</video>
+																		</figure>
+																	</div>
+																</div>
+															</a>
+														</div>
+													</div>
 												</div> <!-- /.tt-content-carousel-item -->
 											</div>
 											<!-- End swiper slide -->
-											<!-- Begin swiper slide 
+											<!-- Begin swiper slide
 											======================== -->
 											<div class="swiper-slide">
 												<div class="tt-content-carousel-item">
 													<div class="item">
-														<a href="assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4">
+													<div class="item1 lightgallery horiz-item">
+														
+														<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
+														<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+															<script>
+																	var lg = document.querySelector('.lg-outer');
+																	setTimeout(()=>{
+																		lg.querySelector('#currentVideo').pause();
+																	},10)
+																	setTimeout(()=>{
+																		lg.querySelector('#currentVideo').play();
+																		lg.addEventListener('click', ()=>{
+																			lg.querySelector('.lg-close').click();
+																		});
+																	},1500);
+																	
+																
+															</script>
+															/*Change link to whatever video you'd like to have played in light gallery here*/
+															<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
+														</video>">
 															<div class="video-container">
+																<div class="anim-zoomin-horiz">
 																<div class="label"><h2><mark>LinkedIn</mark></h2></div>
-																<div class="anim-zoomin-horiz">
+
 																	<figure>
 																		<video loop muted preload="metadata" poster="assets/vids/Discover the LinkedIn Recruiter mobile app.jpg">
 																			<source src="assets/vids/Discover the LinkedIn Recruiter mobile app.mp4.mp4" type="video/mp4">
@@ -1007,20 +1412,41 @@
 																</div>
 															</div>
 														</a>
-														
+													</div>
 												</div>
 												</div> <!-- /.tt-content-carousel-item -->
 											</div>
 											<!-- End swiper slide -->
-											<!-- Begin swiper slide 
+											<!-- Begin swiper slide
 											======================== -->
 											<div class="swiper-slide">
 												<div class="tt-content-carousel-item">
 													<div class="item">
-														<a href="assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4">
+													<div class="item1 lightgallery horiz-item">
+
+														<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
+														<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+															<script>
+																	var lg = document.querySelector('.lg-outer');
+																	setTimeout(()=>{
+																		lg.querySelector('#currentVideo').pause();
+																	},10)
+																	setTimeout(()=>{
+																		lg.querySelector('#currentVideo').play();
+																		lg.addEventListener('click', ()=>{
+																			lg.querySelector('.lg-close').click();
+																		});
+																	},1500);
+																	
+																
+															</script>
+															/*Change link to whatever video you'd like to have played in light gallery here*/
+															<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
+														</video>">
 															<div class="video-container">
-																<div class="label"><h2><mark>Mariott</mark></h2></div>
 																<div class="anim-zoomin-horiz">
+																<div class="label"><h2><mark>Mariott</mark></h2></div>
+
 																	<figure>
 																		<video loop muted preload="metadata" poster="assets/vids/Tommee Tippee Smelly Nappies 1.jpg">
 																			<source src="assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4" type="video/mp4">
@@ -1030,77 +1456,188 @@
 																</div>
 															</div>
 														</a>
-														
+														</div>
+														<div class="item2 lightgallery horiz-item">
+															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
+															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+																<script>
+																		var lg = document.querySelector('.lg-outer');
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').pause();
+																		},10)
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').play();
+																			lg.addEventListener('click', ()=>{
+																				lg.querySelector('.lg-close').click();
+																			});
+																		},1500);
+																		
+																	
+																</script>
+																/*Change link to whatever video you'd like to have played in light gallery here*/
+																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
+															</video>">
+																<div class="video-container padding-left-sm-15-p">
+																	<div class="anim-zoomin-horiz">
+																	<div class="label padding-right-sm-15-p"><h2><mark>KLM</mark></h2></div>
+
+																		<figure>
+																			<video loop muted preload="metadata" poster="assets/vids/KLM.jpg">
+																				<source src="assets/vids/KLM.mp4.mp4.mp4" type="video/mp4">
+																				<source src="assets/vids/Bonjour! A short film by Marriott Hotels.webmhd.webm" type="video/webm">
+																			</video>
+																		</figure>
+																	</div>
+																</div>
+															</a>
+														</div>
 												</div>
 												</div> <!-- /.tt-content-carousel-item -->
 											</div>
 											<!-- End swiper slide -->
-		
-											<!-- Begin swiper slide 
+
+											<!-- Begin swiper slide
 											======================== -->
 											<div class="swiper-slide">
 												<div class="tt-content-carousel-item">
 													<div class="item">
-														<a href="assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4">
-															<div class="video-container">
-																<div class="label"><h2><mark>Unsmoke IQOS</mark></h2></div>
-																<div class="anim-zoomin-horiz">
-																	<figure>
-																		<video loop muted preload="metadata" poster="assets/vids/Unsmoke Your World IQOS_PMI.jpg">
-																			<source src="assets/vids/Unsmoke Your World IQOS_PMI.mp4.mp4.mp4" type="video/mp4">
-																			<source src="assets/vids/Bonjour! A short film by Marriott Hotels.webmhd.webm" type="video/webm">
-																		</video>
-																	</figure>
+														<div class="item1 lightgallery horiz-item">
+															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
+															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+																<script>
+																		var lg = document.querySelector('.lg-outer');
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').pause();
+																		},10)
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').play();
+																			lg.addEventListener('click', ()=>{
+																				lg.querySelector('.lg-close').click();
+																			});
+																		},1500);
+																		
+																	
+																</script>
+																/*Change link to whatever video you'd like to have played in light gallery here*/
+																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
+															</video>">
+																<div class="video-container">
+																	<div class="anim-zoomin-horiz">
+																	<div class="label"><h2><mark>Unsmoke IQOS</mark></h2></div>
+
+																		<figure>
+																			<video loop muted preload="metadata" poster="assets/vids/Unsmoke Your World IQOS_PMI.jpg">
+																				<source src="assets/vids/Unsmoke Your World IQOS_PMI.mp4.mp4.mp4" type="video/mp4">
+																				<source src="assets/vids/Bonjour! A short film by Marriott Hotels.webmhd.webm" type="video/webm">
+																			</video>
+																		</figure>
+																	</div>
 																</div>
-															</div>
-														</a>
-														
+															</a>
+														</div>
+														<div class="item2 lightgallery horiz-item">
+
+															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
+															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+																<script>
+																		var lg = document.querySelector('.lg-outer');
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').pause();
+																		},10)
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').play();
+																			lg.addEventListener('click', ()=>{
+																				lg.querySelector('.lg-close').click();
+																			});
+																		},1500);
+																		
+																	
+																</script>
+																/*Change link to whatever video you'd like to have played in light gallery here*/
+																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
+															</video>">
+																<div class="video-container padding-right-sm-10-p">
+																	<div class="anim-zoomin-horiz">
+																	<div class="label padding-right-sm-15-p"><h2><mark>KLM</mark></h2></div>
+
+																		<figure>
+																			<video loop muted preload="metadata" poster="assets/vids/KLM.jpg">
+																				<source src="assets/vids/KLM.mp4.mp4.mp4" type="video/mp4">
+																				<source src="assets/vids/Bonjour! A short film by Marriott Hotels.webmhd.webm" type="video/webm">
+																			</video>
+																		</figure>
+																	</div>
+																</div>
+															</a>
+														</div>
+
 												</div>
 												</div> <!-- /.tt-content-carousel-item -->
 											</div>
 											<!-- End swiper slide -->
-		
-											<!-- Begin swiper slide 
+
+											<!-- Begin swiper slide
 											======================== -->
 											<div class="swiper-slide">
 												<div class="tt-content-carousel-item">
 													<div class="item">
-														<a href="assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4">
-															<div class="video-container">
-																<div class="label"><h2><mark>Got Gold</mark></h2></div>
-																<div class="anim-zoomin-horiz">
-																	<figure>
-																		<video loop muted preload="metadata" poster="assets/vids/Tom Rosenthal - Got Gold (Official Music Video).jpg">
-																			<source src="assets/vids/Tom Rosenthal - Got Gold (Official Music Video).mp4.mp4.mp4" type="video/mp4">
-																			<source src="assets/vids/Bonjour! A short film by Marriott Hotels.webmhd.webm" type="video/webm">
-																		</video>
-																	</figure>
+														<div class="item1 lightgallery horiz-item">
+
+															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
+															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+																<script>
+																		var lg = document.querySelector('.lg-outer');
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').pause();
+																		},10)
+																		setTimeout(()=>{
+																			lg.querySelector('#currentVideo').play();
+																			lg.addEventListener('click', ()=>{
+																				lg.querySelector('.lg-close').click();
+																			});
+																		},1500);
+																		
+																	
+																</script>
+																/*Change link to whatever video you'd like to have played in light gallery here*/
+																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
+															</video>">
+																<div class="video-container">
+																	<div class="anim-zoomin-horiz">
+																	<div class="label"><h2><mark>Got Gold</mark></h2></div>
+
+																		<figure>
+																			<video loop muted preload="metadata" poster="assets/vids/Tom Rosenthal - Got Gold (Official Music Video).jpg">
+																				<source src="assets/vids/Tom Rosenthal - Got Gold (Official Music Video).mp4.mp4.mp4" type="video/mp4">
+																				<source src="assets/vids/Bonjour! A short film by Marriott Hotels.webmhd.webm" type="video/webm">
+																			</video>
+																		</figure>
+																	</div>
 																</div>
-															</div>
-														</a>
-														
+															</a>
+														</div>
 												</div>
 												</div> <!-- /.tt-content-carousel-item -->
 											</div>
 											<!-- End swiper slide -->
 										</div>
 										<!-- End swiper wrapper -->
-		
+
 									</div>
 									<!-- End swiper container -->
-		
+
 									<!-- Content carousel pagination -->
 									<div class="tt-cc-pagination hide-cursor"></div>
-		
+
 								</div>
 
 								<!-- Begin portfolio grid (works combined with tt-Ggrid!)
-								========================== 
+								==========================
 								* Use class "pgi-hover" to enable portfolio grid item hover effect (behavior depends on "ttgr-gap-*" classes below!).
 								* Use class "pgi-cap-hover" to enable portfolio grid item caption hover effect (effect only with class "pgi-cap-inside"! Also no effect on mobile devices!).
 								* Use class "pgi-cap-center" to position portfolio grid item caption to center.
 								* Use class "pgi-cap-inside" to position portfolio grid item caption to inside.
-								--> 
+								-->
 								<!-- End portfolio grid -->
 
 							</div> <!-- /.tt-section-inner -->
@@ -1108,14 +1645,24 @@
 
 						<!-- End tt-section -->
 
+
 						<!-- =======================
 						///// Begin tt-section /////
 						============================ 
 						* You can use padding classes if needed. For example "padding-top-xlg-150", "padding-bottom-xlg-150", "no-padding-top", "no-padding-bottom", etc. Note that each situation may be different and each section may need different classes according to your needs. More info about helper classes can be found in the file "helper.css".
 						-->
+						<div class="tt-section padding-top-xlg-150 padding-bottom-xlg-150 padding-left-xlg-15-p padding-right-xlg-15-p bg-white-accent-2">
+							<div class="tt-section-inner tt-wrap">
+							
+						  
+						  
+							
+							
+							
 						
-						<div class="padding-left-sm-3-p padding-right-sm-3-p">
-							<div class="tt-section-inner tt-wrap max-width-1100">
+							<div id="clients"></div>
+							</div>
+						  
 
 								<!-- Begin tt-Heading 
 								====================== 
@@ -1124,185 +1671,92 @@
 								* Use class "tt-heading-center" to align tt-Heading to center.
 								* Use prepared helper class "max-width-*" to add custom width if needed. Example: "max-width-800". More info about helper classes can be found in the file "helper.css".
 								-->
-								
+								<div class="tt-heading tt-heading-xxlg tt-heading-center margin-bottom-10-p anim-fadeinup">
+									
+									<h2 class="tt-heading-title" >Clients</h2>
+									
+									<!-- <h3 class="tt-heading-subtitle text-gray">Subtitle</h3> -->
+								</div>
 								<!-- End tt-Heading -->
 
-								<!-- Begin accordion 
-								===================== 
-								* Use class "tt-ac-sm", "tt-ac-lg", "tt-ac-xlg" or "tt-ac-xxlg" to set accordion size.
-								* Use class "tt-ac-borders" to enable borders.
-								* Add class "is-open" to the "tt-accordion-content" to make this content open by default.
+								<!-- Begin logo wall 
+								=====================
+								* Use class "cl-col-2", "cl-col-3" or "cl-col-4" to change columns.
+								* Hint: for better results make sure all your images are in the same dimensions!
 								-->
-								<!-- <section class="two"></section> -->
-
-								<div class="tt-accordion tt-ac-xlg tt-ac-borders two">
-									<div class="snapping-item">
-										<div class="tt-accordion-item  anim-fadeinup">
-											<div class="tt-accordion-heading ">
-												<h3 class="tt-ac-head-title ">WHAT WE DO</h3>
-												<div class="tt-accordion-subtext">
-												</div>
-												<div class="tt-accordion-caret-wrap">
-												</div>
-											</div> <!-- /.tt-accordion-heading -->
- 											<!-- /.tt-accordion-content -->
-										</div> <!-- /.tt-accordion-item -->
-									</div>
-
-
-									
-										<div class="tt-accordion-item anim-fadeinup">
-											<div class="tt-accordion-heading">
-												<h3 class="tt-ac-head-title">CAMPAIGN<br>CREATION</h3>
-												<div class="tt-accordion-subtext">Read more.</div>
-												<div class="tt-accordion-caret-wrap">
-												</div>
-											</div> <!-- /.tt-accordion-heading -->
-											<div class="tt-accordion-content">
-												<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-												ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-												amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-												odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
-	
-											
-											</div> <!-- /.tt-accordion-content -->
-										</div> <!-- /.tt-accordion-item -->
-
-									
-																			<div class="tt-accordion-item anim-fadeinup">
-										<div class="tt-accordion-heading">
-											<h3 class="tt-ac-head-title">LOCATIONS</h3>
-											<div class="tt-accordion-subtext">Read more.</div>
-											<div class="tt-accordion-caret-wrap">
-											</div>
-										</div> <!-- /.tt-accordion-heading -->
-										<div class="tt-accordion-content">
-											<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-											ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-											amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-											odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
-
-										
-										</div> <!-- /.tt-accordion-content -->
-									</div> <!-- /.tt-accordion-item -->
-
-							
-									
-																	<div class="tt-accordion-item anim-fadeinup">
-								<div class="tt-accordion-heading">
-									<h3 class="tt-ac-head-title">CONTENT<br>STRATEGY</h3>
-									<div class="tt-accordion-subtext">Read more.</div>
-									<div class="tt-accordion-caret-wrap">
-									</div>
-								</div> <!-- /.tt-accordion-heading -->
-								<div class="tt-accordion-content">
-									<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-									ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-									amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-									odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
-
-						</div> <!-- /.tt-accordion-content -->
-					</div> <!-- /.tt-accordion-item -->
+								<ul class="tt-logo-wall cl-col-5 anim-fadeinup">
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img  src="assets/img/clients/1.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/2.png"  alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/3.png"  alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/4.png"  alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/5.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/6.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/7.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/8.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/9.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/10.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/11.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/12.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/13.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/14.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/15.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/16.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/17.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/18.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/19.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/20.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/21.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/22.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/23.png" alt="Client"></a></li>
+									<li><a  class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/24.png" alt="Client"></a></li>
 
 
-									
-										<div class="tt-accordion-item anim-fadeinup">
-										<div class="tt-accordion-heading">
-											<h3 class="tt-ac-head-title">CASTING</h3>
-											<div class="tt-accordion-subtext">Read more.</div>
-											<div class="tt-accordion-caret-wrap">
-											</div>
-										</div> <!-- /.tt-accordion-heading -->
-										<div class="tt-accordion-content">
-											<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-											ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-											amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-											odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
+									<!-- Use the below example if you want a list without links -->
+									<!-- <li><img src="assets/img/clients/client-1.png" alt="Client"></li> -->
+								</ul>
+								<!-- End logo wall -->
 
-
-				</div> <!-- /.tt-accordion-content -->
-			</div> <!-- /.tt-accordion-item -->
-
-									
-										<div class="tt-accordion-item anim-fadeinup">
-											<div class="tt-accordion-heading">
-												<h3 class="tt-ac-head-title">PITCH <br> SUPPORT</h3>
-												<div class="tt-accordion-subtext">Read more.</div>
-												<div class="tt-accordion-caret-wrap">
-												</div>
-											</div> <!-- /.tt-accordion-heading -->
-											<div class="tt-accordion-content">
-												<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-												ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-												amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-												odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
-							
-									</div> <!-- /.tt-accordion-content -->
-								</div> <!-- /.tt-accordion-item -->
-
-									
-										<div class="tt-accordion-item anim-fadeinup">
-											<div class="tt-accordion-heading">
-												<h3 class="tt-ac-head-title">BUDGETING</h3>
-												<div class="tt-accordion-subtext">Read more.</div>
-												<div class="tt-accordion-caret-wrap">
-												</div>
-											</div> <!-- /.tt-accordion-heading -->
-											<div class="tt-accordion-content">
-												<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-												ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-												amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-												odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
-									
-											
-											</div> <!-- /.tt-accordion-content -->
-										</div> <!-- /.tt-accordion-item -->
-
-									<div class="last">
-										<div class="tt-accordion-item anim-fadeinup">
-											<div class="tt-accordion-heading">
-												<h3 class="tt-ac-head-title">POST<br>PRODUCTION</h3>
-												<div class="tt-accordion-subtext">Read more.</div>
-												<div class="tt-accordion-caret-wrap">
-												</div>
-											</div> <!-- /.tt-accordion-heading -->
-											<div class="tt-accordion-content">
-												<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-												ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-												amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-												odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
-																		
-
-																		
-																	<!-- End accordion -->
-
-																</div> <!-- /.tt-section-inner -->
-									</div>
-
+							</div> <!-- /.tt-section-inner -->
 						</div>
 						<!-- End tt-section -->
 
+						
 
-					</div>
-					
-						</div>
-						<!-- <section class="three"></section> -->
+						
+						<!-- =======================
+						///// Begin tt-section /////
+						============================ 
+						* You can use padding classes if needed. For example "padding-top-xlg-150", "padding-bottom-xlg-150", "no-padding-top", "no-padding-bottom", etc. Note that each situation may be different and each section may need different classes according to your needs. More info about helper classes can be found in the file "helper.css".
+						--><div id="about"></div>
+						<div class="tt-section">
+							<div class="tt-section-inner tt-wrap">
 
+								<div class="tt-row">
+									<div class="tt-col-lg-4 padding-right-lg-5-p">
 
-						<div class="tt-section-sami padding-top-xlg-150  padding-bottom-xlg-150 padding-left-sm-20-p padding-right-sm-10-p snapping-item">
-							<div class="tt-section-inner vertical-center tt-wrap">
-
-									
-										<div style="text-align:right">
-										<h1 style=" font-size: 5vh ; text-align:right;" class=" anim-fadeinup tt-heading-title">PRODUCTION AGENCY <br>BASED IN VIENNA.</h1> <Br> <br>
-										<!-- <h3 class="tt-heading-subtitle text-gray">Subtitle</h3> -->
-
-										<div style="text-align:right;" class="anim-fadeinup  max-width-1000">
-											<p>If you are looking for clear direction, strong creative <mark>support</mark> and the finishing touches on your upcoming project, we can help. Our integrated production model allows for the most <mark>efficient creation</mark> of content assets for all media. Whether it's a short film or ambitious ad campaign we can make it happen. Let us support your vision and help you <mark>achieve success.</mark> We're an experienced team that will work with you to create great work.</p>
+										<!-- Begin tt-Heading 
+										====================== 
+										* Use class "tt-heading-xsm", "tt-heading-sm", "tt-heading-lg", "tt-heading-xlg" or "tt-heading-xxlg" to set caption size (no class = default size).
+										* Use class "tt-heading-stroke" to enable stroke style.
+										* Use class "tt-heading-center" to align tt-Heading to center.
+										* Use prepared helper class "max-width-*" to add custom width if needed. Example: "max-width-800". More info about helper classes can be found in the file "helper.css".
+										-->
+										<div class="tt-heading tt-heading-sm margin-bottom-60 anim-fadeinup">
+											<h2 class="tt-heading-title">WHO<br class="hide-from-md"> WE ARE.</h2>
+											<!-- <h3 class="tt-heading-subtitle text-gray">Subtitle</h3> -->
 										</div>
-											<!-- <div class="tt-btn tt-btn-link no-margin">
-												<a href="dummy-page.html" data-hover="Explore More">Explore More</a>
-											</div> -->
+										<!-- End tt-Heading -->
+										
+
+									</div> <!-- /.tt-col -->
+
+									<div class="tt-col-lg-8">
+
+										<div class="text-xxlg dm-sans text-gray">
+											<p class="anim-fadeinup"><mark>Behind every great piece of content is a great idea.</mark>  But between the concept and the <mark>final edit,</mark> the idea itself is <mark>lost.</mark> Why? Because those in production don’t really understand the concept.</p>
+											<p class="anim-fadeinup">Most production companies are just that: production companies. You give them the brief; they execute it. Yet without understanding the creative inspiration behind the brief, your <mark>vision is at risk.</mark> Your idea ends up being unprotected on set. Your asset output doesn’t get maximised. And you end up without a creative partner.</p>
+											<p class="anim-fadeinup"><mark>We’re more than just producers: we’re partners.</mark> We approach your project conceptually, actively working to understand the idea behind your vision - rather than passively implementing it. Which means that we anticipate problems before they arise. It means that we’re much better placed to find the best way of <mark>realising your idea.</mark> And it means that you can rely on us to <mark>turn</mark> your creative vision <mark>into a reality</mark> - even if it’s still just a rough sketch. </p>
+											<p class="anim-fadeinup"> <mark>So that your big idea stays that way</mark>, no matter how small the screen.</p>
 										</div>
 
 									</div> <!-- /.tt-col -->
@@ -1312,21 +1766,20 @@
 						</div>
 						<!-- End tt-section -->
 
-						
-						
 
 
-
-						
 
 						<!-- =======================
 						///// Begin tt-section /////
 						============================ 
 						* You can use padding classes if needed. For example "padding-top-xlg-150", "padding-bottom-xlg-150", "no-padding-top", "no-padding-bottom", etc. Note that each situation may be different and each section may need different classes according to your needs. More info about helper classes can be found in the file "helper.css".
 						-->
-						<div class="tt-section-sami  100vh padding-top-xlg-150  padding-bottom-xlg-150 padding-left-sm-15-p padding-right-sm-10-p ">
-							<div class="tt-section-inner vertical-center tt-wrap">
+						<section class="four"></section>
+						<div id="services"></div>
+						<div class="tt-section padding-top-xlg-150 padding-bottom-xlg-200">
+							<div class="tt-section-inner tt-wrap">
 								
+
 
 								<!-- Begin tt-Heading 
 								====================== 
@@ -1335,201 +1788,257 @@
 								* Use class "tt-heading-center" to align tt-Heading to center.
 								* Use prepared helper class "max-width-*" to add custom width if needed. Example: "max-width-800". More info about helper classes can be found in the file "helper.css".
 								-->
-								<div class="tt-heading tt-heading-lg margin-bottom-10-p   anim-fadeinup">
-
-									<h2  style="font-size:4vw;text-align:right;" class="tt-heading-title  ">BRANDS WE'VE <br> WORKED WITH</h2>
+								<div class="tt-heading tt-heading-xxlg anim-fadeinup snapping-item">
+								
+									<h2 class="tt-heading-title" style="padding-bottom: 0vh; text-align: left; padding-top: 15vh; ">WHAT WE DO</h2>
+									
 								</div>
 								<!-- End tt-Heading -->
 
-								<!-- Begin logo wall 
-								=====================
-								* Use class "cl-col-2", "cl-col-3" or "cl-col-4" to change columns.
-								* Hint: for better results make sure all your images are in the same dimensions!
+								<!-- Begin accordion 
+								===================== 
+								* Use class "tt-ac-sm", "tt-ac-lg", "tt-ac-xlg" or "tt-ac-xxlg" to set accordion size.
+								* Use class "tt-ac-borders" to enable borders.
+								* Add class "is-open" to the "tt-accordion-content" to make this content open by default.
 								-->
-								<ul class="tt-logo-wall cl-col-6 anim-fadeinup">
-									<li><a href="https://1.envato.market/tank" class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/1.png" alt="Client"></a></li>
-									<li><a href="https://1.envato.market/tank" class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/2.png" alt="Client"></a></li>
-									<li><a href="https://1.envato.market/tank" class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/3.png" alt="Client"></a></li>
-									<li><a href="https://1.envato.market/tank" class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/4.png" alt="Client"></a></li>
-									<li><a href="https://1.envato.market/tank" class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/5.png" alt="Client"></a></li>
-									<li><a href="https://1.envato.market/tank" class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/6.png" alt="Client"></a></li>
-									<li><a href="https://1.envato.market/tank" class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/7.png" alt="Client"></a></li>
-									<li><a href="https://1.envato.market/tank" class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/8.png" alt="Client"></a></li>
-									<li><a href="https://1.envato.market/tank" class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/9.png" alt="Client"></a></li>
-									<li><a href="https://1.envato.market/tank" class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/10.png" alt="Client"></a></li>
-									<li><a href="https://1.envato.market/tank" class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/11.png" alt="Client"></a></li>
-									<li><a href="https://1.envato.market/tank" class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/12.png" alt="Client"></a></li>
-									<li><a href="https://1.envato.market/tank" class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/13.png" alt="Client"></a></li>
-									<li><a href="https://1.envato.market/tank" class="cursor-alter" target="_blank" rel="noopener"><img src="assets/img/clients/14.png" alt="Client"></a></li>
+								<div class="tt-accordion tt-ac-xlg tt-ac-borders">
+									<div class="tt-accordion-item anim-fadeinup">
+										<div class="tt-accordion-heading">
+											<h3 class="tt-ac-head-title text-white">CREATION + STRATEGY</h3>
+											<div class="tt-accordion-subtext text-white">We work both with agencies and directly with brands</div>
+											<div class="tt-accordion-caret-wrap">
+												<div class="tt-accordion-caret magnetic-item"></div>
+											</div>
+										</div> <!-- /.tt-accordion-heading -->
+										<div class="tt-accordion-content text-white max-width-800">
+											<p><mark>We work</mark> both with <mark>agencies</mark> and directly with <mark>brands</mark> themselves. With our <mark>strong creative and strategic team</mark> and a roster of directors that <mark>understand storytelling,</mark> we are equipped for both. </p>
+											<p>Whether you’re an agency or a brand working independently, we see ourselves as <mark>your partners.</mark> We approach content <mark>conceptually,</mark> collaborating with you to define the underlying idea driving your brand or campaign, and then ensuring that it is elaborated throughout your content clearly, consistently, and creatively.</p>
+											<p>Even if your content is in need of conceptual thinking, we can help there too. From website building to the final edit of the hero video promoting it, <mark>we have the designers, directors, and writers to realise your vision.</mark></p>
+											<p><mark>Supported by data and driven by narrative,</mark> we develop content with engagement at the core. Everything we create is maximised through our <mark>integrated production model.</mark> Want a 30 second manifesto film? We’ll show you how this single asset can be shot in a way that enables it to be amplified, from a <mark>YouTube pre-roll</mark> to key visuals and <mark>social media reels</mark> - <mark>all without breaking the bank (or your finance director’s heart).</mark></p>
+											<p>Which means that you get the <mark>maximum output</mark> of assets in the most efficient and <mark>cost effective way</mark> possible. </p>
 
-									<!-- Use the below example if you want a list without links -->
-									<!-- <li><img src="assets/img/clients/client-1.png" alt="Client"></li> -->
-								</ul>
-								<!-- End logo wall -->
+										</div> <!-- /.tt-accordion-content -->
+									</div> <!-- /.tt-accordion-item -->
+
+									<div class="tt-accordion-item anim-fadeinup">
+										<div class="tt-accordion-heading">
+											<h3 class="tt-ac-head-title text-white">PITCH SUPPORT</h3>
+											<div class="tt-accordion-subtext text-white">Pitching for that one big campaign?</div>
+											<div class="tt-accordion-caret-wrap">
+												<div class="tt-accordion-caret magnetic-item"></div>
+											</div>
+										</div> <!-- /.tt-accordion-heading -->
+										<div class="tt-accordion-content text-white max-width-800">
+											<p>Pitching for that one big campaign? We’ll help you with <mark>creatives,</mark> <mark>moods,</mark> <mark>location images,</mark> <mark>budget drafts,</mark> <mark>casting suggestions</mark> - whatever it takes to bring that project through your door. </p>
+											<p>We love creating decks: our <mark>in-house designers</mark> bring your ideas to life. And because we’re veterans of the pitching process, we’re <mark>by your side</mark> every step of the way, from pulling all-nighters to hitting those last-minute deadlines.</p>
+										   
+										</div> <!-- /.tt-accordion-content -->
+									</div> <!-- /.tt-accordion-item -->
+
+									<div class="tt-accordion-item anim-fadeinup">
+										<div class="tt-accordion-heading text-white">
+											<h3 class="tt-ac-head-title text-white">BUDGETING</h3>
+											<div class="tt-accordion-subtext text-white">There’s nothing sexier than a well-drawn budget</div>
+											<div class="tt-accordion-caret-wrap">
+												<div class="tt-accordion-caret magnetic-item"></div>
+											</div>
+										</div> <!-- /.tt-accordion-heading -->
+										<div class="tt-accordion-content text-white max-width-800">
+											<P>There’s nothing sexier than a well-drawn budget. Send over your idea, pitch deck or just drop us a few lines. We can get you a non-binding estimate within <mark>12-24hs,</mark> helping to anticipate problems and ensuring that the creative and the budget are aligned.</P>
+											<P>And unlike other production companies, we use our expertise to give you a realistic understanding of what <mark>realising your content</mark> will <mark>actually cost.</mark> So that you’re equipped with the right information to make creative choices - <mark>no nonsense,</mark> no nasty surprises.</P>
+
+										</div> <!-- /.tt-accordion-content -->
+									</div> <!-- /.tt-accordion-item -->
+
+									<div class="tt-accordion-item anim-fadeinup">
+										<div class="tt-accordion-heading">
+											<h3 class="tt-ac-head-title text-white">PRODUCTION</h3>
+											<div class="tt-accordion-subtext text-white">We help brands tell their stories</div>
+											<div class="tt-accordion-caret-wrap">
+												<div class="tt-accordion-caret magnetic-item"></div>
+											</div>
+										</div> <!-- /.tt-accordion-heading -->
+										<div class="tt-accordion-content text-white max-width-800">
+											<p> <h5><mark>Narrative-led</mark></h5></p>
+											<p>We help brands tell their stories with digital content that engages, informs and activates audiences. And to do this, your content must tell an emotive story.</p>
+											<p>We understand the power of narrative. Even bitesize content can be made more compelling through the principles of great storytelling, earning clicks, views, and trust.</p>
+											<p><h5><mark>Globally experienced</mark></h5></p>
+											<p>For more than 10 years CARAVAN has been producing full service productions across the globe, giving us invaluable insights on everything from location costs to permits. </p>
+											<p><h5><mark>Asset-maximising</mark></h5></p>
+											<p>Our integrated production model helps you amplify your content across a whole campaign. Maximum output, minimal costs, media-agnostic.</p>
+										</div> <!-- /.tt-accordion-content -->
+									</div> <!-- /.tt-accordion-item -->
+
+									
+									<div class="tt-accordion-item anim-fadeinup">
+										<div class="tt-accordion-heading">
+											<h3 class="tt-ac-head-title text-white">POST PRODUCTION</h3>
+											<div class="tt-accordion-subtext text-white">Gunshots, splashes, explosions</div>
+											<div class="tt-accordion-caret-wrap">
+												<div class="tt-accordion-caret magnetic-item"></div>
+											</div>
+										</div> <!-- /.tt-accordion-heading -->
+										<div class="tt-accordion-content  text-white max-width-800">
+											<p>Together with our post production partner, we give you access to <mark>state-of-the-art edit suites.</mark> </p>
+											<p>Gunshots, splashes, explosions: sound effects make stories burst into action. Our sound edit suite is a <mark>100m2 studio</mark> with a 5.1 Protools 21 ultimate with dynaudio core 59 speakers and a full HD projector. And it includes a foley stage with concrete, wood or gravel pits and a special pit for water SFX - giving your content the amplification it needs to get your audience off their feet. </p>
+
+										</div> <!-- /.tt-accordion-content -->
+									</div> <!-- /.tt-accordion-item -->
+
+									<div class="tt-accordion-item anim-fadeinup">
+										<div class="tt-accordion-heading">
+											<h3 class="tt-ac-head-title text-white">LOCATIONS + STUDIO</h3>
+											<div class="tt-accordion-subtext text-white">Our secret weapon</div>
+											<div class="tt-accordion-caret-wrap">
+												<div class="tt-accordion-caret  magnetic-item"></div>
+											</div>
+										</div> <!-- /.tt-accordion-heading -->
+										<div class="tt-accordion-content text-white max-width-800">
+											<p>Our studio is <mark>4764 square metres</mark> - but let’s put that in perspective. That’s the equivalent of <mark>12 IMAX cinemas,</mark> <mark>9 basketball courts,</mark> <mark>3 Fort Knox’s</mark> - or just one of <mark>Bill Gates’s homes.</mark> We’re based in Tirana, Albania, our studio is the largest in the country, and stocked with industry-standard tools at industry-beating prices.  </p>
+										<p><mark>Wait - Albani-where?</mark> Most people have never been to Albania, let alone produced best-in-class content there. And before we established our studio here, we hadn’t either. </p>
+										<p>But we’re really glad we did. Because Albania is an outstanding set location.  </p>
+										<p><mark>Costs are in the thousands</mark>, not millions. <mark>Permits</mark> are obtained in <mark>days, not years.</mark> And the weather is balmy, not Baltic. </p> 
+										<p>Albania is also blessed with <mark>diverse landscapes,</mark> from the Mediterranean coastline to the Alpine-esque mountains of its rugged interior. </p>
+										</div> <!-- /.tt-accordion-content -->
+									</div> <!-- /.tt-accordion-item -->
+
+
+
+								</div>
+								<!-- End accordion -->
 
 							</div> <!-- /.tt-section-inner -->
 						</div>
-						<!-- <section class="four"></section> -->
 						<!-- End tt-section -->
+						
+
+
+
+
+						
+
 
 						<!-- =======================
 						///// Begin tt-section /////
 						============================ 
 						* You can use padding classes if needed. For example "padding-top-xlg-150", "padding-bottom-xlg-150", "no-padding-top", "no-padding-bottom", etc. Note that each situation may be different and each section may need different classes according to your needs. More info about helper classes can be found in the file "helper.css".
 						-->
-						<div class="three">
-							<div class="tt-section-sami  padding-top-xlg-150  padding-bottom-xlg-150 padding-left-sm-15-p padding-right-sm-10-p snapping-item">
-								<div class="tt-section-inner vertical-center tt-wrap">
-	
-								
-	
-											<div class="anim-fadeinup  text-gray">
-												<div style="font-size:8vh; text-align:right">
-	
-												<h2>Our studio space is  <mark>4764 sq m.</mark> 
-													Lets put this into perspective. 
-													That's <mark>12 Imax Cinemas</mark> or <mark>9 Basket  Ball Court's</mark> or <mark>3 Fort Knox's</mark> or just one of <mark>Bill Gates homes.</mark></h2>
-	
+						<section class="four"></section>
+						<div class="tt-section padding-top-xlg-150  padding-left-sm-3-p padding-right-sm-3-p ">
+							<div class="tt-section-inner tt-wrap">
+
+								<div class="tt-row">
+									<div class="tt-col-lg-5 padding-right-lg-5-p">
+
+										<!-- Begin tt-Heading 
+										====================== 
+										* Use class "tt-heading-xsm", "tt-heading-sm", "tt-heading-lg", "tt-heading-xlg" or "tt-heading-xxlg" to set caption size (no class = default size).
+										* Use class "tt-heading-stroke" to enable stroke style.
+										* Use class "tt-heading-center" to align tt-Heading to center.
+										* Use prepared helper class "max-width-*" to add custom width if needed. Example: "max-width-800". More info about helper classes can be found in the file "helper.css".
+										-->
+										<div class="tt-heading tt-heading-lg margin-bottom-10-p anim-fadeinup">
 											
-	
-										</div> <!-- /.tt-col -->
-									</div> <!-- /.tt-row -->
-	
-								</div> <!-- /.tt-section-inner -->
-							</div>
-							<!-- End tt-section -->
-							
-	
-	
-						
-									
-	
-							
-								<!-- =======================
-							///// Begin tt-section /////
-							============================ 
-							* You can use padding classes if needed. For example "padding-top-xlg-150", "padding-bottom-xlg-150", "no-padding-top", "no-padding-bottom", etc. Note that each situation may be different and each section may need different classes according to your needs. More info about helper classes can be found in the file "helper.css".
-							-->
-							<div class="tt-section-sami">
-								
-								<div class="tt-section-inner vertical-center  padding-left-sm-15-p padding-left-sm-10-p padding-right-sm-10-p  tt-wrap">
-									<div class="tt-heading tt-heading-lg anim-fadeinup">
-										
-	
-									<h1  style="font-size:12vh;text-align:right;" class="tt-heading-title "><u>GET IN<br> TOUCH</h></u>
-									</div>
-									<div class="tt-row">
-										<div class="tt-col-md-8 ">
-	
-	
-									<!-- Begin form 
-								================ 
-								* Use class "tt-form-filled" or "tt-form-minimal" to change form style.
-								* Use class "tt-form-sm" or "tt-form-lg" to change form size (no class = default size).
-								* Use class "tt-hide-labels" to to hide labels.
-								-->
-								<form id="tt-contact-form" class="tt-form-lg tt-form-minimal tt-hide-labels anim-fadeinup">
-	
-									<!-- Begin hidden required fields (https://github.com/agragregra/uniMail) -->
-									<input type="hidden" name="project_name" value="crvn.eu"> <!-- Change value to your site name -->
-									<input type="hidden" name="admin_email" value="office@crvn.eu"> <!-- Change value to your valid email address (where a message will be sent) -->
-									<input type="hidden" name="form_subject" value="Message from crvn.eu"> <!-- Change value to your own message subject -->
-									<!-- End Hidden Required Fields -->
-	
-									<div class="tt-row">
-										<div class="tt-col-md-6">
-	
-											<div class="tt-form-group">
-												<label>Name</label>
-												<input class="tt-form-control" type="text" name="Name" placeholder="Name" required>
-											</div>
-	
-										</div> <!-- /.tt-col -->
-	
-										<div class="tt-col-md-6">
-	
-											<div class="tt-form-group">
-												<label>Email address</label>
-												<input class="tt-form-control" type="email" name="Email" placeholder="Email" required>
-											</div>
-	
-										</div> <!-- /.tt-col -->
-									</div> <!-- /.tt-row -->
-	
-									
-									
-	
-									<div class="tt-form-group">
-										<label>Message</label>
-										<textarea class="tt-form-control" rows="2" name="Message" placeholder="Message" required></textarea>
-					
-									</div>
-	
-									<div class="tt-btn tt-align-self-xlg-end ">
-										
-										<button type="submit" data-hover="Send Message">Send Message</button>
-									</div>
-								</form>
-	
-	
-										
-	
-										</div> <!-- /.tt-col -->
-							<div class="tt-col-md-4">
-	
-									<!-- Begin tt-Heading 
-											====================== 
-											* Use class "tt-heading-xsm", "tt-heading-sm", "tt-heading-lg", "tt-heading-xlg" or "tt-heading-xxlg" to set caption size (no class = default size).
-											* Use class "tt-heading-stroke" to enable stroke style.
-											* Use class "tt-heading-center" to align tt-Heading to center.
-											* Use prepared helper class "max-width-*" to add custom width if needed. Example: "max-width-800". More info about helper classes can be found in the file "helper.css".
-											-->
-											
-											<!-- End tt-Heading -->
-	
-											<!-- <div class="text-gray padding-bottom-40 anim-fadeinup">
-												<p>Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Molestias assumenda, ratione voluptatibus. Libero nisi laudantium.</p>
-											</div> -->
-	
-											<!-- Begin contact info 
-											======================== -->
-											<ul class="tt-contact-info anim-fadeinup padding-bottom-10-p padding-top-10-p bg-blue ">
-												<li class="anim-fadeinup">
-													<B>Neubaugasse 1 <br>
-													1070 Vienna, <br> Austria</B>
-												</li>
-											
-												<li class="anim-fadeinup">
-												<B><a href="mailto:office@crvn.eu" class="tt-link">office@crvn.eu</a></B>
-												</li>
-												<li class="anim-fadeinup">
+											<h2 class="tt-heading-title"><u>Drop Us<br> A Line</h2></u>
+										</div>
+										<div id="contact"></div>
+										<!-- End tt-Heading -->
+
+										<!-- <div class="text-gray padding-bottom-40 anim-fadeinup">
+											<p>Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Molestias assumenda, ratione voluptatibus. Libero nisi laudantium.</p>
+										</div> -->
+
+										<!-- Begin contact info 
+										======================== -->
+										<ul class="tt-contact-info padding-bottom-40 ">
+											<li class="anim-fadeinup">
 												
-													<!-- Begin social buttons -->
-													<div class="social-buttons">
-														<ul>
-															<li><a href="https://www.facebook.com/themetorium" class="magnetic-item" target="_blank" rel="noopener">Ig.</a></li>
-															<li><a href="https://twitter.com/Themetorium" class="magnetic-item" target="_blank" rel="noopener">Li.</a></li>
-													
-														</ul>
+												Neubaugasse 1 
+												<br>
+												1070 Vienna, 
+												<br>
+												Austria
+											</li>
+											
+											<li class="anim-fadeinup">
+												
+												<a href="mailto:Office@crvn.eu" class="tt-link">office@crvn.eu</a>
+											</li>
+										</ul>
+										<!-- End contact info -->
+
+									</div> <!-- /.tt-col -->
+
+									<div class="tt-col-lg-7">
+
+										<!-- Begin form 
+										================ 
+										* Use class "tt-form-filled" or "tt-form-minimal" to change form style.
+										* Use class "tt-form-sm" or "tt-form-lg" to change form size (no class = default size).
+										* Use class "tt-hide-labels" to to hide labels.
+										-->
+										<form id="tt-contact-form" class="tt-form-lg tt-form-minimal tt-hide-labels anim-fadeinup">
+
+											<!-- Begin hidden required fields (https://github.com/agragregra/uniMail) -->
+											<input type="hidden" name="project_name" value="crvn.eu"> <!-- Change value to your site name -->
+											<input type="hidden" name="admin_email" value="office@crvn.eu"> <!-- Change value to your valid email address (where a message will be sent) -->
+											<input type="hidden" name="form_subject" value="Message from crvn.eu"> <!-- Change value to your own message subject -->
+											<!-- End Hidden Required Fields -->
+
+											<div class="tt-row">
+												<div class="tt-col-md-6">
+
+													<div class="tt-form-group">
+														<label>Name</label>
+														<input class="tt-form-control" type="text" name="Name" placeholder="Enter your name" required>
 													</div>
-													<!-- End social buttons -->
-												</li>
-											</ul>
-											<!-- End contact info -->
-	
-							</div> <!-- /.tt-col -->
-						</div> <!-- /.tt-row -->
-	
-					</div> <!-- /.tt-section-inner -->
-				</div>
+
+												</div> <!-- /.tt-col -->
+
+												<div class="tt-col-md-6">
+
+													<div class="tt-form-group">
+														<label>Email address</label>
+														<input class="tt-form-control" type="email" name="Email" placeholder="Enter your email" required>
+													</div>
+
+												</div> <!-- /.tt-col -->
+											</div> <!-- /.tt-row -->
+
+											<div class="tt-form-group">
+												<label>Subject</label>
+												<input class="tt-form-control" type="text" name="Subject" placeholder="Subject" required>
+											</div>
+
+											<!-- <div class="tt-form-group">
+												<label>Select an option</label>
+												<select class="tt-form-control" name="Option" required>
+													<option value="" disabled selected>Please choose an option</option>
+													<option value="Say Hello">Say hello</option>
+													<option value="New Project">New project</option>
+													<option value="Feedback">Feedback</option>
+													<option value="Other">Other</option>
+												</select>
+											</div> -->
+
+											<div class="tt-form-group">
+												<label>Message</label>
+												<textarea class="tt-form-control" rows="7" name="Message" placeholder="What's in your mind?" required></textarea>
+												<small class="tt-form-text"><em>* All fields are required!</em></small>
+											</div>
+
+											<div class="tt-btn tt-btn-light-outline  " style="float:right;">
+												<button type="submit" data-hover="Send Message">Send Message</button>
+											</div>
+										</form>
+										<!-- End form -->
+
+									</div> <!-- /.tt-col -->
+								</div> <!-- /.tt-row -->
+
+							</div> <!-- /.tt-section-inner -->
 						</div>
-
-			<!-- End tt-section -->
-
-
-						
-
-
+						<!-- End tt-section -->
 
 					</div>
 					<!-- End page content -->
@@ -1538,13 +2047,53 @@
 					<!-- ======================
 					///// Begin tt-footer /////
 					=========================== -->
-					<footer id="tt-footer">
+					<footer id="tt-footer"> 
 						<div class="tt-footer-inner">
 
 							<!-- Begin footer column 
-							
+							========================= -->
+							<div class="footer-col tt-align-center-left">
+								<div class="footer-col-inner">
+
+									<!-- You can use whatever button or link here -->
+									<div class="tt-btn tt-btn-link">
+										<a href="#" class="scroll-to-top" data-hover="Back to top">Back to top</a>
+									</div>
+								</div> <!-- /.footer-col-inner -->
 							</div>
-							Begin footer column -->
+							<!-- Begin footer column -->
+
+							<!-- Begin footer column 
+							========================= -->
+							<div class="footer-col tt-align-center order-m-last">
+								<div class="footer-col-inner">
+
+									<div class="tt-copyright">
+										© Copyright - <a href="https://crvn.eu" target="_blank" rel="noopener" class="tt-link">CRVN.</a>
+									</div>
+
+								</div> <!-- /.footer-col-inner -->
+							</div>
+							<!-- Begin footer column -->
+
+							<!-- Begin footer column 
+							========================= -->
+							<div class="footer-col tt-align-center-right">
+								<div class="footer-col-inner">
+
+									<div class="footer-social">
+										<div class="footer-social-text"><span>Follow</span><i class="fas fa-share-alt"></i></div>
+										<div class="social-buttons">
+											<ul>
+												<li><a href="https://www.instagram.com/caravan.eu/" class="magnetic-item" target="_blank" rel="noopener">Ig.</a></li>
+												<li><a href="https://www.linkedin.com/company/caravan-eu/" class="magnetic-item" target="_blank" rel="noopener">Li.</a></li>
+											</ul>
+										</div> <!-- /.social-buttons -->
+									</div> <!-- /.footer-social -->
+
+								</div> <!-- /.footer-col-inner -->
+							</div>
+							<!-- Begin footer column -->
 
 						</div> <!-- /.tt-section-inner -->
 					</footer>
@@ -1584,13 +2133,15 @@
 		<script src="assets/vendor/lightgallery/js/lightgallery-all.min.js"></script> <!-- lightGallery Plugins JS (http://sachinchoolur.github.io/lightGallery) -->
 		<script src="assets/vendor/jquery.mousewheel.min.js"></script> <!-- A jQuery plugin that adds cross browser mouse wheel support (https://github.com/jquery/jquery-mousewheel) -->
 
+
+		
+		<script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script>
+
 		<!-- Theme master JS -->
 		<script src="assets/js/theme.js"></script>
 
 
-		<script type="text/javascript">
-			//content doesn't matter
-		  </script>
+
 	</body>
 
 </html>
