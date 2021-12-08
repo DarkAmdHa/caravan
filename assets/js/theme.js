@@ -1,9 +1,9 @@
 /* =================================================================
 * Template JS
 * 
-* Template:    Tank - Creative Portfolio Showcase HTML Website Template
-* Author:      Themetorium
-* URL:         https://themetorium.net/
+* Website:     CRVN - Caravan -
+* Author:      Sami hilal
+* URL:         https://crvn.eu/
 *
 ================================================================= */
 
@@ -52,45 +52,69 @@ $(function () {
 (function ($) {
   "use strict";
 
-  const words = ["VIENNA.", "LONDON.", "TIRANA.", "EUROPE."];
-  let i = 0;
-  let timer;
+  $(function () {
+    var wrapper = $("#wrapper"),
+      $menu = $("#menu"),
+      $window = $(window);
 
-  function typingEffect() {
-    let word = words[i].split("");
-    var loopTyping = function () {
-      if (word.length > 0) {
-        document.getElementById("word").innerHTML += word.shift();
-      } else {
-        deletingEffect();
-        return false;
-      }
-      timer = setTimeout(loopTyping, 350);
-    };
-    loopTyping();
-  }
+    $menu.on("click", "a", function () {
+      var $this = $(this),
+        href = $this.attr("href"),
+        topY = $(href).offset().top;
 
-  function deletingEffect() {
-    let word = words[i].split("");
-    var loopDeleting = function () {
-      if (word.length > 0) {
-        word.pop();
-        document.getElementById("word").innerHTML = word.join("");
-      } else {
-        if (words.length > i + 1) {
-          i++;
+      TweenMax.to($window, 1, {
+        scrollTo: {
+          y: topY,
+          autoKill: true,
+        },
+        ease: Power3.easeOut,
+      });
+
+      return false;
+    });
+  });
+
+  if (document.querySelector("#word")) {
+    const words = ["VIENNA.", "LONDON.", "TIRANA.", "EUROPE."];
+    let i = 0;
+    let timer;
+
+    function typingEffect() {
+      let word = words[i].split("");
+      var loopTyping = function () {
+        if (word.length > 0) {
+          document.getElementById("word").innerHTML += word.shift();
         } else {
-          i = 0;
+          deletingEffect();
+          return false;
         }
-        typingEffect();
-        return false;
-      }
-      timer = setTimeout(loopDeleting, 200);
-    };
-    loopDeleting();
-  }
+        timer = setTimeout(loopTyping, 350);
+      };
+      loopTyping();
+    }
 
-  typingEffect();
+    function deletingEffect() {
+      let word = words[i].split("");
+      var loopDeleting = function () {
+        if (word.length > 0) {
+          word.pop();
+          document.getElementById("word").innerHTML = word.join("");
+        } else {
+          if (words.length > i + 1) {
+            i++;
+          } else {
+            i = 0;
+          }
+          typingEffect();
+          return false;
+        }
+        timer = setTimeout(loopDeleting, 200);
+      };
+      loopDeleting();
+    }
+
+    typingEffect();
+  }
 
   // ========================================
   // Detect browser and add class to </body>
@@ -380,7 +404,7 @@ $(function () {
         damping: 0.05,
         renderByPixel: true,
         continuousScrolling: true,
-        alwaysShowTracks: false /*MORE OF UPWORK FREELANCER"S DOINGS*/,
+        alwaysShowTracks: true,
       });
 
       // 3rd party library setup
@@ -393,6 +417,20 @@ $(function () {
         );
 
       bodyScrollBar.addListener(({ offset }) => {
+        //Whenever scrolling occurs, this event is fired.
+        //This part of the code handles the "nav" bar appearing and disapearing based on scrolling.
+        //If scrolling down, the header gets translated on the y axis by it's height(since it is stuck to top of the screen)
+        //The speed with which the header translates and the delay before it does so are handled using css: In order to tweak those values, please head to custom.css, and scroll down to a declaration I made for header{transition: transform 1s ease 0.5s;}
+        //You'll find additional comments there.
+
+        if (offset.y - scrollPositionY > 0) {
+          document.querySelector("header").style.transform = `translateY(-${
+            document.querySelector("header").offsetHeight
+          }px)`;
+          //If going up, translate the header back
+        } else {
+          document.querySelector("header").style.transform = `translateY(0px)`;
+        }
         scrollPositionX = offset.x;
         scrollPositionY = offset.y;
       });
@@ -589,11 +627,11 @@ $(function () {
             gsap.to(ball, {
               duration: 0.3,
               yPercent: -75,
-              width: 40,
-              height: 40,
+              width: 50,
+              height: 50,
               opacity: 0.5,
               borderWidth: 2,
-              backgroundColor: "transparent",
+              backgroundColor: "#ececec",
             });
             gsap.to(".ball-view", { duration: 0.3, scale: 1, autoAlpha: 1 });
           })
@@ -662,6 +700,8 @@ $(function () {
           }
         }
       });
+
+      //Custom "Go Back" cursor on hover over light gallery
 
       // Cursor drag on mouse down / click and hold effect (class "cursor-drag-mouse-down"). For Swiper sliders.
       $(".swiper-container").each(function () {
@@ -1181,6 +1221,7 @@ $(function () {
 
   // On menu toggle button click
   // ============================
+
   var $olMenuToggleBtn = $(
     ".tt-ol-menu-toggle-btn-text, .tt-ol-menu-toggle-btn"
   );
@@ -1596,6 +1637,69 @@ $(function () {
     });
   }
 
+  // =============================================================================================
+  // Horizontal section
+  // =============================================================================================
+
+  if ($(".horizontal").length) {
+    //Smooth Scroll and horizontal section only if on Mobile
+    var scrollPositionX = 0;
+    var scrollPositionY = 0;
+
+    var bodyScroll = document.getElementById("scroll-container");
+    //Initiating scroller element
+    let bodyScrollBar = Scrollbar.init(bodyScroll);
+
+    bodyScrollBar.addListener(({ offset }) => {
+      scrollPositionX = offset.x;
+      scrollPositionY = offset.y;
+    });
+
+    bodyScrollBar.setPosition(0, 0);
+    bodyScrollBar.track.xAxis.element.remove();
+
+    ScrollTrigger.scrollerProxy(document.getElementById("scroll-container"), {
+      scrollTop(value) {
+        if (arguments.length) {
+          bodyScrollBar.scrollTop = value;
+        }
+        return bodyScrollBar.scrollTop;
+      },
+    });
+
+    var thisSection = document.querySelector(".horizontal");
+    var thisPinWrap = thisSection.querySelector(".pin-wrap");
+    var thisAnimWrap = thisPinWrap.querySelector(".animation-wrap");
+    console.log(thisAnimWrap);
+    //Calculating where to or from start the horizontal scrolling
+    var getToValue = () =>
+      -(thisAnimWrap.scrollWidth - window.innerWidth + window.innerWidth / 3);
+
+    let scrollTween = gsap.fromTo(
+      thisAnimWrap,
+      {
+        //If has 'to-right' in class name, it will start here(x=0) and get to the value calculated above(getToValue())
+        x: () =>
+          thisAnimWrap.classList.contains("to-right") ? 0 : getToValue(),
+      },
+      {
+        x: () =>
+          thisAnimWrap.classList.contains("to-right") ? getToValue() : 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: thisSection,
+          scroller: document.getElementById("scroll-container"), // neccessary setting for smooth-scrollbar on body
+          pinType: "transform", // What's actually happening is the element is pinned while the contents of the Animwrap div are being translated to the left or right, giving the illusion of scrolling
+          start: "top top",
+          end: () => "+=" + thisAnimWrap.scrollWidth, //Ends here
+          pin: thisPinWrap, //Section to be pinned
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
+          scrub: true,
+        },
+      }
+    );
+  }
   // =======================================================================================
   // Portfolio carousel (full screen carousel)
   // Source: https://swiperjs.com/
@@ -1887,14 +1991,14 @@ $(function () {
               swiper.update();
             },
 
-            // transitionStart: function () {
-            //   // Play video
-            //   $(".swiper-slide-active")
-            //     .find("video")
-            //     .each(function () {
-            //       $(this).get(0).play();
-            //     });
-            // },
+            transitionStart: function () {
+              // Play video
+              $(".swiper-slide-active")
+                .find("video")
+                .each(function () {
+                  $(this).get(0).play();
+                });
+            },
 
             transitionEnd: function () {
               // Pause video
@@ -2100,23 +2204,25 @@ $(function () {
   $(".lightgallery").lightGallery({
     // Please read about gallery options here: http://sachinchoolur.github.io/lightGallery/docs/api.html
 
+    backdropDuration: 750, //Time it takes for the backdrop to transition in. If you modify this value, make sure to head to the very bottom, where the function defined to change cursor is defined, and modify it there as well
+    videojs: true,
     // lightGallery core
     selector: ".lg-trigger",
     mode: "lg-fade", // Type of transition between images ('lg-fade' or 'lg-slide').
     height: "100%", // Height of the gallery (ex: '100%' or '300px').
-    width: "100%", // Width of the gallery (ex: '100%' or '300px').
-    iframeMaxWidth: "100%", // Set maximum width for iframe.
+    width: "80%", // Width of the gallery (ex: '100%' or '300px').
+    iframeMaxWidth: "90%", // Set maximum width for iframe.
     loop: true, // If false, will disable the ability to loop back to the beginning of the gallery when on the last element.
-    speed: 600, // Transition duration (in ms).
+    speed: 1000, // Transition duration (in ms).
     closable: true, // Allows clicks on dimmer to close gallery.
     escKey: true, // Whether the LightGallery could be closed by pressing the "Esc" key.
     keyPress: true, // Enable keyboard navigation.
-    hideBarsDelay: 3000, // Delay for hiding gallery controls (in ms).
-    controls: true, // If false, prev/next buttons will not be displayed.
-    mousewheel: true, // Chane slide on mousewheel.
+    hideBarsDelay: 1000, // Delay for hiding gallery controls (in ms).
+    controls: false, // If false, prev/next buttons will not be displayed.
+    mousewheel: false, // Chane slide on mousewheel.
     download: false, // Enable download button. By default download url will be taken from data-src/href attribute but it supports only for modern browsers. If you want you can provide another url for download via data-download-url.
-    counter: true, // Whether to show total number of images and index number of currently displayed image.
-    swipeThreshold: 50, // By setting the swipeThreshold (in px) you can set how far the user must swipe for the next/prev image.
+    counter: false, // Whether to show total number of images and index number of currently displayed image.
+    swipeThreshold: 1000, // By setting the swipeThreshold (in px) you can set how far the user must swipe for the next/prev image.
     enableDrag: true, // Enables desktop mouse drag support.
     enableTouch: true, // Enables touch support.
     getCaptionFromTitleOrAlt: false, // Option to get captions from alt or title tags.
@@ -2131,13 +2237,13 @@ $(function () {
 
     // Autoplay plugin
     autoplay: false, // Enable gallery autoplay.
-    autoplayControls: true, // Show/hide autoplay controls.
+    autoplayControls: false, // Show/hide autoplay controls.
     pause: 6000, // The time (in ms) between each auto transition.
     progressBar: true, // Enable autoplay progress bar.
     fourceAutoplay: false, // If false autoplay will be stopped after first user action
 
     // Full Screen plugin
-    fullScreen: true, // Enable/Disable fullscreen mode.
+    fullScreen: false, // Enable/Disable fullscreen mode.
 
     // Zoom plugin
     zoom: false, // Enable/Disable zoom option.
@@ -2312,45 +2418,6 @@ $(function () {
       start: "-100px center",
       onEnter: () => highlight.classList.add("active"),
     });
-  });
-
-  // ScrollTrigger.create({
-  //   trigger: "section.four",
-  //   start: "top 50%",
-  //   end: "bottom 0%",
-
-  //   onEnter: () => {
-  //     gsap.to("body", { duration: 1.0, backgroundColor: "#2E2C2F" });
-  //   },
-
-  //   onLeaveBack: () => {
-  //     gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
-  //   },
-  // });
-
-  // ScrollTrigger.create({
-  //   trigger: "section.five",
-  //   start: "top 50%",
-  //   end: "bottom 0%",
-
-  //   onEnter: () => {
-  //     gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
-  //   },
-
-  //   onLeaveBack: () => {
-  //     gsap.to("body", { duration: 1.0, backgroundColor: "#2E2C2F" });
-  //   },
-  // });
-
-  gsap.to(".hscroll", {
-    xPercent: 4,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".hscroll",
-      start: "top bottom",
-      end: "bottom top",
-      scrub: true,
-    },
   });
 
   if ($("#page-header").hasClass("ph-content-parallax")) {
@@ -2680,6 +2747,36 @@ $(function () {
     }
   });
 
+  // tt-Grid "layout-creative" parallax
+  // ===================================
+  ScrollTrigger.matchMedia({
+    "(min-width: 768px)": function () {
+      $(
+        ".tt-grid.ttgr-layout-creative-1 .tt-grid-item:nth-of-type(6n+2) .ttgr-item-inner, .tt-grid.ttgr-layout-creative-1 .tt-grid-item:nth-of-type(6n+4) .ttgr-item-inner, .tt-grid.ttgr-layout-creative-2 .tt-grid-item:nth-of-type(4n+2) .ttgr-item-inner, .tt-grid.ttgr-layout-creative-2 .tt-grid-item:nth-of-type(4n+3) .ttgr-item-inner"
+      ).each(function () {
+        var $this = $(this);
+
+        gsap.to($this, {
+          yPercent: -50,
+          ease: "none",
+          scrollTrigger: {
+            trigger: $this,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+            markers: false,
+            onEnter: () => imgParalRefresh(),
+          },
+        });
+
+        // Refresh start/end positions on enter.
+        function imgParalRefresh() {
+          ScrollTrigger.refresh(true);
+        }
+      });
+    },
+  });
+
   // Appear on scroll
   // =================
 
@@ -2723,6 +2820,9 @@ $(function () {
         trigger: this,
         start: "top bottom",
         markers: false,
+        onEnter: () => {
+          console.log("sdds");
+        },
       },
     });
 
@@ -2736,29 +2836,6 @@ $(function () {
         clearProps: "all",
       },
       "+=0.3"
-    );
-  });
-
-  // fade in-out
-  $(".anim-fadeinout").each(function () {
-    let tl_fadeOutUp = gsap.timeline({
-      scrollTrigger: {
-        trigger: this,
-        start: "bottom top",
-        markers: false,
-      },
-    });
-
-    tl_fadeOutUp.from(
-      this,
-      {
-        duration: 2.5,
-        autoAlpha: 0,
-        y: 100,
-        ease: Expo.easeOut,
-        clearProps: "all",
-      },
-      "-=0.3"
     );
   });
 
@@ -3362,7 +3439,6 @@ $(function () {
   /************************************************CUSTOM JS*********************************** */
 
   if (!isMobile) {
-    console.log("YOW");
     //Smooth Scroll and horizontal section only if on Mobile
     var scrollPositionX = 0;
     var scrollPositionY = 0;
@@ -3392,53 +3468,25 @@ $(function () {
 
     var windowWidth = $(window).innerWidth();
 
-    var thisSection = document.querySelector(".horizontal");
-    var thisPinWrap = thisSection.querySelector(".pin-wrap");
-    var thisAnimWrap = thisPinWrap.querySelector(".animation-wrap");
-    //Calculating where to or from start the horizontal scrolling
-    var getToValue = () =>
-      -(thisAnimWrap.scrollWidth - window.innerWidth + window.innerWidth / 3);
+    //A custom function to get absolute distance from of an element to the top of a page.
+    function getPosition(element) {
+      var xPosition = 0;
+      var yPosition = 0;
 
-    let scrollTween = gsap.fromTo(
-      thisAnimWrap,
-      {
-        //If has 'to-right' in class name, it will start here(x=0) and get to the value calculated above(getToValue())
-        x: () =>
-          thisAnimWrap.classList.contains("to-right") ? 0 : getToValue(),
-      },
-      {
-        x: () =>
-          thisAnimWrap.classList.contains("to-right") ? getToValue() : 0,
-        ease: "none",
-        scrollTrigger: {
-          trigger: thisSection,
-          scroller: document.getElementById("scroll-container"), // neccessary setting for smooth-scrollbar on body
-          pinType: "transform", // What's actually happening is the element is pinned while the contents of the Animwrap div are being translated to the left or right, giving the illusion of scrolling
-          start: "top top",
-          end: () => "+=" + thisAnimWrap.scrollWidth, //Ends here
-          pin: thisPinWrap, //Section to be pinned
-          invalidateOnRefresh: true,
-          anticipatePin: 1,
-          scrub: true,
-        },
+      while (element) {
+        xPosition +=
+          element.offsetLeft - element.scrollLeft + element.clientLeft;
+        yPosition += element.offsetTop - element.scrollTop + element.clientTop;
+        element = element.offsetParent;
       }
-    );
 
-    //Video Play on hover
-    const videos = document.querySelectorAll(".video-container"); //Video container selected
-    videos.forEach((video) => {
-      video.addEventListener("mouseover", () => {
-        //When hovered
-        video.querySelector("video").play(); //Play Video
-      });
-      video.addEventListener("mouseout", () => {
-        //When mouse not on the video anymore
-        video.querySelector("video").pause(); //Stop playing
-      });
-    });
+      return { x: xPosition, y: yPosition };
+    }
 
     // zoom in for the horizontal section when first appeared
-    $(".anim-zoomin-horiz").each(function () {
+    $(".anim-zoomin-horiz").each(function (i) {
+      //'i' is an index of the current element in the iteration(loop)
+
       // Add wrap <div>.
       $(this).wrap('<div class="anim-zoomin-wrap"></div>');
 
@@ -3452,11 +3500,13 @@ $(function () {
         scrollTrigger: {
           trigger: $asiWrap,
           start: () => {
-            let coord = $asiWrap[0].getBoundingClientRect();
-            return coord.y + coord.left + windowWidth / 4; //Where to start the animation of "Zoomin + appearnig"
+            let coord = getPosition($asiWrap[0]);
+            //Act like regular fade Ins for the first 3 elements(using top as trigger):
+            if (i < 3) return "top 90%";
+            //Where to start the animation of "Zoomin + appearnig". The 1.25 is to make sure the animation happens a bit after the element enters te viewport. If left 1, as soon as the element's left side hits the viewport, the animation would kick in. Feel free to play around with the value
+            else return coord.y + coord.x - windowWidth / 1.15; //Where to start the animation of "Zoomin + appearnig". The 1.15 is to make sure the animation happens a bit after the element enters the viewport. If left 1, as soon as the element's left side hits the viewport, the animation would kick in. Fell fre to play around with the value
           },
           markers: false,
-          onEnter: () => animZoomInRefresh(),
         },
       });
       tl_ZoomIn_horiz.from($this, {
@@ -3464,14 +3514,103 @@ $(function () {
         autoAlpha: 0,
         scale: 1.2,
         ease: Power2.easeOut,
-        clearProps: "all",
       });
-
-      // Refresh start/end positions on enter.
-      function animZoomInRefresh() {
-        ScrollTrigger.refresh();
-      }
     });
+    //Video Play on hover
+    const videos = document.querySelectorAll(".video-container"); //Video container selected
+    videos.forEach((video) => {
+      video.addEventListener("mouseover", () => {
+        //When hovered
+        video.querySelector("video").play(); //Play Video
+      });
+      video.addEventListener("mouseout", () => {
+        //When mouse not on the video anymore
+        video.querySelector("video").pause(); //Stop playing
+      });
+    });
+
+    //Making sure "A Creative sticks under Caravan"
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        const relocateCaravanSubheading = () => {
+          document.querySelector(".caravan-subheading").style.margin = "0";
+          document.querySelector(".caravan-heading").style.margin = "0";
+
+          let extra = 10; //defalt
+          function myFunction(x) {
+            if (x.matches) {
+              // If media query matches
+              extra = 0;
+            } else {
+              extra = 10;
+            }
+          }
+          //Media Query Check using JavaScript
+          var x = window.matchMedia("screen and (max-width:700px)");
+          myFunction(x); // Call listener function at run time
+
+          //Basically done by: calculating left offset(distance between element and the left of the viewport) of the letter C, substracting
+          //that by the left offset of it's parent element(in order to get the left offset from the letter C to it's parent's left border)
+          //This is done because we know that the left border of the letter C parent element and the subheading ("A ... ") are at the same level
+          //Adding that to the third of the width of the letter C, and using all of this as a margin left for the subheading
+          document.querySelector(".caravan-subheading").style.marginLeft = `${
+            document.querySelector(".caravan-heading-c").getBoundingClientRect()
+              .x -
+            document
+              .querySelector(".caravan-heading-c")
+              .parentElement.getBoundingClientRect().x +
+            document.querySelector(".caravan-heading-c").getBoundingClientRect()
+              .width /
+              15 //paramaeter due to varying sizes
+          }px`;
+        };
+
+        relocateCaravanSubheading(); //Call to the function on runtime
+
+        window.addEventListener("resize", relocateCaravanSubheading); //Recaluclated on every resize
+      }, 500);
+    });
+
+    //This had to be moved down, because, it needs to initiate the coordinates of the point where the color will change after the horizontal section
+    //Since the addition of the horizontal section moves items around a bit.
+    ScrollTrigger.create({
+      trigger: "section.four",
+      start: "top 50%",
+      end: "bottom 0%",
+
+      onEnter: () => {
+        gsap.to("body", { duration: 1.0, backgroundColor: "#2E2C2F" });
+      },
+
+      onLeaveBack: () => {
+        gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
+      },
+    });
+
+    let scrollTriggerFlag = 0;
+    ScrollTrigger.create({
+      trigger: "section.five",
+      start: "top 50%",
+      end: "bottom 0%",
+
+      onEnter: () => {
+        gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
+        //This ocde actually refreshes the pining section for the first time, in order to have all the elements retake their appropriate places.
+        //The sudden lag you experience the first time you scroll down, right before the horizontal section is caused by this.
+        //It is necessary in order to ensure every element is in the right position.
+        if (scrollTriggerFlag == 0) {
+          ScrollTrigger.refresh();
+
+          scrollTriggerFlag++;
+        }
+      },
+
+      onLeaveBack: () => {
+        gsap.to("body", { duration: 1.0, backgroundColor: "#1843DB" });
+      },
+    });
+
+    //The snapping code: Just add 'snapping-item' as a class to any div that you'd like snapped.
     //"Snapping" of WHAT WE DO
     let scrollTween2;
 
@@ -3481,9 +3620,9 @@ $(function () {
         document.getElementById("scroll-container")
       );
       if (direction === "fromTop") {
-        var topY = $scrollbar.offset.y + innerHeight * 0.5; //Calculating where to scroll to(current position of scroller + 100vh)
+        var topY = $scrollbar.offset.y + innerHeight * 0.7; //Calculating where to scroll to when coming from the top(current position of scroller + 70vh (in order for What we do to be fairly up in the viewport at the end))
       } else {
-        var topY = $scrollbar.offset.y - innerHeight * 0.5; //Calculating where to scroll to(current position of scroller - 100vh)
+        var topY = $scrollbar.offset.y - innerHeight * 0.7; //Calculating where to scroll to when coming back from the bottom(current position of scroller - 70vh)
       }
       scrollTween2 = gsap.to($scrollbar, {
         scrollTo: { y: topY, autoKill: true },
@@ -3494,99 +3633,91 @@ $(function () {
         overwrite: true,
       });
     }
+
+    //Deactivating snapping whenever one of the nav button is pressed for 3000ms(3seconds), in order to prevent the scrolling to stop at the snapping instead
+    let customF = 0;
+
+    document.querySelectorAll(".listitem").forEach((item) => {
+      item.addEventListener("click", () => {
+        customF = 1;
+        //After 3s the flag is reset to 0, which means the snapping will happen again
+        setTimeout(() => {
+          customF = 0;
+        }, 3000);
+      });
+    });
     document.querySelectorAll(".snapping-item").forEach((item) => {
       ScrollTrigger.create({
         trigger: item,
-        start: "top 50%",
-        end: "bottom 50%",
+        start: "top bottom",
+        end: "bottom top",
         onEnter: (self) => {
-          return self.isActive && !scrollTween2 && goToSection("fromTop");
+          if (customF != 1)
+            return self.isActive && !scrollTween2 && goToSection("fromTop");
         },
-        onEnterBack: (self) =>
-          self.isActive && !scrollTween2 && goToSection("fromBottom"),
+        onEnterBack: (self) => {
+          if (customF != 1)
+            return self.isActive && !scrollTween2 && goToSection("fromBottom");
+        },
       });
     });
 
-    ScrollTrigger.create({
-      trigger: ".two",
-      start: "top center",
-      end: "bottom center",
+    //This code modifies the light gallery for the animation to look similar to the ali2Times one
+    //Getting the lighgallery object:
+    $(".lightgallery.horiz-item").each(function () {
+      let $lg = $(this).lightGallery();
+      //This is a lightgallery even that fires off right before the lightgallery is about to open:
+      $lg.on("onBeforeOpen.lg", () => {
+        //Please head back up to where the light gallery is first declared(you can use the original table of contents)
+        //You'll notice a new property I added call 'backdropDuration'. This is the time it takes for the lightgallery to transition in. If you change the value above, please change it for setTimeout as well(the 'time' variable)
+        //This basically makes sure that the cursor changes smoothly only once that the light gallery is fully open(thus the timeout, which will wait 750ms(the time for the light gallery to transition in) before modifying the cursor)
+        let time = 750;
+        setTimeout(() => {
+          //Set the original cursor to transparent
+          videojs("currentVideo");
+          document.querySelector("#ball").style.borderColor = "transparent";
+          document.querySelector("#ball").style.opacity = "1";
+          document.querySelector("#ball").style.color = "#eee";
 
-      onEnter: () => {
-        gsap.to("body", { duration: 1.0, backgroundColor: "#1843DB" });
-      },
-      onLeave: () => {
-        gsap.to("body", { duration: 1.0, backgroundColor: "#EDEDED" });
-      },
+          document.querySelector("#ball .mouse-arrow").style.display = "block";
+          document.querySelector("#ball .mouse-custom-text").style.display =
+            "block";
+          //This little delay is for Javascript. A transition should be declared a little later after the 'display:block' property is declared, otherwise, it happens instantaneously:
+          setTimeout(() => {
+            document.querySelector("#ball .mouse-arrow").style.opacity = "1";
+            document.querySelector("#ball .mouse-custom-text").style.opacity =
+              "1";
+            document.querySelector("#ball .mouse-arrow").style.transform =
+              "translate(0,-50%)";
+            document.querySelector("#ball .mouse-custom-text").style.transform =
+              "translate(0,-50%)";
+          }, 100);
+        }, time);
+      });
 
-      onEnterBack: () => {
-        gsap.to("body", { duration: 1.0, backgroundColor: "#1843DB" });
-      },
+      //this event fires right before the light is about to close
 
-      onLeaveBack: () => {
-        gsap.to("body", { duration: 1.0, backgroundColor: "#EDEDED" });
-      },
+      $lg.on("onBeforeClose.lg", () => {
+        document.querySelector(".lg-backdrop").classList.add("out");
+        document.querySelector("#ball .mouse-arrow").style.opacity = "0";
+        document.querySelector("#ball .mouse-custom-text").style.opacity = "0";
+        document.querySelector("#ball .mouse-arrow").style.transform =
+          "translate(-10px,-50%)";
+        document.querySelector("#ball .mouse-custom-text").style.transform =
+          "translate(-10px,-50%)";
+        //This timeout is to set display:block on the modified cursor properties after 1s(the amount of seconds set for them to transition)
+        //Basically, it's to make sure that they're taken out of the DOM only once their animation of fading out ends
+        setTimeout(() => {
+          document.querySelector("#ball .mouse-arrow").style.display = "none";
+          document.querySelector("#ball .mouse-custom-text").style.display =
+            "none";
+          document.querySelector("#ball").style.borderColor = "#f64b4b";
+
+          document.querySelector("#ball").style.opacity = "0.5";
+          document.querySelector("#ball").style.color = "#f64b4b";
+        }, 1000);
+      });
     });
-
-    ScrollTrigger.create({
-      trigger: ".three",
-      start: "top center",
-      end: "bottom center",
-
-      onEnter: () => {
-        gsap.to("body", { duration: 1.0, backgroundColor: "#2E2C2F" });
-      },
-
-      onLeaveBack: () => {
-        gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
-      },
-    });
-  } else {
-    //If not on Mobile(this includes IPADs):
-    document.querySelector(".regular-portfolio-container").style.display =
-      "block"; //Show default elements of the template
-    document.querySelector(".horizontal-container").innerHTML = ""; //Hide horizontal section
+    //Code 	ends here
   }
-
-  //Making sure "A Creative sticks under Caravan"
-  document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
-      const relocateCaravanSubheading = () => {
-        document.querySelector(".caravan-subheading").style.margin = "0";
-        document.querySelector(".caravan-heading").style.margin = "0";
-
-        let extra = 10; //defalt
-        function myFunction(x) {
-          if (x.matches) {
-            // If media query matches
-            extra = 0;
-          } else {
-            extra = 10;
-          }
-        }
-        //Media Query Check using JavaScript
-        var x = window.matchMedia("screen and (max-width:700px)");
-        myFunction(x); // Call listener function at run time
-
-        //Basically done by: calculating left offset(distance between element and the left of the viewport) of the letter C, substracting
-        //that by the left offset of it's parent element(in order to get the left offset from the letter C to it's parent's left border)
-        //This is done because we know that the left border of the letter C parent element and the subheading ("A ... ") are at the same level
-        //Adding that to the third of the width of the letter C, and using all of this as a margin left for the subheading
-        document.querySelector(".caravan-subheading").style.marginLeft = `${
-          document.querySelector(".caravan-heading-c").getBoundingClientRect()
-            .x -
-          document
-            .querySelector(".caravan-heading-c")
-            .parentElement.getBoundingClientRect().x +
-          document.querySelector(".caravan-heading-c").getBoundingClientRect()
-            .width /
-            5 //paramaeter due to varying sizes
-        }px`;
-      };
-
-      relocateCaravanSubheading(); //Call to the function on runtime
-
-      window.addEventListener("resize", relocateCaravanSubheading); //Recaluclated on every resize
-    }, 500);
-  });
 })(jQuery);
