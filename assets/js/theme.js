@@ -3557,9 +3557,6 @@ $(function () {
     let customF = 0;
 
     document.querySelectorAll(".listitem").forEach((item) => {
-      bodyScrollBar = Scrollbar.init(
-        document.getElementById("scroll-container")
-      );
       item.addEventListener("click", () => {
         if (item.classList.contains("home")) {
           bodyScrollBar.scrollTo(0, 2500);
@@ -3725,5 +3722,12 @@ $(function () {
     });
   });
 
+  document.querySelectorAll(".listitem").forEach((item) => {
+    item.addEventListener("click", () => {
+      if (item.classList.contains("home")) {
+        window.scrollTo(0, 2500);
+      }
+    });
+  });
   //Code 	ends here
 })(jQuery);
