@@ -3557,7 +3557,13 @@ $(function () {
     let customF = 0;
 
     document.querySelectorAll(".listitem").forEach((item) => {
+      bodyScrollBar = Scrollbar.init(
+        document.getElementById("scroll-container")
+      );
       item.addEventListener("click", () => {
+        if (item.classList.contains("home")) {
+          bodyScrollBar.scrollTo(0, 2500);
+        }
         customF = 1;
         //After 3s the flag is reset to 0, which means the snapping will happen again
         setTimeout(() => {
@@ -3718,5 +3724,6 @@ $(function () {
       }, 1000);
     });
   });
+
   //Code 	ends here
 })(jQuery);
