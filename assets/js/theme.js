@@ -3606,6 +3606,7 @@ $(function () {
       });
     });
   } else {
+    //Using JQuery for handling the scrolling in case of Mobile
     document.querySelectorAll(".listitem").forEach((item) => {
       item.addEventListener("click", () => {
         if (item.classList.contains("home")) {
@@ -3653,7 +3654,23 @@ $(function () {
         }
       });
     });
+
+    //Hiding the header on Mobile
+    //Since the scroller changes to the regular window object when on mobile(no smooth scroll), the window.scrollY is what
+    //Will be used to calculate the current scroll position
+    window.addEventListener("scroll", () => {
+      if (window.scrollY - scrollPositionY > 0) {
+        document.querySelector("header").style.transform = `translateY(-${
+          document.querySelector("header").offsetHeight
+        }px)`;
+        //If going up, translate the header back
+      } else {
+        document.querySelector("header").style.transform = `translateY(0px)`;
+      }
+      scrollPositionY = window.scrollY;
+    });
   }
+
   //Making sure "A Creative sticks under Caravan"
   document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
@@ -3768,7 +3785,7 @@ $(function () {
       }, time);
     });
 
-    //this event fires right before the light is about to close
+    //this event fires right before the light gallery is about to close
 
     $lg.on("onBeforeClose.lg", () => {
       document.querySelector(".lg-backdrop").classList.add("out");
