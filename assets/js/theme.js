@@ -1639,9 +1639,10 @@ $(function () {
 
   // =============================================================================================
   // Horizontal section
+  // Custom done by Upwork Freelancer Hamid
   // =============================================================================================
 
-  if ($(".horizontal").length) {
+  if ($(".horizontal").length && !isMobile) {
     //Smooth Scroll and horizontal section only if on Mobile
     var scrollPositionX = 0;
     var scrollPositionY = 0;
@@ -3529,91 +3530,9 @@ $(function () {
       });
     });
 
-    //Making sure "A Creative sticks under Caravan"
-    document.addEventListener("DOMContentLoaded", () => {
-      setTimeout(() => {
-        const relocateCaravanSubheading = () => {
-          document.querySelector(".caravan-subheading").style.margin = "0";
-          document.querySelector(".caravan-heading").style.margin = "0";
-
-          let extra = 10; //defalt
-          function myFunction(x) {
-            if (x.matches) {
-              // If media query matches
-              extra = 0;
-            } else {
-              extra = 10;
-            }
-          }
-          //Media Query Check using JavaScript
-          var x = window.matchMedia("screen and (max-width:700px)");
-          myFunction(x); // Call listener function at run time
-
-          //Basically done by: calculating left offset(distance between element and the left of the viewport) of the letter C, substracting
-          //that by the left offset of it's parent element(in order to get the left offset from the letter C to it's parent's left border)
-          //This is done because we know that the left border of the letter C parent element and the subheading ("A ... ") are at the same level
-          //Adding that to the third of the width of the letter C, and using all of this as a margin left for the subheading
-          document.querySelector(".caravan-subheading").style.marginLeft = `${
-            document.querySelector(".caravan-heading-c").getBoundingClientRect()
-              .x -
-            document
-              .querySelector(".caravan-heading-c")
-              .parentElement.getBoundingClientRect().x +
-            document.querySelector(".caravan-heading-c").getBoundingClientRect()
-              .width /
-              15 //paramaeter due to varying sizes
-          }px`;
-        };
-
-        relocateCaravanSubheading(); //Call to the function on runtime
-
-        window.addEventListener("resize", relocateCaravanSubheading); //Recaluclated on every resize
-      }, 500);
-    });
-
-    //This had to be moved down, because, it needs to initiate the coordinates of the point where the color will change after the horizontal section
-    //Since the addition of the horizontal section moves items around a bit.
-    ScrollTrigger.create({
-      trigger: "section.four",
-      start: "top 50%",
-      end: "bottom 0%",
-
-      onEnter: () => {
-        gsap.to("body", { duration: 1.0, backgroundColor: "#2E2C2F" });
-      },
-
-      onLeaveBack: () => {
-        gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
-      },
-    });
-
-    let scrollTriggerFlag = 0;
-    ScrollTrigger.create({
-      trigger: "section.five",
-      start: "top 50%",
-      end: "bottom 0%",
-
-      onEnter: () => {
-        gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
-        //This ocde actually refreshes the pining section for the first time, in order to have all the elements retake their appropriate places.
-        //The sudden lag you experience the first time you scroll down, right before the horizontal section is caused by this.
-        //It is necessary in order to ensure every element is in the right position.
-        if (scrollTriggerFlag == 0) {
-          ScrollTrigger.refresh();
-
-          scrollTriggerFlag++;
-        }
-      },
-
-      onLeaveBack: () => {
-        gsap.to("body", { duration: 1.0, backgroundColor: "#1843DB" });
-      },
-    });
-
     //The snapping code: Just add 'snapping-item' as a class to any div that you'd like snapped.
     //"Snapping" of WHAT WE DO
     let scrollTween2;
-
     function goToSection(direction) {
       //Iniitializing smooth scroll in order to get current position of the scroller
       var $scrollbar = Scrollbar.init(
@@ -3661,63 +3580,143 @@ $(function () {
         },
       });
     });
-
-    //This code modifies the light gallery for the animation to look similar to the ali2Times one
-    //Getting the lighgallery object:
-    $(".lightgallery.horiz-item").each(function () {
-      let $lg = $(this).lightGallery();
-      //This is a lightgallery even that fires off right before the lightgallery is about to open:
-      $lg.on("onBeforeOpen.lg", () => {
-        //Please head back up to where the light gallery is first declared(you can use the original table of contents)
-        //You'll notice a new property I added call 'backdropDuration'. This is the time it takes for the lightgallery to transition in. If you change the value above, please change it for setTimeout as well(the 'time' variable)
-        //This basically makes sure that the cursor changes smoothly only once that the light gallery is fully open(thus the timeout, which will wait 750ms(the time for the light gallery to transition in) before modifying the cursor)
-        let time = 750;
-        setTimeout(() => {
-          //Set the original cursor to transparent
-          videojs("currentVideo");
-          document.querySelector("#ball").style.borderColor = "transparent";
-          document.querySelector("#ball").style.opacity = "1";
-          document.querySelector("#ball").style.color = "#eee";
-
-          document.querySelector("#ball .mouse-arrow").style.display = "block";
-          document.querySelector("#ball .mouse-custom-text").style.display =
-            "block";
-          //This little delay is for Javascript. A transition should be declared a little later after the 'display:block' property is declared, otherwise, it happens instantaneously:
-          setTimeout(() => {
-            document.querySelector("#ball .mouse-arrow").style.opacity = "1";
-            document.querySelector("#ball .mouse-custom-text").style.opacity =
-              "1";
-            document.querySelector("#ball .mouse-arrow").style.transform =
-              "translate(0,-50%)";
-            document.querySelector("#ball .mouse-custom-text").style.transform =
-              "translate(0,-50%)";
-          }, 100);
-        }, time);
-      });
-
-      //this event fires right before the light is about to close
-
-      $lg.on("onBeforeClose.lg", () => {
-        document.querySelector(".lg-backdrop").classList.add("out");
-        document.querySelector("#ball .mouse-arrow").style.opacity = "0";
-        document.querySelector("#ball .mouse-custom-text").style.opacity = "0";
-        document.querySelector("#ball .mouse-arrow").style.transform =
-          "translate(-10px,-50%)";
-        document.querySelector("#ball .mouse-custom-text").style.transform =
-          "translate(-10px,-50%)";
-        //This timeout is to set display:block on the modified cursor properties after 1s(the amount of seconds set for them to transition)
-        //Basically, it's to make sure that they're taken out of the DOM only once their animation of fading out ends
-        setTimeout(() => {
-          document.querySelector("#ball .mouse-arrow").style.display = "none";
-          document.querySelector("#ball .mouse-custom-text").style.display =
-            "none";
-          document.querySelector("#ball").style.borderColor = "#f64b4b";
-
-          document.querySelector("#ball").style.opacity = "0.5";
-          document.querySelector("#ball").style.color = "#f64b4b";
-        }, 1000);
-      });
-    });
-    //Code 	ends here
   }
+  //Making sure "A Creative sticks under Caravan"
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const relocateCaravanSubheading = () => {
+        document.querySelector(".caravan-subheading").style.margin = "0";
+        document.querySelector(".caravan-heading").style.margin = "0";
+
+        let extra = 10; //defalt
+        function myFunction(x) {
+          if (x.matches) {
+            // If media query matches
+            extra = 0;
+          } else {
+            extra = 10;
+          }
+        }
+        //Media Query Check using JavaScript
+        var x = window.matchMedia("screen and (max-width:700px)");
+        myFunction(x); // Call listener function at run time
+
+        //Basically done by: calculating left offset(distance between element and the left of the viewport) of the letter C, substracting
+        //that by the left offset of it's parent element(in order to get the left offset from the letter C to it's parent's left border)
+        //This is done because we know that the left border of the letter C parent element and the subheading ("A ... ") are at the same level
+        //Adding that to the third of the width of the letter C, and using all of this as a margin left for the subheading
+        document.querySelector(".caravan-subheading").style.marginLeft = `${
+          document.querySelector(".caravan-heading-c").getBoundingClientRect()
+            .x -
+          document
+            .querySelector(".caravan-heading-c")
+            .parentElement.getBoundingClientRect().x +
+          document.querySelector(".caravan-heading-c").getBoundingClientRect()
+            .width /
+            15 //paramaeter due to varying sizes
+        }px`;
+      };
+
+      relocateCaravanSubheading(); //Call to the function on runtime
+
+      window.addEventListener("resize", relocateCaravanSubheading); //Recaluclated on every resize
+    }, 500);
+  });
+
+  //This had to be moved down, because, it needs to initiate the coordinates of the point where the color will change after the horizontal section
+  //Since the addition of the horizontal section moves items around a bit.
+  ScrollTrigger.create({
+    trigger: "section.four",
+    start: "top 50%",
+    end: "bottom 0%",
+
+    onEnter: () => {
+      gsap.to("body", { duration: 1.0, backgroundColor: "#2E2C2F" });
+    },
+
+    onLeaveBack: () => {
+      gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
+    },
+  });
+
+  let scrollTriggerFlag = 0;
+  ScrollTrigger.create({
+    trigger: "section.five",
+    start: "top 50%",
+    end: "bottom 0%",
+
+    onEnter: () => {
+      gsap.to("body", { duration: 1.0, backgroundColor: "#ECECEC" });
+      //This ocde actually refreshes the pining section for the first time, in order to have all the elements retake their appropriate places.
+      //The sudden lag you experience the first time you scroll down, right before the horizontal section is caused by this.
+      //It is necessary in order to ensure every element is in the right position.
+      if (scrollTriggerFlag == 0) {
+        ScrollTrigger.refresh();
+
+        scrollTriggerFlag++;
+      }
+    },
+
+    onLeaveBack: () => {
+      gsap.to("body", { duration: 1.0, backgroundColor: "#1843DB" });
+    },
+  });
+
+  //This code modifies the light gallery for the animation to look similar to the ali2Times one
+  //Getting the lighgallery object:
+  $(".lightgallery.horiz-item").each(function () {
+    let $lg = $(this).lightGallery();
+    //This is a lightgallery even that fires off right before the lightgallery is about to open:
+    $lg.on("onBeforeOpen.lg", () => {
+      //Please head back up to where the light gallery is first declared(you can use the original table of contents)
+      //You'll notice a new property I added call 'backdropDuration'. This is the time it takes for the lightgallery to transition in. If you change the value above, please change it for setTimeout as well(the 'time' variable)
+      //This basically makes sure that the cursor changes smoothly only once that the light gallery is fully open(thus the timeout, which will wait 750ms(the time for the light gallery to transition in) before modifying the cursor)
+      let time = 750;
+      setTimeout(() => {
+        //Set the original cursor to transparent
+        videojs("currentVideo");
+        document.querySelector("#ball").style.borderColor = "transparent";
+        document.querySelector("#ball").style.opacity = "1";
+        document.querySelector("#ball").style.color = "#eee";
+
+        document.querySelector("#ball .mouse-arrow").style.display = "block";
+        document.querySelector("#ball .mouse-custom-text").style.display =
+          "block";
+        //This little delay is for Javascript. A transition should be declared a little later after the 'display:block' property is declared, otherwise, it happens instantaneously:
+        setTimeout(() => {
+          document.querySelector("#ball .mouse-arrow").style.opacity = "1";
+          document.querySelector("#ball .mouse-custom-text").style.opacity =
+            "1";
+          document.querySelector("#ball .mouse-arrow").style.transform =
+            "translate(0,-50%)";
+          document.querySelector("#ball .mouse-custom-text").style.transform =
+            "translate(0,-50%)";
+        }, 100);
+      }, time);
+    });
+
+    //this event fires right before the light is about to close
+
+    $lg.on("onBeforeClose.lg", () => {
+      document.querySelector(".lg-backdrop").classList.add("out");
+      document.querySelector("#ball .mouse-arrow").style.opacity = "0";
+      document.querySelector("#ball .mouse-custom-text").style.opacity = "0";
+      document.querySelector("#ball .mouse-arrow").style.transform =
+        "translate(-10px,-50%)";
+      document.querySelector("#ball .mouse-custom-text").style.transform =
+        "translate(-10px,-50%)";
+      //This timeout is to set display:block on the modified cursor properties after 1s(the amount of seconds set for them to transition)
+      //Basically, it's to make sure that they're taken out of the DOM only once their animation of fading out ends
+      setTimeout(() => {
+        document.querySelector("#ball .mouse-arrow").style.display = "none";
+        document.querySelector("#ball .mouse-custom-text").style.display =
+          "none";
+        document.querySelector("#ball").style.borderColor = "#f64b4b";
+
+        document.querySelector("#ball").style.opacity = "0.5";
+        document.querySelector("#ball").style.color = "#f64b4b";
+      }, 1000);
+    });
+  });
+  //Code 	ends here
 })(jQuery);
