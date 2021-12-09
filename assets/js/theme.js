@@ -3609,41 +3609,47 @@ $(function () {
     document.querySelectorAll(".listitem").forEach((item) => {
       item.addEventListener("click", () => {
         if (item.classList.contains("home")) {
-          setTimeout(() => {
-            document
-              .querySelector("#page-header")
-              .scrollIntoView({ behavior: "smooth" });
-          }, 1000);
+          $("html, body").animate(
+            {
+              scrollTop: $("#page-header").offset().top,
+            },
+            1500
+          );
         } else if (item.classList.contains("mobile-work")) {
-          setTimeout(() => {
-            document
-              .querySelector("#work1")
-              .scrollIntoView({ behavior: "smooth" });
-          }, 1000);
+          $("html, body").animate(
+            {
+              scrollTop: $("#work1").offset().top,
+            },
+            1500
+          );
         } else if (item.classList.contains("clients")) {
-          setTimeout(() => {
-            document
-              .querySelector("#clients")
-              .scrollIntoView({ behavior: "smooth" });
-          }, 1000);
+          $("html, body").animate(
+            {
+              scrollTop: $("#clients").offset().top,
+            },
+            1500
+          );
         } else if (item.classList.contains("about")) {
-          setTimeout(() => {
-            document
-              .querySelector("#about")
-              .scrollIntoView({ behavior: "smooth" });
-          }, 1000);
+          $("html, body").animate(
+            {
+              scrollTop: $("#about").offset().top,
+            },
+            1500
+          );
         } else if (item.classList.contains("services")) {
-          setTimeout(() => {
-            document
-              .querySelector("#services")
-              .scrollIntoView({ behavior: "smooth" });
-          }, 1000);
+          $("html, body").animate(
+            {
+              scrollTop: $("#services").offset().top,
+            },
+            1500
+          );
         } else if (item.classList.contains("contact")) {
-          setTimeout(() => {
-            document
-              .querySelector("#contact")
-              .scrollIntoView({ behavior: "smooth" });
-          }, 1000);
+          $("html, body").animate(
+            {
+              scrollTop: $("#contact").offset().top,
+            },
+            1500
+          );
         }
       });
     });
