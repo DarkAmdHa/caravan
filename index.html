@@ -184,7 +184,7 @@
 													<div class="tt-ol-submenu-trigger">
 														<div class="tt-ol-menu-toggle-btn-text">
 														<div>
-															<a href="#work" class="tt-ol-menu-toggle-btn-text listitem" style="font-family: Source Code Pro; font-size: 30px;  color: #ececec;" ><span>Home</span></a>
+															<a href="#page-header" class="tt-ol-menu-toggle-btn-text listitem" style="font-family: Source Code Pro; font-size: 30px;  color: #ececec;" ><span>Home</span></a>
 														</div>
 													</div> 
 												</li>
@@ -196,7 +196,8 @@
 													<div class="tt-ol-submenu-trigger">
 														<div class="tt-ol-menu-toggle-btn-text">
 														<div>
-															<a href="#work" class="tt-ol-menu-toggle-btn-text listitem" style="font-family: Source Code Pro; font-size: 30px;  color: #ececec;" ><span>Work</span></a>
+															<a href="#work1" class="tt-ol-menu-toggle-btn-text listitem mobile-work" style="font-family: Source Code Pro; font-size: 30px;  color: #ececec; display: none;" ><span>Work</span></a>
+															<a href="#work2" class="tt-ol-menu-toggle-btn-text listitem regular-work" style="font-family: Source Code Pro; font-size: 30px;  color: #ececec;" ><span>Work</span></a>
 														</div>
 													</div> 
 												</li>
@@ -472,7 +473,7 @@
 						============================
 						* You can use padding classes if needed. For example "padding-top-xlg-150", "padding-bottom-xlg-150", "no-padding-top", "no-padding-bottom", etc. Note that each situation may be different and each section may need different classes according to your needs. More info about helper classes can be found in the file "helper.css".
 						-->
-						<div class="tt-section padding-top-xlg-180 no-padding-bottom regular-portfolio-container" style='display: none;'>
+						<div id='work1' class="tt-section padding-top-xlg-180 no-padding-bottom regular-portfolio-container" style='display: none;'>
 							<div class="tt-section-inner">
 
 								<!-- Begin tt-Heading
@@ -518,7 +519,7 @@
 													<div class="portfolio-grid-item">
 														<a href="assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4" class="pgi-image-wrap" data-cursor>
 															<!-- Use class "cover-opacity-*" to set image overlay if needed. For example "cover-opacity-2". Useful if class "pgi-cap-inside" is enabled on "portfolio-grid". Note: It is individual and depends on the image you use. More info about helper classes in file "helper.css". -->
-															<div class="pgi-image-holder cover-opacity-2 pgi-cap-hover  lightgallery">
+															<div class="pgi-image-holder cover-opacity-2 pgi-cap-hover lightgallery">
 																<div class="pgi-image-inner anim-zoomin">
 																	<figure class="pgi-video-wrap ttgr-height">
 																		<video class="pgi-video" loop muted preload="metadata" poster="assets/vids/Tommee Tippee Smelly Nappies 1.jpg">
@@ -973,7 +974,7 @@
 							<div class="tt-section-inner">
 
 
-								<div class="horizontal tt-content-carousel cc-shifted cc-hide-pagination cc-hide-navigation" data-simulate-touch="false" data-speed="900">
+								<div class="horizontal tt-content-carousel cc-shifted cc-hide-pagination cc-hide-navigation" id='work2' data-simulate-touch="false" data-speed="900">
 
 									<!-- Begin swiper container -->
 									<div class="swiper-container pin-wrap" id="pinThis-0">
@@ -1051,24 +1052,47 @@
 														</div>
 														<div class="item2 lightgallery horiz-item">
 															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
-															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+															<video-js class='video-js vjs-theme-city lg-video-object lg-html5' id='currentVideo' controls loop>
 																<script>
 																		var lg = document.querySelector('.lg-outer');
+																		var videoJS = videojs('currentVideo');
+
 																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').pause();
-																		},10)
-																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').play();
-																			lg.addEventListener('click', ()=>{
-																				lg.querySelector('.lg-close').click();
+																			videoJS.play();
+																			lg.addEventListener('click', (e)=>{
+																				if($(e.target).parents('.vjs-control-bar').length<1){
+																					videoJS.pause();
+																					lg.querySelector('.lg-close').click();
+																					videoJS.dispose();
+																				}
 																			});
-																		},1500);
-																		
+																		},750);
+
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseenter', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '0';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '0';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(-10px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(-10px,-50%)';
+																		})
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseleave', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '1';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '1';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(0px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(0px,-50%)';
+																		})
 																	
 																</script>
-																/*Change link to whatever video you'd like to have played in light gallery here*/
 																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
-															</video>">
+																<p class='vjs-no-js'>
+																	To view this video please enable JavaScript, and consider upgrading to a
+																	web browser that
+																	<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+																  </p>
+															</video-js>">
 																<div class="video-container padding-left-sm-15-p">
 																	<div class="anim-zoomin-horiz">
 																		<div class="label"><h2><mark>Tommee Tippee</mark></h2></div>
@@ -1098,24 +1122,47 @@
 														<div class="item">
 															<div class="item1 lightgallery horiz-item">
 															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
-															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+															<video-js class='video-js vjs-theme-city lg-video-object lg-html5' id='currentVideo' controls loop>
 																<script>
 																		var lg = document.querySelector('.lg-outer');
+																		var videoJS = videojs('currentVideo');
+
 																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').pause();
-																		},10)
-																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').play();
-																			lg.addEventListener('click', ()=>{
-																				lg.querySelector('.lg-close').click();
+																			videoJS.play();
+																			lg.addEventListener('click', (e)=>{
+																				if($(e.target).parents('.vjs-control-bar').length<1){
+																					videoJS.pause();
+																					lg.querySelector('.lg-close').click();
+																					videoJS.dispose();
+																				}
 																			});
-																		},1500);
-																		
+																		},750);
+
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseenter', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '0';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '0';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(-10px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(-10px,-50%)';
+																		})
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseleave', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '1';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '1';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(0px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(0px,-50%)';
+																		})
 																	
 																</script>
-																/*Change link to whatever video you'd like to have played in light gallery here*/
 																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
-															</video>">
+																<p class='vjs-no-js'>
+																	To view this video please enable JavaScript, and consider upgrading to a
+																	web browser that
+																	<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+																  </p>
+															</video-js>">
 																<div class="video-container">
 																	<div class="anim-zoomin-horiz">
 																		<div class="label"><h2><mark>Fairphone</mark></h2></div>
@@ -1140,24 +1187,47 @@
 													<div class="item">
 														<div class="item1 lightgallery horiz-item">
 														<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
-														<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+														<video-js class='video-js vjs-theme-city lg-video-object lg-html5' id='currentVideo' controls loop>
 															<script>
 																	var lg = document.querySelector('.lg-outer');
+																	var videoJS = videojs('currentVideo');
+
 																	setTimeout(()=>{
-																		lg.querySelector('#currentVideo').pause();
-																	},10)
-																	setTimeout(()=>{
-																		lg.querySelector('#currentVideo').play();
-																		lg.addEventListener('click', ()=>{
-																			lg.querySelector('.lg-close').click();
+																		videoJS.play();
+																		lg.addEventListener('click', (e)=>{
+																			if($(e.target).parents('.vjs-control-bar').length<1){
+																				videoJS.pause();
+																				lg.querySelector('.lg-close').click();
+																				videoJS.dispose();
+																			}
 																		});
-																	},1500);
-																	
+																	},750);
+
+																	lg.querySelector('.vjs-control-bar').addEventListener('mouseenter', ()=>{
+																		document.querySelector('#ball .mouse-arrow').style.opacity = '0';
+																		document.querySelector('#ball .mouse-custom-text').style.opacity = '0';
+																		document.querySelector('#ball .mouse-arrow').style.transform =
+																		'translate(-10px,-50%)';
+																		document.querySelector('#ball .mouse-custom-text').style.transform =
+																		'translate(-10px,-50%)';
+																	})
+																	lg.querySelector('.vjs-control-bar').addEventListener('mouseleave', ()=>{
+																		document.querySelector('#ball .mouse-arrow').style.opacity = '1';
+																		document.querySelector('#ball .mouse-custom-text').style.opacity = '1';
+																		document.querySelector('#ball .mouse-arrow').style.transform =
+																		'translate(0px,-50%)';
+																		document.querySelector('#ball .mouse-custom-text').style.transform =
+																		'translate(0px,-50%)';
+																	})
 																
 															</script>
-															/*Change link to whatever video you'd like to have played in light gallery here*/
 															<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
-														</video>">
+															<p class='vjs-no-js'>
+																To view this video please enable JavaScript, and consider upgrading to a
+																web browser that
+																<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+															  </p>
+														</video-js>">
 															<div class="video-container">
 																<div class="anim-zoomin-horiz ">
 																	<div class="label"><h2><mark>Hold Still</mark></h2></div>
@@ -1182,24 +1252,47 @@
 													<div class="item">
 														<div class="item1 lightgallery horiz-item">
 															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
-															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+															<video-js class='video-js vjs-theme-city lg-video-object lg-html5' id='currentVideo' controls loop>
 																<script>
 																		var lg = document.querySelector('.lg-outer');
+																		var videoJS = videojs('currentVideo');
+
 																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').pause();
-																		},10)
-																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').play();
-																			lg.addEventListener('click', ()=>{
-																				lg.querySelector('.lg-close').click();
+																			videoJS.play();
+																			lg.addEventListener('click', (e)=>{
+																				if($(e.target).parents('.vjs-control-bar').length<1){
+																					videoJS.pause();
+																					lg.querySelector('.lg-close').click();
+																					videoJS.dispose();
+																				}
 																			});
-																		},1500);
-																		
+																		},750);
+
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseenter', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '0';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '0';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(-10px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(-10px,-50%)';
+																		})
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseleave', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '1';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '1';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(0px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(0px,-50%)';
+																		})
 																	
 																</script>
-																/*Change link to whatever video you'd like to have played in light gallery here*/
 																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
-															</video>">
+																<p class='vjs-no-js'>
+																	To view this video please enable JavaScript, and consider upgrading to a
+																	web browser that
+																	<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+																  </p>
+															</video-js>">
 																<div class="video-container">
 																	<div class="anim-zoomin-horiz ">
 																	<div class="label"><h2><mark>Philidelphia</mark></h2></div>
@@ -1215,24 +1308,47 @@
 														</div>
 														<div class="item2 lightgallery horiz-item">
 															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
-															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+															<video-js class='video-js vjs-theme-city lg-video-object lg-html5' id='currentVideo' controls loop>
 																<script>
 																		var lg = document.querySelector('.lg-outer');
+																		var videoJS = videojs('currentVideo');
+
 																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').pause();
-																		},10)
-																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').play();
-																			lg.addEventListener('click', ()=>{
-																				lg.querySelector('.lg-close').click();
+																			videoJS.play();
+																			lg.addEventListener('click', (e)=>{
+																				if($(e.target).parents('.vjs-control-bar').length<1){
+																					videoJS.pause();
+																					lg.querySelector('.lg-close').click();
+																					videoJS.dispose();
+																				}
 																			});
-																		},1500);
-																		
+																		},750);
+
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseenter', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '0';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '0';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(-10px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(-10px,-50%)';
+																		})
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseleave', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '1';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '1';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(0px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(0px,-50%)';
+																		})
 																	
 																</script>
-																/*Change link to whatever video you'd like to have played in light gallery here*/
 																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
-															</video>">
+																<p class='vjs-no-js'>
+																	To view this video please enable JavaScript, and consider upgrading to a
+																	web browser that
+																	<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+																  </p>
+															</video-js>">
 																<div class="video-container padding-right-sm-15-p">
 																	<div class="anim-zoomin-horiz ">
 																		<div class="label"><h2><mark>Philidelphia</mark></h2></div>
@@ -1260,24 +1376,47 @@
 													<div class="item">
 														<div class="item1 lightgallery horiz-item">
 															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
-															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+															<video-js class='video-js vjs-theme-city lg-video-object lg-html5' id='currentVideo' controls loop>
 																<script>
 																		var lg = document.querySelector('.lg-outer');
+																		var videoJS = videojs('currentVideo');
+
 																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').pause();
-																		},10)
-																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').play();
-																			lg.addEventListener('click', ()=>{
-																				lg.querySelector('.lg-close').click();
+																			videoJS.play();
+																			lg.addEventListener('click', (e)=>{
+																				if($(e.target).parents('.vjs-control-bar').length<1){
+																					videoJS.pause();
+																					lg.querySelector('.lg-close').click();
+																					videoJS.dispose();
+																				}
 																			});
-																		},1500);
-																		
+																		},750);
+
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseenter', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '0';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '0';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(-10px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(-10px,-50%)';
+																		})
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseleave', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '1';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '1';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(0px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(0px,-50%)';
+																		})
 																	
 																</script>
-																/*Change link to whatever video you'd like to have played in light gallery here*/
 																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
-															</video>">
+																<p class='vjs-no-js'>
+																	To view this video please enable JavaScript, and consider upgrading to a
+																	web browser that
+																	<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+																  </p>
+															</video-js>">
 																<div class="video-container">
 																	<div class="anim-zoomin-horiz">
 																		<div class="label"><h2><mark>Intersport</mark></h2></div>
@@ -1304,24 +1443,47 @@
 													<div class="item ">
 														<div class="item1 lightgallery horiz-item">
 															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
-															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+															<video-js class='video-js vjs-theme-city lg-video-object lg-html5' id='currentVideo' controls loop>
 																<script>
 																		var lg = document.querySelector('.lg-outer');
+																		var videoJS = videojs('currentVideo');
+
 																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').pause();
-																		},10)
-																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').play();
-																			lg.addEventListener('click', ()=>{
-																				lg.querySelector('.lg-close').click();
+																			videoJS.play();
+																			lg.addEventListener('click', (e)=>{
+																				if($(e.target).parents('.vjs-control-bar').length<1){
+																					videoJS.pause();
+																					lg.querySelector('.lg-close').click();
+																					videoJS.dispose();
+																				}
 																			});
-																		},1500);
-																		
+																		},750);
+
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseenter', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '0';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '0';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(-10px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(-10px,-50%)';
+																		})
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseleave', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '1';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '1';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(0px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(0px,-50%)';
+																		})
 																	
 																</script>
-																/*Change link to whatever video you'd like to have played in light gallery here*/
 																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
-															</video>">
+																<p class='vjs-no-js'>
+																	To view this video please enable JavaScript, and consider upgrading to a
+																	web browser that
+																	<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+																  </p>
+															</video-js>">
 																<div class="video-container padding-left-sm-15-p">
 																	<div class="anim-zoomin-horiz">
 																		<div class="label padding-right-sm-15-p"><h2><mark>KLM</mark></h2></div>
@@ -1337,24 +1499,47 @@
 														</div>
 														<div class="item2 lightgallery horiz-item">
 															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
-															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+															<video-js class='video-js vjs-theme-city lg-video-object lg-html5' id='currentVideo' controls loop>
 																<script>
 																		var lg = document.querySelector('.lg-outer');
+																		var videoJS = videojs('currentVideo');
+
 																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').pause();
-																		},10)
-																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').play();
-																			lg.addEventListener('click', ()=>{
-																				lg.querySelector('.lg-close').click();
+																			videoJS.play();
+																			lg.addEventListener('click', (e)=>{
+																				if($(e.target).parents('.vjs-control-bar').length<1){
+																					videoJS.pause();
+																					lg.querySelector('.lg-close').click();
+																					videoJS.dispose();
+																				}
 																			});
-																		},1500);
-																		
+																		},750);
+
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseenter', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '0';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '0';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(-10px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(-10px,-50%)';
+																		})
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseleave', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '1';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '1';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(0px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(0px,-50%)';
+																		})
 																	
 																</script>
-																/*Change link to whatever video you'd like to have played in light gallery here*/
 																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
-															</video>">
+																<p class='vjs-no-js'>
+																	To view this video please enable JavaScript, and consider upgrading to a
+																	web browser that
+																	<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+																  </p>
+															</video-js>">
 																<div class="video-container">
 																	<div class="anim-zoomin-horiz">
 																	<div class="label"><h2><mark>KLM</mark></h2></div>
@@ -1381,24 +1566,47 @@
 													<div class="item1 lightgallery horiz-item">
 														
 														<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
-														<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+														<video-js class='video-js vjs-theme-city lg-video-object lg-html5' id='currentVideo' controls loop>
 															<script>
 																	var lg = document.querySelector('.lg-outer');
+																	var videoJS = videojs('currentVideo');
+
 																	setTimeout(()=>{
-																		lg.querySelector('#currentVideo').pause();
-																	},10)
-																	setTimeout(()=>{
-																		lg.querySelector('#currentVideo').play();
-																		lg.addEventListener('click', ()=>{
-																			lg.querySelector('.lg-close').click();
+																		videoJS.play();
+																		lg.addEventListener('click', (e)=>{
+																			if($(e.target).parents('.vjs-control-bar').length<1){
+																				videoJS.pause();
+																				lg.querySelector('.lg-close').click();
+																				videoJS.dispose();
+																			}
 																		});
-																	},1500);
-																	
+																	},750);
+
+																	lg.querySelector('.vjs-control-bar').addEventListener('mouseenter', ()=>{
+																		document.querySelector('#ball .mouse-arrow').style.opacity = '0';
+																		document.querySelector('#ball .mouse-custom-text').style.opacity = '0';
+																		document.querySelector('#ball .mouse-arrow').style.transform =
+																		'translate(-10px,-50%)';
+																		document.querySelector('#ball .mouse-custom-text').style.transform =
+																		'translate(-10px,-50%)';
+																	})
+																	lg.querySelector('.vjs-control-bar').addEventListener('mouseleave', ()=>{
+																		document.querySelector('#ball .mouse-arrow').style.opacity = '1';
+																		document.querySelector('#ball .mouse-custom-text').style.opacity = '1';
+																		document.querySelector('#ball .mouse-arrow').style.transform =
+																		'translate(0px,-50%)';
+																		document.querySelector('#ball .mouse-custom-text').style.transform =
+																		'translate(0px,-50%)';
+																	})
 																
 															</script>
-															/*Change link to whatever video you'd like to have played in light gallery here*/
 															<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
-														</video>">
+															<p class='vjs-no-js'>
+																To view this video please enable JavaScript, and consider upgrading to a
+																web browser that
+																<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+															  </p>
+														</video-js>">
 															<div class="video-container">
 																<div class="anim-zoomin-horiz">
 																<div class="label"><h2><mark>LinkedIn</mark></h2></div>
@@ -1425,24 +1633,47 @@
 													<div class="item1 lightgallery horiz-item">
 
 														<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
-														<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+														<video-js class='video-js vjs-theme-city lg-video-object lg-html5' id='currentVideo' controls loop>
 															<script>
 																	var lg = document.querySelector('.lg-outer');
+																	var videoJS = videojs('currentVideo');
+
 																	setTimeout(()=>{
-																		lg.querySelector('#currentVideo').pause();
-																	},10)
-																	setTimeout(()=>{
-																		lg.querySelector('#currentVideo').play();
-																		lg.addEventListener('click', ()=>{
-																			lg.querySelector('.lg-close').click();
+																		videoJS.play();
+																		lg.addEventListener('click', (e)=>{
+																			if($(e.target).parents('.vjs-control-bar').length<1){
+																				videoJS.pause();
+																				lg.querySelector('.lg-close').click();
+																				videoJS.dispose();
+																			}
 																		});
-																	},1500);
-																	
+																	},750);
+
+																	lg.querySelector('.vjs-control-bar').addEventListener('mouseenter', ()=>{
+																		document.querySelector('#ball .mouse-arrow').style.opacity = '0';
+																		document.querySelector('#ball .mouse-custom-text').style.opacity = '0';
+																		document.querySelector('#ball .mouse-arrow').style.transform =
+																		'translate(-10px,-50%)';
+																		document.querySelector('#ball .mouse-custom-text').style.transform =
+																		'translate(-10px,-50%)';
+																	})
+																	lg.querySelector('.vjs-control-bar').addEventListener('mouseleave', ()=>{
+																		document.querySelector('#ball .mouse-arrow').style.opacity = '1';
+																		document.querySelector('#ball .mouse-custom-text').style.opacity = '1';
+																		document.querySelector('#ball .mouse-arrow').style.transform =
+																		'translate(0px,-50%)';
+																		document.querySelector('#ball .mouse-custom-text').style.transform =
+																		'translate(0px,-50%)';
+																	})
 																
 															</script>
-															/*Change link to whatever video you'd like to have played in light gallery here*/
 															<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
-														</video>">
+															<p class='vjs-no-js'>
+																To view this video please enable JavaScript, and consider upgrading to a
+																web browser that
+																<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+															  </p>
+														</video-js>">
 															<div class="video-container">
 																<div class="anim-zoomin-horiz">
 																<div class="label"><h2><mark>Mariott</mark></h2></div>
@@ -1459,24 +1690,47 @@
 														</div>
 														<div class="item2 lightgallery horiz-item">
 															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
-															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+															<video-js class='video-js vjs-theme-city lg-video-object lg-html5' id='currentVideo' controls loop>
 																<script>
 																		var lg = document.querySelector('.lg-outer');
+																		var videoJS = videojs('currentVideo');
+
 																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').pause();
-																		},10)
-																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').play();
-																			lg.addEventListener('click', ()=>{
-																				lg.querySelector('.lg-close').click();
+																			videoJS.play();
+																			lg.addEventListener('click', (e)=>{
+																				if($(e.target).parents('.vjs-control-bar').length<1){
+																					videoJS.pause();
+																					lg.querySelector('.lg-close').click();
+																					videoJS.dispose();
+																				}
 																			});
-																		},1500);
-																		
+																		},750);
+
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseenter', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '0';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '0';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(-10px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(-10px,-50%)';
+																		})
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseleave', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '1';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '1';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(0px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(0px,-50%)';
+																		})
 																	
 																</script>
-																/*Change link to whatever video you'd like to have played in light gallery here*/
 																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
-															</video>">
+																<p class='vjs-no-js'>
+																	To view this video please enable JavaScript, and consider upgrading to a
+																	web browser that
+																	<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+																  </p>
+															</video-js>">
 																<div class="video-container padding-left-sm-15-p">
 																	<div class="anim-zoomin-horiz">
 																	<div class="label padding-right-sm-15-p"><h2><mark>KLM</mark></h2></div>
@@ -1503,24 +1757,47 @@
 													<div class="item">
 														<div class="item1 lightgallery horiz-item">
 															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
-															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+															<video-js class='video-js vjs-theme-city lg-video-object lg-html5' id='currentVideo' controls loop>
 																<script>
 																		var lg = document.querySelector('.lg-outer');
+																		var videoJS = videojs('currentVideo');
+
 																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').pause();
-																		},10)
-																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').play();
-																			lg.addEventListener('click', ()=>{
-																				lg.querySelector('.lg-close').click();
+																			videoJS.play();
+																			lg.addEventListener('click', (e)=>{
+																				if($(e.target).parents('.vjs-control-bar').length<1){
+																					videoJS.pause();
+																					lg.querySelector('.lg-close').click();
+																					videoJS.dispose();
+																				}
 																			});
-																		},1500);
-																		
+																		},750);
+
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseenter', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '0';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '0';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(-10px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(-10px,-50%)';
+																		})
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseleave', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '1';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '1';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(0px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(0px,-50%)';
+																		})
 																	
 																</script>
-																/*Change link to whatever video you'd like to have played in light gallery here*/
 																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
-															</video>">
+																<p class='vjs-no-js'>
+																	To view this video please enable JavaScript, and consider upgrading to a
+																	web browser that
+																	<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+																  </p>
+															</video-js>">
 																<div class="video-container">
 																	<div class="anim-zoomin-horiz">
 																	<div class="label"><h2><mark>Unsmoke IQOS</mark></h2></div>
@@ -1538,24 +1815,47 @@
 														<div class="item2 lightgallery horiz-item">
 
 															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
-															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+															<video-js class='video-js vjs-theme-city lg-video-object lg-html5' id='currentVideo' controls loop>
 																<script>
 																		var lg = document.querySelector('.lg-outer');
+																		var videoJS = videojs('currentVideo');
+
 																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').pause();
-																		},10)
-																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').play();
-																			lg.addEventListener('click', ()=>{
-																				lg.querySelector('.lg-close').click();
+																			videoJS.play();
+																			lg.addEventListener('click', (e)=>{
+																				if($(e.target).parents('.vjs-control-bar').length<1){
+																					videoJS.pause();
+																					lg.querySelector('.lg-close').click();
+																					videoJS.dispose();
+																				}
 																			});
-																		},1500);
-																		
+																		},750);
+
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseenter', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '0';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '0';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(-10px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(-10px,-50%)';
+																		})
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseleave', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '1';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '1';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(0px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(0px,-50%)';
+																		})
 																	
 																</script>
-																/*Change link to whatever video you'd like to have played in light gallery here*/
 																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
-															</video>">
+																<p class='vjs-no-js'>
+																	To view this video please enable JavaScript, and consider upgrading to a
+																	web browser that
+																	<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+																  </p>
+															</video-js>">
 																<div class="video-container padding-right-sm-10-p">
 																	<div class="anim-zoomin-horiz">
 																	<div class="label padding-right-sm-15-p"><h2><mark>KLM</mark></h2></div>
@@ -1584,24 +1884,47 @@
 														<div class="item1 lightgallery horiz-item">
 
 															<a data-cursor="View" href=""  class="lg-trigger" data-cursor="Play" data-html="
-															<video class='lg-video-object lg-html5' id='currentVideo' controls loop>
+															<video-js class='video-js vjs-theme-city lg-video-object lg-html5' id='currentVideo' controls loop>
 																<script>
 																		var lg = document.querySelector('.lg-outer');
+																		var videoJS = videojs('currentVideo');
+
 																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').pause();
-																		},10)
-																		setTimeout(()=>{
-																			lg.querySelector('#currentVideo').play();
-																			lg.addEventListener('click', ()=>{
-																				lg.querySelector('.lg-close').click();
+																			videoJS.play();
+																			lg.addEventListener('click', (e)=>{
+																				if($(e.target).parents('.vjs-control-bar').length<1){
+																					videoJS.pause();
+																					lg.querySelector('.lg-close').click();
+																					videoJS.dispose();
+																				}
 																			});
-																		},1500);
-																		
+																		},750);
+
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseenter', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '0';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '0';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(-10px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(-10px,-50%)';
+																		})
+																		lg.querySelector('.vjs-control-bar').addEventListener('mouseleave', ()=>{
+																			document.querySelector('#ball .mouse-arrow').style.opacity = '1';
+																			document.querySelector('#ball .mouse-custom-text').style.opacity = '1';
+																			document.querySelector('#ball .mouse-arrow').style.transform =
+																			'translate(0px,-50%)';
+																			document.querySelector('#ball .mouse-custom-text').style.transform =
+																			'translate(0px,-50%)';
+																		})
 																	
 																</script>
-																/*Change link to whatever video you'd like to have played in light gallery here*/
 																<source src='assets/vids/Tommee Tippee Smelly Nappies 1.mp4.mp4' type='video/mp4'>
-															</video>">
+																<p class='vjs-no-js'>
+																	To view this video please enable JavaScript, and consider upgrading to a
+																	web browser that
+																	<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+																  </p>
+															</video-js>">
 																<div class="video-container">
 																	<div class="anim-zoomin-horiz">
 																	<div class="label"><h2><mark>Got Gold</mark></h2></div>
@@ -1652,17 +1975,7 @@
 						* You can use padding classes if needed. For example "padding-top-xlg-150", "padding-bottom-xlg-150", "no-padding-top", "no-padding-bottom", etc. Note that each situation may be different and each section may need different classes according to your needs. More info about helper classes can be found in the file "helper.css".
 						-->
 						<div class="tt-section padding-top-xlg-150 padding-bottom-xlg-150 padding-left-xlg-15-p padding-right-xlg-15-p bg-white-accent-2">
-							<div class="tt-section-inner tt-wrap">
-							
-						  
-						  
-							
-							
-							
-						
-							<div id="clients"></div>
-							</div>
-						  
+							<div class="tt-section-inner tt-wrap" id="clients">
 
 								<!-- Begin tt-Heading 
 								====================== 
@@ -1727,9 +2040,9 @@
 						///// Begin tt-section /////
 						============================ 
 						* You can use padding classes if needed. For example "padding-top-xlg-150", "padding-bottom-xlg-150", "no-padding-top", "no-padding-bottom", etc. Note that each situation may be different and each section may need different classes according to your needs. More info about helper classes can be found in the file "helper.css".
-						--><div id="about"></div>
+						-->
 						<div class="tt-section">
-							<div class="tt-section-inner tt-wrap">
+							<div class="tt-section-inner tt-wrap" id='about'>
 
 								<div class="tt-row">
 									<div class="tt-col-lg-4 padding-right-lg-5-p">
@@ -1775,9 +2088,8 @@
 						* You can use padding classes if needed. For example "padding-top-xlg-150", "padding-bottom-xlg-150", "no-padding-top", "no-padding-bottom", etc. Note that each situation may be different and each section may need different classes according to your needs. More info about helper classes can be found in the file "helper.css".
 						-->
 						<section class="four"></section>
-						<div id="services"></div>
 						<div class="tt-section padding-top-xlg-150 padding-bottom-xlg-200">
-							<div class="tt-section-inner tt-wrap">
+							<div class="tt-section-inner tt-wrap" id='services'>
 								
 
 
@@ -1928,7 +2240,7 @@
 							<div class="tt-section-inner tt-wrap">
 
 								<div class="tt-row">
-									<div class="tt-col-lg-5 padding-right-lg-5-p">
+									<div class="tt-col-lg-5 padding-right-lg-5-p" id='contact'>
 
 										<!-- Begin tt-Heading 
 										====================== 
@@ -1941,7 +2253,6 @@
 											
 											<h2 class="tt-heading-title"><u>Drop Us<br> A Line</h2></u>
 										</div>
-										<div id="contact"></div>
 										<!-- End tt-Heading -->
 
 										<!-- <div class="text-gray padding-bottom-40 anim-fadeinup">
