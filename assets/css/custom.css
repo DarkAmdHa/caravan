@@ -9750,7 +9750,7 @@ body:not(.tt-boxed) .tt-footer-inner,
 /*The first value here (1s) is the amount of time the animation lasts. So basically the time it takes for the header to disapear
 The second value(0.5s) is the delay before the animation takes place.*/
 header {
-  transition: transform 1s ease-out 0.5s;
+  transition: transform 1s ease-out;
 }
 .lg-outer {
   cursor: pointer;
@@ -9799,12 +9799,13 @@ header {
   .horizontal-container {
     display: none;
   }
+  .mobile-work {
+    display: block !important;
+  }
   .regular-portfolio-container {
     display: block !important;
   }
-
-  /*rESPONSIVE FONT SIZE FOR HEADERS AT 768PX AND BELOW */
-  .tt-accordion.tt-ac-xlg .tt-ac-head-title {
-    font-size: 13vw;
+  .regular-work {
+    display: none;
   }
 }
