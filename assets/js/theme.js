@@ -3559,7 +3559,29 @@ $(function () {
     document.querySelectorAll(".listitem").forEach((item) => {
       item.addEventListener("click", () => {
         if (item.classList.contains("home")) {
-          bodyScrollBar.scrollTo(0, 2500);
+          bodyScrollBar.scrollIntoView(document.querySelector("#page-header"), {
+            alignToTop: true,
+          });
+        } else if (item.classList.contains("regular-work")) {
+          bodyScrollBar.scrollIntoView(document.querySelector("#work2"), {
+            alignToTop: true,
+          });
+        } else if (item.classList.contains("clients")) {
+          bodyScrollBar.scrollIntoView(document.querySelector("#clients"), {
+            alignToTop: true,
+          });
+        } else if (item.classList.contains("about")) {
+          bodyScrollBar.scrollIntoView(document.querySelector("#about"), {
+            alignToTop: true,
+          });
+        } else if (item.classList.contains("services")) {
+          bodyScrollBar.scrollIntoView(document.querySelector("#services"), {
+            alignToTop: true,
+          });
+        } else if (item.classList.contains("contact")) {
+          bodyScrollBar.scrollIntoView(document.querySelector("#contact"), {
+            alignToTop: true,
+          });
         }
         customF = 1;
         //After 3s the flag is reset to 0, which means the snapping will happen again
@@ -3581,6 +3603,48 @@ $(function () {
           if (customF != 1)
             return self.isActive && !scrollTween2 && goToSection("fromBottom");
         },
+      });
+    });
+  } else {
+    document.querySelectorAll(".listitem").forEach((item) => {
+      item.addEventListener("click", () => {
+        if (item.classList.contains("home")) {
+          setTimeout(() => {
+            document
+              .querySelector("#page-header")
+              .scrollIntoView({ behavior: "smooth" });
+          }, 1000);
+        } else if (item.classList.contains("mobile-work")) {
+          setTimeout(() => {
+            document
+              .querySelector("#work1")
+              .scrollIntoView({ behavior: "smooth" });
+          }, 1000);
+        } else if (item.classList.contains("clients")) {
+          setTimeout(() => {
+            document
+              .querySelector("#clients")
+              .scrollIntoView({ behavior: "smooth" });
+          }, 1000);
+        } else if (item.classList.contains("about")) {
+          setTimeout(() => {
+            document
+              .querySelector("#about")
+              .scrollIntoView({ behavior: "smooth" });
+          }, 1000);
+        } else if (item.classList.contains("services")) {
+          setTimeout(() => {
+            document
+              .querySelector("#services")
+              .scrollIntoView({ behavior: "smooth" });
+          }, 1000);
+        } else if (item.classList.contains("contact")) {
+          setTimeout(() => {
+            document
+              .querySelector("#contact")
+              .scrollIntoView({ behavior: "smooth" });
+          }, 1000);
+        }
       });
     });
   }
@@ -3722,12 +3786,5 @@ $(function () {
     });
   });
 
-  document.querySelectorAll(".listitem").forEach((item) => {
-    item.addEventListener("click", () => {
-      if (item.classList.contains("home")) {
-        window.scrollTo(0, 2500);
-      }
-    });
-  });
   //Code 	ends here
 })(jQuery);
