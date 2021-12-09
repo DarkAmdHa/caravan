@@ -9809,3 +9809,9 @@ header {
     display: none;
   }
 }
+
+@media (max-width: 370px) {
+  .pgi-caption mark {
+    font-size: 75%;
+  }
+}
